@@ -30,7 +30,7 @@ export default async function ReviewPage({
         <h1 className="text-2xl font-medium tracking-tight">Review queue</h1>
         {search.error ? <p className="mt-3 text-sm">That key did not match.</p> : null}
         <input name="key" type="password" className="mt-4 h-10 w-full rounded-lg border border-line bg-bg px-3" />
-        <button className="mt-3 h-10 rounded-md bg-fg px-4 text-sm text-bg" type="submit">Unlock</button>
+        <button className="mt-3 h-10 rounded-xl bg-accent px-4 text-sm font-semibold text-accent-fg" type="submit">Unlock</button>
       </form>
     );
   }

@@ -15,18 +15,18 @@ const NAV = [
 export function Header() {
   const path = usePathname();
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-bg/90 backdrop-blur">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-5 gap-y-2 px-5 py-3">
-        <Link href="/" className="flex items-center gap-2.5 text-[15px] font-medium tracking-tight">
+    <header className="sticky top-0 z-20 border-b border-line bg-card/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-5 py-3">
+        <Link href="/" className="flex items-center gap-2.5 text-[15px] font-bold tracking-tight">
           <Mark />
-          designcodejobs
+          Design Code Jobs
         </Link>
         <PrimaryNav path={path} />
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
           <Link
             href="/post-a-job"
-            className="inline-flex h-9 items-center rounded-md bg-fg px-3.5 text-sm font-medium text-bg hover:opacity-90"
+            className="inline-flex h-9 items-center rounded-xl bg-accent px-3.5 text-sm font-semibold text-accent-fg hover:opacity-90"
           >
             Post a job
           </Link>
@@ -58,11 +58,8 @@ function PrimaryNav({ path }: { path: string }) {
 
 function Mark() {
   return (
-    <span className="grid grid-cols-2 gap-[3px]" aria-hidden>
-      <span className="h-1.5 w-1.5 bg-fg" />
-      <span className="h-1.5 w-1.5 bg-accent" />
-      <span className="h-1.5 w-1.5 bg-fg/30" />
-      <span className="h-1.5 w-1.5 bg-fg" />
+    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-accent-fg" aria-hidden>
+      D
     </span>
   );
 }

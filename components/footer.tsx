@@ -4,8 +4,8 @@ import { ROLES, SKILLS } from "@/lib/catalog";
 export function Footer() {
   const roles = ROLES.filter((role) => role.priority);
   return (
-    <footer className="mt-24 border-t border-line">
-      <div className="mx-auto grid max-w-5xl gap-10 px-5 py-12 text-sm text-muted sm:grid-cols-4">
+    <footer className="mt-20 border-t border-line bg-card">
+      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 text-sm text-muted sm:grid-cols-4">
         <div>
           <p className="font-medium text-fg">Design Code Jobs</p>
           <p className="mt-3 leading-relaxed">
@@ -48,7 +48,7 @@ export function Footer() {
           </ul>
         </div>
       </div>
-      <p className="mx-auto max-w-5xl px-5 pb-10 text-xs leading-5 text-muted">
+      <p className="mx-auto max-w-6xl px-5 pb-10 text-xs leading-5 text-muted">
         {SKILLS.find((skill) => skill.slug === "framer")?.label} means the design tool. Listings link out to the original application.
       </p>
     </footer>

@@ -83,7 +83,7 @@ export default async function ConfirmationPage({
   const payment = first(search.payment_id);
   return (
     <div className="mx-auto max-w-xl px-5 py-16">
-      <p className="text-xs font-medium uppercase tracking-[0.16em] text-accent">{KICKER[outcome]}</p>
+      <p className="text-sm font-semibold text-accent">{KICKER[outcome]}</p>
       <h1 className="mt-3 text-5xl text-balance">{copy.title}</h1>
       <p className="mt-5 text-[17px] leading-8 text-muted">{copy.body}</p>
       <h2 className="mt-8 text-lg font-medium tracking-tight">Next steps</h2>
@@ -93,11 +93,11 @@ export default async function ConfirmationPage({
         ))}
       </ol>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/" className="inline-flex h-11 items-center rounded-md bg-fg px-5 text-sm font-medium text-bg">
+        <Link href="/" className="inline-flex h-11 items-center rounded-xl bg-accent px-5 text-sm font-semibold text-accent-fg">
           Design engineer jobs
         </Link>
         {outcome === "failed" || outcome === "cancelled" || outcome === "unknown" || outcome === "unconfigured" ? (
-          <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm">
+          <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-xl border border-line bg-card px-5 text-sm font-semibold">
             Post a job
           </Link>
         ) : null}
@@ -107,13 +107,13 @@ export default async function ConfirmationPage({
           {submission ? (
             <div>
               <dt className="inline">Reference </dt>
-              <dd className="inline font-mono">{submission}</dd>
+              <dd className="inline tabular-nums">{submission}</dd>
             </div>
           ) : null}
           {payment ? (
             <div>
               <dt className="inline">Payment </dt>
-              <dd className="inline font-mono">{payment}</dd>
+              <dd className="inline tabular-nums">{payment}</dd>
             </div>
           ) : null}
         </dl>

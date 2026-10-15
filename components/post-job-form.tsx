@@ -90,9 +90,10 @@ export function PostJobForm() {
   const remote = values.workplace === "remote";
 
   return (
-    <form onSubmit={onSubmit} noValidate className="space-y-5" aria-busy={pending}>
+    <form onSubmit={onSubmit} noValidate className="space-y-6" aria-busy={pending}>
       <input name="company_website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
       <p className="text-sm text-muted">Required fields are marked.</p>
+      <Section title="Company">
       <TextField
         id="email"
         name="email"
@@ -134,6 +135,8 @@ export function PostJobForm() {
         onBlur={() => blur("domain")}
         onChange={(value) => update("domain", value)}
       />
+      </Section>
+      <Section title="Role">
       <TextField
         id="title"
         name="title"
@@ -161,7 +164,7 @@ export function PostJobForm() {
               ["onsite", "On-site"],
             ] as const
           ).map(([value, label]) => (
-            <label key={value} className={`flex h-11 cursor-pointer items-center justify-center rounded-md border text-sm focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent ${values.workplace === value ? "border-fg bg-fg text-bg" : "border-line"}`}>
+            <label key={value} className={`flex h-11 cursor-pointer items-center justify-center rounded-xl border text-sm font-medium focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 ${values.workplace === value ? "border-accent bg-accent text-accent-fg focus-within:outline-fg" : "border-line focus-within:outline-accent"}`}>
               <input
                 className="sr-only"
                 type="radio"
@@ -208,6 +211,8 @@ export function PostJobForm() {
         onBlur={() => blur("apply_url")}
         onChange={(value) => update("apply_url", value)}
       />
+      </Section>
+      <Section title="Pay">
       <div className="grid gap-3 sm:grid-cols-3">
         <TextField
           id="salary_min"
@@ -255,6 +260,8 @@ export function PostJobForm() {
         </div>
       </div>
       <p className="text-xs text-muted">Leave salary blank if you are not publishing a range. Minimum must be less than or equal to maximum.</p>
+      </Section>
+      <Section title="Description">
       <div>
         <div className="flex items-baseline justify-between gap-3">
           <label htmlFor="description" className="text-sm font-medium">
@@ -281,7 +288,7 @@ export function PostJobForm() {
           <p id="description-error" role="alert" className="mt-1 text-sm text-fg">{errors.description}</p>
         ) : null}
       </div>
-      <label className="flex items-start gap-3 rounded-md border border-line px-4 py-3 text-sm">
+      <label className={`flex items-start gap-3 rounded-2xl border px-4 py-3 text-sm ${values.featured ? "border-accent bg-salary" : "border-line"}`}>
         <input
           type="checkbox"
           name="featured"
@@ -294,15 +301,25 @@ export function PostJobForm() {
           <span className="mt-1 block text-muted">Highlighted on the board for the same 30 days. Checkout total ${FEATURED_PRICE_USD}.</span>
         </span>
       </label>
+      </Section>
       {formError ? <p role="alert" className="text-sm text-fg">{formError}</p> : null}
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex h-11 items-center rounded-md bg-fg px-5 text-sm font-medium text-bg disabled:opacity-60"
+        className="inline-flex h-12 w-full items-center justify-center rounded-xl bg-accent px-5 text-sm font-semibold text-accent-fg hover:opacity-90 disabled:opacity-60 sm:w-auto"
       >
         {pending ? "Creating checkout…" : `Continue to checkout · $${price}`}
       </button>
     </form>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <fieldset className="card space-y-5 p-5">
+      <legend className="px-1 text-base font-bold">{title}</legend>
+      {children}
+    </fieldset>
   );
 }
 

@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { CompanyLogo } from "@/components/company-logo";
 import { JobList } from "@/components/job-list";
 import { JsonLd } from "@/components/json-ld";
 import { subscribeAction } from "@/app/actions";
 import { breadcrumbLd, faqLd } from "@/lib/jsonld";
 import { listingFaqs, paginate } from "@/lib/query";
-import { PAGE_SIZE } from "@/lib/site";
+import { LISTING_DAYS, PAGE_SIZE, STANDARD_PRICE_USD } from "@/lib/site";
 import type { Job } from "@/lib/types";
 
 export function Listing({
@@ -24,6 +25,7 @@ export function Listing({
   companies,
   featuredJobs,
   openCount,
+  listHeading = "Open roles",
 }: {
   h1: string;
   path: string;
@@ -37,9 +39,10 @@ export function Listing({
   children?: React.ReactNode;
   hero?: boolean;
   value?: string;
-  companies?: { slug: string; name: string }[];
+  companies?: { slug: string; name: string; domain?: string }[];
   featuredJobs?: Job[];
   openCount?: number;
+  listHeading?: string;
 }) {
   const paged = paginate(jobs, page, PAGE_SIZE);
   const faqs = listingFaqs(h1, featuredJobs?.length ? [...featuredJobs, ...jobs] : jobs);
@@ -54,46 +57,44 @@ export function Listing({
   const count = openCount ?? jobs.length + featured.length;
 
   return (
-    <div className="pb-8">
+    <div className="pb-16">
       <JsonLd data={breadcrumbLd(crumbs)} />
       <JsonLd data={faqLd(faqs)} />
       {hero ? (
-        <section className="reg relative overflow-hidden border-b border-line">
-          <div className="blueprint pointer-events-none absolute inset-0" aria-hidden />
-          <div className="relative mx-auto max-w-5xl px-5 pb-12 pt-12 sm:pt-16">
-            <nav className="flex flex-wrap gap-x-2 text-sm text-muted">
+        <section className="border-b border-line bg-card">
+          <div className="mx-auto max-w-6xl px-5 pb-8 pt-8 sm:pb-10 sm:pt-12">
+            <nav className="flex flex-wrap gap-x-2 text-sm text-muted" aria-label="Breadcrumb">
               <Crumbs crumbs={crumbs} />
             </nav>
-            <div className="mt-8 flex items-center gap-3">
-              <Image src="/icon.svg" alt={h1} width={28} height={28} unoptimized />
-              <p className="spec text-accent">SPEC / OPEN ROLES</p>
+            <div className="mt-6 flex items-center gap-3">
+              <Image src="/mark.svg" alt={h1} width={44} height={44} className="h-11 w-11 rounded-xl" unoptimized />
+              <p className="text-sm font-semibold text-accent">For designers who code</p>
             </div>
-            <h1 className="mt-3 max-w-3xl text-5xl text-balance sm:text-6xl">{h1}</h1>
-            {value ? <p className="mt-5 max-w-xl text-lg leading-8 text-fg">{value}</p> : null}
-            <p className="spec mt-4 text-muted">
-              {count} OPEN · {featured.length ? `${featured.length} FEATURED · ` : ""}BOARD
-            </p>
+            <h1 className="mt-3 max-w-3xl text-4xl text-balance sm:text-6xl">{h1}</h1>
+            {value ? <p className="mt-4 max-w-2xl text-lg leading-8 text-fg">{value}</p> : null}
             {children}
-            {companies?.length ? <TrustStrip companies={companies} /> : null}
+            <p className="mt-4 text-sm font-medium text-muted">
+              {count} open {count === 1 ? "role" : "roles"}
+            </p>
           </div>
         </section>
       ) : (
-        <div className="mx-auto max-w-5xl px-5">
-          <nav className="flex flex-wrap gap-x-2 pt-8 text-sm text-muted">
+        <div className="mx-auto max-w-6xl px-5">
+          <nav className="flex flex-wrap gap-x-2 pt-8 text-sm text-muted" aria-label="Breadcrumb">
             <Crumbs crumbs={crumbs} />
           </nav>
-          <h1 className="mt-6 max-w-3xl text-4xl text-balance sm:text-5xl">{h1}</h1>
+          <h1 className="mt-5 max-w-3xl text-4xl text-balance sm:text-5xl">{h1}</h1>
           <p className="mt-4 max-w-2xl text-lg leading-8 text-fg">{value || `${h1}. These are open software roles. Hardware and mechanical postings stay off the list.`}</p>
           {children}
         </div>
       )}
 
-      <div className="mx-auto max-w-5xl px-5">
+      <div className="mx-auto max-w-6xl px-5">
         <p className="mt-8 max-w-2xl text-[15px] leading-7 text-muted">{intro}</p>
         {featured.length ? (
           <section className="mt-10" aria-labelledby="featured-heading">
-            <h2 id="featured-heading" className="text-lg font-medium tracking-tight">Featured</h2>
-            <p className="mt-1 text-sm text-muted">Paid featured posts stay highlighted for the same 30 days as a standard listing.</p>
+            <h2 id="featured-heading" className="text-2xl font-bold tracking-tight">Featured</h2>
+            <p className="mt-1 text-sm text-muted">Paid featured posts stay highlighted for the same {LISTING_DAYS} days as a standard listing.</p>
             <div className="mt-4">
               <JobList jobs={featured} />
             </div>
@@ -101,7 +102,7 @@ export function Listing({
         ) : null}
         <section className="mt-10" aria-labelledby="open-roles-heading">
           <div className="flex items-baseline justify-between gap-4">
-            <h2 id="open-roles-heading" className="text-lg font-medium tracking-tight">Open roles</h2>
+            <h2 id="open-roles-heading" className="text-2xl font-bold tracking-tight">{listHeading}</h2>
             <p className="text-sm text-muted">
               {jobs.length} {jobs.length === 1 ? "role" : "roles"}
             </p>
@@ -114,19 +115,25 @@ export function Listing({
             )}
           </div>
           {paged.pages > 1 ? (
-            <nav className="mt-5 flex items-center gap-4 text-sm" aria-label="Pagination">
-              {paged.page > 1 ? <Link href={pageHref(paged.page - 1)} className="underline underline-offset-4">Previous</Link> : <span />}
+            <nav className="mt-5 flex items-center gap-3 text-sm" aria-label="Pagination">
+              {paged.page > 1 ? (
+                <Link href={pageHref(paged.page - 1)} className="inline-flex h-10 items-center rounded-xl border border-line bg-card px-4 font-semibold hover:border-accent">Previous</Link>
+              ) : <span />}
               <span className="text-muted">Page {paged.page} of {paged.pages}</span>
-              {paged.page < paged.pages ? <Link href={pageHref(paged.page + 1)} className="underline underline-offset-4">Next</Link> : null}
+              {paged.page < paged.pages ? (
+                <Link href={pageHref(paged.page + 1)} className="inline-flex h-10 items-center rounded-xl border border-line bg-card px-4 font-semibold hover:border-accent">Next</Link>
+              ) : null}
             </nav>
           ) : null}
         </section>
+        {hero && companies?.length ? <TrustStrip companies={companies} /> : null}
+        {hero ? <EmployerBand /> : null}
         <section className="mt-14" aria-labelledby="questions-heading">
-          <h2 id="questions-heading" className="text-lg font-medium tracking-tight">Questions</h2>
-          <div className="mt-4 divide-y divide-line border-y border-line">
+          <h2 id="questions-heading" className="text-2xl font-bold tracking-tight">Questions</h2>
+          <div className="mt-4 divide-y divide-line rounded-2xl border border-line bg-card px-5">
             {faqs.map((faq) => (
               <div key={faq.q} className="py-4">
-                <h3 className="text-base font-medium">{faq.q}</h3>
+                <h3 className="text-base font-semibold">{faq.q}</h3>
                 <p className="mt-2 text-sm leading-6 text-muted">{faq.a}</p>
               </div>
             ))}
@@ -134,11 +141,11 @@ export function Listing({
         </section>
         {related.length ? (
           <section className="mt-12" aria-labelledby="related-heading">
-            <h2 id="related-heading" className="text-lg font-medium tracking-tight">Related</h2>
-            <ul className="mt-3 flex flex-wrap gap-2">
+            <h2 id="related-heading" className="text-2xl font-bold tracking-tight">Related</h2>
+            <ul className="mt-4 flex flex-wrap gap-2">
               {related.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="inline-flex rounded-md border border-line px-3 py-1 text-sm hover:bg-chip">
+                  <Link href={link.href} className="inline-flex rounded-full border border-line bg-card px-3.5 py-1.5 text-sm font-medium hover:border-accent">
                     {link.label}
                   </Link>
                 </li>
@@ -146,9 +153,10 @@ export function Listing({
             </ul>
           </section>
         ) : null}
-        <section className="mt-14" aria-labelledby="alerts-heading">
-          <h2 id="alerts-heading" className="text-lg font-medium tracking-tight">Email alerts</h2>
-          <form action={subscribeAction} className="mt-4 flex max-w-md flex-col gap-2 sm:flex-row">
+        <section className="card mt-14 px-5 py-6 sm:px-6" aria-labelledby="alerts-heading">
+          <h2 id="alerts-heading" className="text-2xl font-bold tracking-tight">Job alerts</h2>
+          <p className="mt-1 max-w-xl text-sm text-muted">A note when a role on this list is posted.</p>
+          <form action={subscribeAction} className="mt-4 flex max-w-lg flex-col gap-2 sm:flex-row">
             <input type="text" name="company_website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
             {alertTitle ? <input type="hidden" name="title" value={alertTitle} /> : null}
             <label className="sr-only" htmlFor="alert-email">Email</label>
@@ -159,9 +167,9 @@ export function Listing({
               required
               autoComplete="email"
               placeholder="you@company.com"
-              className="h-11 flex-1 rounded-md border border-line bg-bg px-4 text-sm"
+              className="h-12 flex-1 rounded-xl border border-line bg-bg px-4 text-sm"
             />
-            <button type="submit" className="h-11 rounded-md bg-fg px-4 text-sm font-medium text-bg">
+            <button type="submit" className="h-12 rounded-xl bg-accent px-5 text-sm font-semibold text-accent-fg hover:opacity-90">
               Get alerts
             </button>
           </form>
@@ -175,7 +183,7 @@ export function Listing({
 function Crumbs({ crumbs }: { crumbs: { name: string; path: string }[] }) {
   return crumbs.map((crumb, index) => (
     <span key={crumb.path}>
-      {index > 0 ? <span className="mr-2">/</span> : null}
+      {index > 0 ? <span className="mr-2 text-line">/</span> : null}
       {index === crumbs.length - 1 ? (
         <span className="text-fg">{crumb.name}</span>
       ) : (
@@ -185,34 +193,46 @@ function Crumbs({ crumbs }: { crumbs: { name: string; path: string }[] }) {
   ));
 }
 
-function TrustStrip({ companies }: { companies: { slug: string; name: string }[] }) {
+function TrustStrip({ companies }: { companies: { slug: string; name: string; domain?: string }[] }) {
   const shown = companies.slice(0, 16);
   const rest = companies.length - shown.length;
   return (
-    <section className="mt-10" aria-labelledby="hiring-heading">
-      <h2 id="hiring-heading" className="text-xs font-medium uppercase tracking-[0.16em] text-muted">
-        Companies on the board
-      </h2>
-      <ul className="mt-4 flex flex-wrap gap-2">
+    <section className="mt-14" aria-labelledby="hiring-heading">
+      <h2 id="hiring-heading" className="text-2xl font-bold tracking-tight">Companies on the board</h2>
+      <ul className="mt-4 flex gap-3 overflow-x-auto pb-2">
         {shown.map((company) => (
-          <li key={company.slug}>
+          <li key={company.slug} className="shrink-0">
             <Link
               href={`/companies/${company.slug}`}
-              className="inline-flex items-center gap-2 rounded-md border border-line bg-bg/80 px-2.5 py-1 text-sm hover:bg-chip"
+              className="lift flex h-full w-28 flex-col items-center gap-2 rounded-2xl border border-line bg-card px-3 py-4 text-center text-xs font-semibold shadow-sm"
             >
-              <Image src={`/logo/${company.slug}`} alt="" width={20} height={20} className="h-5 w-5 rounded-md" unoptimized />
-              {company.name}
+              <CompanyLogo name={company.name} domain={company.domain} size={40} />
+              <span className="line-clamp-2">{company.name}</span>
             </Link>
           </li>
         ))}
         {rest > 0 ? (
-          <li>
-            <Link href="/companies" className="inline-flex h-8 items-center rounded-md px-2 text-sm text-muted hover:text-fg">
+          <li className="shrink-0">
+            <Link href="/companies" className="flex h-full w-28 items-center justify-center rounded-2xl border border-dashed border-line px-3 text-center text-sm font-semibold text-muted hover:text-fg">
               and {rest} more
             </Link>
           </li>
         ) : null}
       </ul>
+    </section>
+  );
+}
+
+function EmployerBand() {
+  return (
+    <section className="mt-14 rounded-3xl bg-accent px-6 py-8 text-accent-fg sm:px-10" aria-labelledby="employers-heading">
+      <h2 id="employers-heading" className="text-2xl font-bold tracking-tight sm:text-3xl">Hiring a design engineer?</h2>
+      <p className="mt-2 max-w-xl text-base leading-7">
+        A standard post is ${STANDARD_PRICE_USD} for {LISTING_DAYS} days. The description stays on this site, and candidates apply on your original posting.
+      </p>
+      <Link href="/post-a-job" className="mt-5 inline-flex h-11 items-center rounded-xl bg-card px-5 text-sm font-semibold text-fg hover:opacity-90">
+        Post a job
+      </Link>
     </section>
   );
 }
