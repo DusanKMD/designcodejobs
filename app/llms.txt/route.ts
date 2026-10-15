@@ -27,7 +27,7 @@ export async function GET() {
     salary
       ? `- Median employer-posted salary midpoint: ${formatMoney(salary.value, salary.currency)} a year (${salary.currency}, ${salary.count} postings with a published yearly base range). Salary is shown only when the employer published it; nothing is estimated or converted.`
       : "- Salary is shown only when the employer published it; nothing is estimated or converted.",
-    "- Roles are read from public Greenhouse, Lever, and Ashby boards, plus paid posts. Each role has its own page with the full description and JobPosting structured data; applications happen on the employer's original posting.",
+    "- Roles are read from public Greenhouse, Lever, and Ashby boards, plus paid posts. Each role has its own page with the full description; active roles with a mappable location carry JobPosting structured data. Applications happen on the employer's original posting.",
     `- Employers can post a role for $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days (one-time, no subscription). Featured placement is $${FEATURED_ADDON_USD} more. Listings go live within about a minute of payment.`,
     "",
     "## Jobs",

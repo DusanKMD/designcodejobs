@@ -87,7 +87,7 @@ export function pageMeta(input: {
   return {
     title,
     description,
-    alternates: { canonical },
+    alternates: { canonical, types: { "application/rss+xml": [{ url: "/feed.xml", title: "Design Code Jobs: new roles" }] } },
     robots: { index: input.index, follow: true },
     openGraph: {
       title,

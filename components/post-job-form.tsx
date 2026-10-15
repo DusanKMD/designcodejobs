@@ -181,7 +181,6 @@ export function PostJobForm() {
               name="domain"
               label="Company domain"
               placeholder="acme.com"
-              hint="Used for your logo."
               value={values.domain}
               max={POST_JOB_LIMITS.domain.max}
               error={errors.domain}
