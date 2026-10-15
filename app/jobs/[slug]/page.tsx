@@ -9,7 +9,7 @@ import { breadcrumbLd, buildJobPosting } from "@/lib/jsonld";
 import { effectiveStatus, isGone } from "@/lib/model";
 import { roleLabel } from "@/lib/query";
 import { similarJobs } from "@/lib/query";
-import { pageMeta } from "@/lib/seo";
+import { fitDescription, fitTitle, pageMeta } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 import { getAllJobs, getJobBySlug } from "@/lib/store";
 import type { Metadata } from "next";
@@ -19,9 +19,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const job = await getJobBySlug(slug);
   if (!job) return {};
   const status = effectiveStatus(job);
-  const description = `${job.title} at ${job.companyName}. ${jobFacts(job)}. ${formatSalary(job) || "Salary not posted."}`;
+  const description = fitDescription(
+    `${job.title} at ${job.companyName}. ${jobFacts(job)}. ${formatSalary(job) || "Salary not posted."}`,
+  );
   return pageMeta({
-    title: `${job.title} at ${job.companyName}`,
+    title: fitTitle(`${job.title} at ${job.companyName}`),
     description,
     path: `/jobs/${slug}`,
     index: status === "active",
@@ -55,7 +57,7 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
         {family ? <> / <Link href={`/roles/${family}`} className="hover:text-fg">{roleLabel(family)} jobs</Link></> : null}
       </nav>
       {expired ? (
-        <p className="mt-6 rounded-2xl border border-line bg-chip px-4 py-3 text-sm" role="status">
+        <p className="mt-6 rounded-md border border-line bg-chip px-4 py-3 text-sm" role="status">
           This role is no longer open{job.expiredAt ? ` (closed ${formatDate(job.expiredAt)})` : ""}. The description stays up for reference. Similar open roles are below.
         </p>
       ) : null}
@@ -66,6 +68,9 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
         </p>
       </div>
       <h1 className="mt-4 text-4xl text-balance sm:text-5xl">{job.title}</h1>
+      <p className="mt-4 max-w-2xl text-lg leading-8 text-fg">
+        {job.title} at {job.companyName}. {jobFacts(job)}. {salary ? `Posted salary ${salary}.` : "The employer did not post a salary."}
+      </p>
       <dl className="mt-6 grid gap-4 text-sm sm:grid-cols-2">
         <div>
           <dt className="text-muted">Workplace</dt>
@@ -92,7 +97,7 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
       {job.skills.length ? (
         <ul className="mt-5 flex flex-wrap gap-2" aria-label="Skills">
           {job.skills.map((skill) => (
-            <li key={skill} className="rounded-full bg-chip px-2.5 py-0.5 text-xs text-muted">
+            <li key={skill} className="rounded-md bg-chip px-2.5 py-0.5 text-xs text-muted">
               {skillBySlug(skill)?.label || skill}
             </li>
           ))}
@@ -103,7 +108,7 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
           href={withApplyUtm(job.applyUrl)}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex h-11 items-center rounded-full bg-fg px-5 text-sm font-medium text-bg"
+          className="mt-6 inline-flex h-11 items-center rounded-md bg-fg px-5 text-sm font-medium text-bg"
         >
           Apply on {hostLabel(job.applyUrl)}
         </a>

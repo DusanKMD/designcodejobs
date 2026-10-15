@@ -14,10 +14,10 @@ export default function NotFound() {
       <h1 className="mt-3 text-5xl">Page not found</h1>
       <p className="mt-4 text-[17px] leading-8 text-muted">That URL is not on the board.</p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/" className="inline-flex h-11 items-center rounded-full bg-fg px-5 text-sm font-medium text-bg">
+        <Link href="/" className="inline-flex h-11 items-center rounded-md bg-fg px-5 text-sm font-medium text-bg">
           Design engineer jobs
         </Link>
-        <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-full border border-line px-5 text-sm">
+        <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm">
           Post a job
         </Link>
       </div>

@@ -20,7 +20,7 @@ export const ROLES: RoleDef[] = [
     h1: "UX engineer jobs",
     title: "UX engineer jobs",
     description:
-      "UX engineer jobs at product companies. Open roles for people who prototype, build design systems, and ship interface code, with salary when the employer posts it.",
+      "UX engineer jobs at product companies. Open roles for people who prototype, build design systems, and ship interface code.",
     priority: true,
   },
   {
@@ -82,7 +82,7 @@ export const ROLES: RoleDef[] = [
     label: "Prototyper",
     h1: "Prototyper jobs",
     title: "Prototyper jobs",
-    description: "UX prototyper and AI prototyper jobs. Roles that turn interface ideas into working prototypes.",
+    description: "Prototyper jobs, including UX prototyper and AI prototyper roles. The work is a working prototype, not a slide deck.",
     priority: false,
   },
 ];
@@ -115,21 +115,21 @@ export const SALARY_ROLES: { slug: string; family: TitleFamily | "all"; h1: stri
     family: "design-systems-engineer",
     h1: "Design systems engineer salary",
     title: "Design systems engineer salary",
-    description: "Design systems engineer salary ranges from employer-posted base pay on design system jobs.",
+    description: "Design systems engineer salary from employer-posted base pay on design system jobs. Tokens and components, not a mechanical average.",
   },
   {
     slug: "creative-technologist",
     family: "creative-technologist",
     h1: "Creative technologist salary",
     title: "Creative technologist salary",
-    description: "Creative technologist salary ranges where the employer included pay on the posting.",
+    description: "Creative technologist salary from employer-posted yearly ranges. Campaign, brand, and interactive roles, not a crowdsourced average.",
   },
   {
     slug: "creative-developer",
     family: "creative-developer",
     h1: "Creative developer salary",
     title: "Creative developer salary",
-    description: "Creative developer salary ranges from posted software roles. Thin until more employers publish pay.",
+    description: "Creative developer salary from posted software roles. Thin until more employers publish a yearly base. Nothing here is estimated.",
   },
 ];
 
@@ -157,7 +157,7 @@ export const SKILLS: SkillDef[] = [
     label: "React",
     h1: "React design engineer jobs",
     title: "React design engineer jobs",
-    description: "Design engineer and UI engineer jobs that mention React.",
+    description: "React design engineer jobs where the posting names React. Interface and design-system work, not a general frontend board.",
     priority: false,
   },
   {
@@ -165,7 +165,7 @@ export const SKILLS: SkillDef[] = [
     label: "Figma",
     h1: "Figma design engineer jobs",
     title: "Figma design engineer jobs",
-    description: "Jobs for designers who code that mention Figma alongside production UI.",
+    description: "Figma design engineer jobs that mention Figma next to production UI. The design tool, used by people who also ship the interface.",
     priority: false,
   },
   {
@@ -173,7 +173,7 @@ export const SKILLS: SkillDef[] = [
     label: "Design systems",
     h1: "Design system jobs",
     title: "Design system jobs",
-    description: "Jobs that mention design systems, tokens, and component libraries.",
+    description: "Design system jobs that mention tokens, components, and shared libraries. Software roles only, not mechanical documentation.",
     priority: false,
   },
   {
@@ -181,7 +181,7 @@ export const SKILLS: SkillDef[] = [
     label: "Three.js",
     h1: "Three.js jobs",
     title: "Three.js jobs",
-    description: "Creative developer and design engineer jobs that mention Three.js.",
+    description: "Three.js jobs for creative developers and design engineers who mention Three.js. Interactive product work, not a general graphics board.",
     priority: false,
   },
   {
@@ -189,7 +189,7 @@ export const SKILLS: SkillDef[] = [
     label: "WebGL",
     h1: "WebGL developer jobs",
     title: "WebGL developer jobs",
-    description: "Interface and creative coding roles that mention WebGL.",
+    description: "WebGL developer jobs that mention WebGL in the posting. Creative coding and interface roles, not a general graphics board.",
     priority: false,
   },
   {
@@ -197,7 +197,7 @@ export const SKILLS: SkillDef[] = [
     label: "SwiftUI",
     h1: "SwiftUI design engineer jobs",
     title: "SwiftUI design engineer jobs",
-    description: "Design engineer jobs that mention SwiftUI.",
+    description: "SwiftUI design engineer jobs that mention SwiftUI. Apple interface work for designers who ship production UI.",
     priority: false,
   },
   {
@@ -205,7 +205,7 @@ export const SKILLS: SkillDef[] = [
     label: "Motion",
     h1: "Motion design engineer jobs",
     title: "Motion design engineer jobs",
-    description: "Roles that mention GSAP, Framer Motion, Lottie, or Rive.",
+    description: "Motion design engineer jobs that mention GSAP, Framer Motion, Lottie, or Rive. Interface motion, not a motion-graphics studio board.",
     priority: false,
   },
 ];
@@ -234,7 +234,7 @@ export const SENIORITIES: SeniorityDef[] = [
     label: "Junior",
     h1: "Junior design engineer jobs",
     title: "Junior design engineer jobs",
-    description: "Junior and entry-level software design engineer jobs.",
+    description: "Junior design engineer jobs and other entry-level software roles. Interface work early in a design-engineering career, not a mechanical internship.",
     priority: false,
   },
   {
@@ -242,7 +242,7 @@ export const SENIORITIES: SeniorityDef[] = [
     label: "Senior",
     h1: "Senior design engineer jobs",
     title: "Senior design engineer jobs",
-    description: "Senior software design engineer jobs.",
+    description: "Senior design engineer jobs in software. Product UI, design systems, and prototyping roles that name a senior level in the title.",
     priority: false,
   },
   {
@@ -250,7 +250,7 @@ export const SENIORITIES: SeniorityDef[] = [
     label: "Staff",
     h1: "Staff design engineer jobs",
     title: "Staff design engineer jobs",
-    description: "Staff and principal design engineer jobs in software.",
+    description: "Staff design engineer jobs, including principal titles, in software. Broader scope than a senior req, and still interface work.",
     priority: false,
   },
   {
@@ -258,7 +258,7 @@ export const SENIORITIES: SeniorityDef[] = [
     label: "Lead",
     h1: "Lead design engineer jobs",
     title: "Lead design engineer jobs",
-    description: "Lead design engineer jobs in software product teams.",
+    description: "Lead design engineer jobs in software product teams. The title names a lead, and the work is still the interface.",
     priority: false,
   },
   {
@@ -266,7 +266,7 @@ export const SENIORITIES: SeniorityDef[] = [
     label: "Founding",
     h1: "Founding design engineer jobs",
     title: "Founding design engineer jobs",
-    description: "Founding design engineer roles at early startups.",
+    description: "Founding design engineer jobs at early startups. The first interface hire, still a software role rather than a mechanical one.",
     priority: false,
   },
   {
@@ -274,7 +274,7 @@ export const SENIORITIES: SeniorityDef[] = [
     label: "Manager",
     h1: "Design engineering manager jobs",
     title: "Design engineering manager jobs",
-    description: "Manager roles leading software design engineering teams.",
+    description: "Design engineering manager jobs leading software interface teams. People management on top of design-engineer work, not a hardware org.",
     priority: false,
   },
 ];
@@ -308,7 +308,7 @@ export const GUIDES = [
     slug: "what-is-a-design-engineer",
     title: "What is a design engineer?",
     description:
-      "What a software design engineer is and what design engineers do: prototypes, design systems, and production UI, as distinct from mechanical design engineering.",
+      "What a software design engineer is: prototypes, design systems, and production UI, distinct from mechanical design engineering.",
     h1: "What is a design engineer?",
   },
   {

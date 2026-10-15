@@ -5,8 +5,8 @@ import { pageMeta } from "@/lib/seo";
 import { FEATURED_ADDON_USD, FEATURED_PRICE_USD, LISTING_DAYS, STANDARD_PRICE_USD } from "@/lib/site";
 
 export const metadata = pageMeta({
-  title: "Terms",
-  description: `Terms for posting a job on Design Code Jobs. Standard listings are $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days.`,
+  title: "Terms for posting a design engineer job",
+  description: `Terms for posting a design engineer job. A standard listing is $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days. Featured placement is $${FEATURED_ADDON_USD} more.`,
   path: "/terms",
   index: true,
 });
@@ -15,11 +15,11 @@ export default function TermsPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-12">
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Terms", path: "/terms" }])} />
-      <h1 className="text-5xl">Terms</h1>
+      <h1 className="text-5xl text-balance">Terms for posting a design engineer job</h1>
+      <p className="mt-5 max-w-2xl text-lg leading-8 text-fg">
+        Posting a design engineer job costs ${STANDARD_PRICE_USD} for {LISTING_DAYS} days. Featured placement is ${FEATURED_ADDON_USD} more, ${FEATURED_PRICE_USD} at checkout. The role goes live when payment is confirmed.
+      </p>
       <div className="mt-8 space-y-4 text-[17px] leading-8 text-muted">
-        <p>
-          A standard listing is ${STANDARD_PRICE_USD} for {LISTING_DAYS} days. Featured placement is an additional ${FEATURED_ADDON_USD}, for a checkout total of ${FEATURED_PRICE_USD}, and highlights the role for those same {LISTING_DAYS} days.
-        </p>
         <p>
           The role is published when Dodo Payments confirms the payment. Closing the checkout, a failed payment, or a missing payment status does not publish it. A refund expires the listing.
         </p>

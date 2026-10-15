@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #faf9f6;
-  --fg: #1a1916;
-  --muted: #534f48;
-  --line: #e4e1d8;
-  --chip: #f1efe8;
-  --accent: #1d4ed8;
-  --accent-fg: #ffffff;
+  --bg: #eef1f4;
+  --fg: #14181f;
+  --muted: #3f4654;
+  --line: #c9d0d8;
+  --chip: #e4e8ed;
+  --accent: #0a5f7a;
+  --accent-fg: #f4f8fa;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #0e0e0c;
-  --fg: #f4f2ea;
-  --muted: #c8c4b8;
-  --line: #2c2b26;
-  --chip: #1a1916;
-  --accent: #9db4ff;
-  --accent-fg: #0e0e0c;
+  --bg: #0e1216;
+  --fg: #e7edf2;
+  --muted: #c5ced6;
+  --line: #2a333c;
+  --chip: #171c22;
+  --accent: #8ec8d8;
+  --accent-fg: #0e1216;
   color-scheme: dark;
 }
 
@@ -47,9 +47,38 @@ body {
 }
 
 h1 {
-  font-family: var(--font-display), Georgia, "Times New Roman", serif;
-  font-weight: 400;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display), var(--font-sans), sans-serif;
+  font-weight: 650;
+  letter-spacing: -0.045em;
+}
+
+.spec {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.reg {
+  background-image:
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent)),
+    linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-size:
+    18px 1px, 1px 18px,
+    18px 1px, 1px 18px,
+    18px 1px, 1px 18px,
+    18px 1px, 1px 18px;
+  background-position:
+    18px 18px, 18px 18px,
+    right 18px top 18px, right 18px top 18px,
+    18px bottom 18px, 18px bottom 18px,
+    right 18px bottom 18px, right 18px bottom 18px;
 }
 
 ::selection {

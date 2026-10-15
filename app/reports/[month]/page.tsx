@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ month: st
   const live = month === currentMonth();
   return pageMeta({
     title: `Design engineering jobs report ${month}`,
-    description: `Open roles, remote share, and posted salary for ${month}.`,
+    description: `Design engineering jobs report for ${month}. Open software roles, the fully remote share, and employer-posted salary. Hardware listings are excluded.`,
     path: `/reports/${month}`,
     index: live,
   });
@@ -34,7 +34,7 @@ export default async function ReportPage({ params }: { params: Promise<{ month: 
 
   return (
     <article className="mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-medium tracking-tight">Design engineering jobs report — {month}</h1>
+      <h1 className="text-4xl text-balance sm:text-5xl">Design engineering jobs report {month}</h1>
       {!live ? <p className="mt-4 text-sm text-muted">Historical snapshots are not stored yet. This URL stays noindex until a month is archived.</p> : null}
       <p className="mt-5 text-[15px] leading-7 text-muted">
         {live

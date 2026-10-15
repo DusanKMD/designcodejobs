@@ -2,29 +2,48 @@ import { NamedPostings, RolePayTable, SalarySnapshot, UxSalaryNote, WorkplacePay
 
 # Design engineer salary guide
 
-Design engineer salary, as most salary sites publish it, is mechanical and manufacturing pay. The software number is a different set of jobs: people who design and build product UI. This guide uses only base pay an employer wrote on a posting. It does not use crowdsourced averages, total-compensation guesses, or equity counted as cash. The live table is [design engineer salary](/salary). The figures in this article are rendered from the same listings.
+Design engineer salary, as most salary sites publish it, is mechanical and manufacturing pay. The software number is a different set of jobs: people who design and build product UI. This guide uses only base pay an employer wrote on a posting. It does not use crowdsourced averages, total-compensation guesses, or equity counted as cash.
 
-## What gets counted
+On this page:
 
-A range is included when the source board exposes it as salary and the unit is a year. Ashby compensation, a Lever salary range, or a yearly figure written in a Greenhouse description can qualify. Hourly rates, OTE, and compensation the employer hid from the public posting are left out. Each currency stays in that currency. Nothing is converted to dollars.
+- [What gets counted in a design engineer salary?](#what-gets-counted-in-a-design-engineer-salary)
+- [How does pay differ by role?](#how-does-pay-differ-by-role)
+- [What is a UX engineer salary on this board?](#what-is-a-ux-engineer-salary-on-this-board)
+- [Which public postings show a range?](#which-public-postings-show-a-range)
+- [How do level, remote, and city change the number?](#how-do-level-remote-and-city-change-the-number)
+- [How should you read a single range?](#how-should-you-read-a-single-range)
+
+The live table is [design engineer salary](/salary). The figures in this article are rendered from the same listings.
+
+## What gets counted in a design engineer salary?
+
+A design engineer salary on this page is a yearly base range an employer wrote on a software posting. Hourly rates, OTE, equity, and hidden compensation are left out. Each currency stays in that currency. Nothing is converted, and nothing is filled in from a crowdsourced average.
+
+A range is included when the source board exposes it as salary and the unit is a year. Ashby compensation, a Lever salary range, or a yearly figure written in a Greenhouse description can qualify.
 
 The headline median is the median of the USD range midpoints, when any USD yearly range exists. A wide band often means the requisition covers more than one level. The midpoint is a summary of the band the employer published, not an offer.
 
 <SalarySnapshot />
 
-## By role
+## How does pay differ by role?
 
-The head term mixes every software title on the board. The breakouts are the queries people actually type. UX engineer salary is the one with a high cost-per-click in US keyword data, which is a sign advertisers pay to reach that search, not a sign the wage is higher.
+Pay differs by the title family on the posting, and each family keeps its own currency. The head term mixes every software title on the board, so a UX engineer range is not averaged into a design systems range. A cell with no yearly range means the sample has no posted pay, not that the role is unpaid.
+
+The breakouts are the queries people actually type. UX engineer salary is the one with a high cost-per-click in US keyword data, which is a sign advertisers pay to reach that search, not a sign the wage is higher.
 
 <RolePayTable />
 
-## UX engineer salary
+## What is a UX engineer salary on this board?
+
+UX engineer salary here is the yearly base on the open UX engineer listings, not a market survey. If the sample is one posting, the page says so. Advertisers bidding on the query is not evidence that the wage is higher.
 
 <UxSalaryNote />
 
 UI engineer, design technologist, design systems engineer, and creative technologist each have their own salary page, linked in the table. If a cell says there is no yearly range, that is the sample, not a claim that the role is unpaid. [Design technologist jobs](/roles/design-technologist), [UI engineer jobs](/roles/ui-engineer), [design systems engineer jobs](/roles/design-systems-engineer), and [creative technologist jobs](/roles/creative-technologist) list the open roles either way.
 
-## Examples from public postings
+## Which public postings show a range?
+
+A public posting shows a range here only when it is open on this board and the employer published a yearly base. Dated examples from other boards are labeled as examples. They enter the median only when the role is open here with a yearly figure.
 
 Two companies in the current sample publish a clear yearly USD band on a design engineer req. A third, Linear, is hiring the title and does not publish pay on the open listings.
 
@@ -32,7 +51,9 @@ Two companies in the current sample publish a clear yearly USD band on a design 
 
 A separate look at public postings on 15 October 2026, outside this sample, found other published bands: Linear around $120,000–$190,000, Samsara around $137,000–$231,000, and Cal.com around $100,000–$150,000. Those are examples of ranges employers have posted. They enter the median only when the role is open here with a yearly figure. Vercel’s $208,000–$312,000 and WorkOS’s $175,000–$225,000 showed up in that same pass and are also in the live sample, so the open listings above are the numbers to use while those roles are up.
 
-## Level, remote, and city
+## How do level, remote, and city change the number?
+
+Level is read from the title, and most design engineer postings do not name one, so this guide does not invent a level table. Fully remote pay is counted apart from hybrid and on-site. City premiums are not computed from one or two postings.
 
 Seniority on this board is read from the title: intern, junior, senior, staff, principal, lead, manager. Most design engineer postings do not put a level in the title, so a level table would be a handful of rows and would look more precise than it is. [Design engineer internship](/seniority/internship) is the entry path with its own page. Senior and junior pages stay thin until there are enough open roles to support them.
 
@@ -40,9 +61,11 @@ Seniority on this board is read from the title: intern, junior, senior, staff, p
 
 City pages are not a priority. US search volume for design engineer jobs in a named city is small next to the role and salary terms, and a city premium computed from one or two postings would be a fiction. Where a posting names a city, the job page carries it. The salary page does not invent a San Francisco or New York differential on top.
 
-## How to read a single range
+## How should you read a single range?
 
-An employer’s band is the range they are willing to write on the requisition. It is not a prediction of the offer, and it is not a percentile of “design engineers” in a metro. A staff req and a mid-level req at the same company can both be titled design engineer. Ashby, for example, posts a staff band and a separate design engineer band, in more than one currency, for different regions. Comparing the USD Americas number with the GBP UK number, without saying they are different currencies and different reqs, is how salary pages go wrong.
+An employer’s band is the range they were willing to write on that requisition. It is not a percentile of design engineers in a city, and it is not a prediction of the offer. A staff req and a mid-level req can share the same title.
+
+Ashby, for example, posts a staff band and a separate design engineer band, in more than one currency, for different regions. Comparing the USD Americas number with the GBP UK number, without saying they are different currencies and different reqs, is how salary pages go wrong.
 
 If you are writing an offer, publish the base range on the job. Listings with a yearly range are the only ones that can appear here and the only ones that can carry salary in the job’s structured data. The structured data is added on the individual job page, and only when the figure is visible there. Guides do not carry job markup.
 

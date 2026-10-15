@@ -2,7 +2,7 @@ import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { SALARY_ROLES } from "@/lib/catalog";
 import { formatMoney, formatSalary } from "@/lib/format";
-import { breadcrumbLd, datasetLd } from "@/lib/jsonld";
+import { breadcrumbLd, datasetLd, faqLd } from "@/lib/jsonld";
 import { listedJobs, salaryBands, type SalaryBand } from "@/lib/query";
 import { pageMeta } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
@@ -14,6 +14,21 @@ export const metadata = pageMeta({
   path: "/salary",
   index: true,
 });
+
+const SALARY_FAQS = [
+  {
+    q: "Which roles publish a range?",
+    a: "Pay is split by the title on the posting, and each currency stays separate. A UX engineer range is not averaged into a design systems range. An empty cell means no employer published a yearly base for that role, not that the role is unpaid.",
+  },
+  {
+    q: "Which listings include pay?",
+    a: "Each row is an open software role with a yearly base the employer wrote on the posting. The figure is that range, not a midpoint invented for the table. Roles without a published yearly range are left off this list.",
+  },
+  {
+    q: "How is this salary counted?",
+    a: "A range is counted only when the employer published it as yearly base pay. Equity, OTE, and hidden compensation stay out. Each currency is counted on its own, and nothing is converted. The median is the median of the USD midpoints when a USD range exists.",
+  },
+];
 
 function rangeLabel(bands: SalaryBand[]) {
   if (!bands.length) return "—";
@@ -35,6 +50,7 @@ export default async function SalaryPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-10">
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Design engineer salary", path: "/salary" }])} />
+      <JsonLd data={faqLd(SALARY_FAQS)} />
       <JsonLd
         data={datasetLd({
           name: "Design engineer salary",
@@ -44,6 +60,9 @@ export default async function SalaryPage() {
       />
       <p className="text-sm text-muted"><Link href="/" className="hover:text-fg">Jobs</Link> / Design engineer salary</p>
       <h1 className="mt-4 text-5xl text-balance">Design engineer salary</h1>
+      <p className="mt-5 max-w-2xl text-lg leading-8 text-fg">
+        Design engineer salary here is the yearly base employers wrote on software postings. It is not a mechanical average, and it is not estimated.
+      </p>
       <p className="mt-5 text-[15px] leading-7 text-muted">
         Design engineer salary on the open web is mostly mechanical and hardware data. This page uses only base pay that employers wrote on software postings: design engineers who ship UI, plus UX engineer, UI engineer, design technologist, and design systems roles. Nothing here is estimated, crowdsourced, or converted from total compensation.
       </p>
@@ -68,7 +87,8 @@ export default async function SalaryPage() {
         </p>
       ) : null}
 
-      <h2 className="mt-10 text-xl font-medium tracking-tight">By role</h2>
+      <h2 className="mt-10 text-xl font-medium tracking-tight">{SALARY_FAQS[0].q}</h2>
+      <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">{SALARY_FAQS[0].a}</p>
       <div className="mt-4 overflow-x-auto">
         <table className="w-full text-left text-sm">
           <caption className="sr-only">Posted yearly salary by role</caption>
@@ -96,7 +116,8 @@ export default async function SalaryPage() {
         </table>
       </div>
 
-      <h2 className="mt-10 text-xl font-medium tracking-tight">Listings with pay</h2>
+      <h2 className="mt-10 text-xl font-medium tracking-tight">{SALARY_FAQS[1].q}</h2>
+      <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">{SALARY_FAQS[1].a}</p>
       <ul className="mt-4 divide-y divide-line border-y border-line">
         {paid.length ? paid.map((job) => (
           <li key={job.id} className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
@@ -106,7 +127,8 @@ export default async function SalaryPage() {
         )) : <li className="py-6 text-sm text-muted">No posted ranges yet.</li>}
       </ul>
 
-      <h2 className="mt-10 text-xl font-medium tracking-tight">How this is counted</h2>
+      <h2 className="mt-10 text-xl font-medium tracking-tight">{SALARY_FAQS[2].q}</h2>
+      <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">{SALARY_FAQS[2].a}</p>
       <p className="mt-3 text-sm leading-7 text-muted">
         A range is included only when the source board exposes it as salary (Ashby compensation, Lever salary range, or a figure written in the Greenhouse description) and it is yearly base pay. Equity, OTE, and hidden compensation are left out of the schema and this table. Each currency is counted on its own. The median is the median of USD range midpoints when a USD range exists, otherwise the currency with a posted range. Nothing is converted. The <Link href="/guides/design-engineer-salary" className="text-fg underline underline-offset-4">salary guide</Link> explains the method. Per-role pages: {SALARY_ROLES.map((role) => role.h1).join(", ")}.
       </p>

@@ -26,7 +26,7 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/post-a-job"
-            className="inline-flex h-9 items-center rounded-full bg-fg px-3.5 text-sm font-medium text-bg hover:opacity-90"
+            className="inline-flex h-9 items-center rounded-md bg-fg px-3.5 text-sm font-medium text-bg hover:opacity-90"
           >
             Post a job
           </Link>

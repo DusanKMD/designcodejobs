@@ -93,11 +93,11 @@ export default async function ConfirmationPage({
         ))}
       </ol>
       <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/" className="inline-flex h-11 items-center rounded-full bg-fg px-5 text-sm font-medium text-bg">
+        <Link href="/" className="inline-flex h-11 items-center rounded-md bg-fg px-5 text-sm font-medium text-bg">
           Design engineer jobs
         </Link>
         {outcome === "failed" || outcome === "cancelled" || outcome === "unknown" || outcome === "unconfigured" ? (
-          <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-full border border-line px-5 text-sm">
+          <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-md border border-line px-5 text-sm">
             Post a job
           </Link>
         ) : null}

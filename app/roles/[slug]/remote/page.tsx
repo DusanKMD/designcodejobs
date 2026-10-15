@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Listing } from "@/components/listing";
 import { roleBySlug, ROLES } from "@/lib/catalog";
 import { filterJobs, listingIntro, listingRobots, updatedLabel } from "@/lib/query";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, remoteRoleDescription, remoteRoleTitle } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
 
 export function generateStaticParams() {
@@ -15,10 +15,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!role) return {};
   const jobs = filterJobs(await getAllJobs(), { title: role.slug, remote: true });
   const robots = listingRobots(jobs.length, `/roles/${slug}/remote`, {});
-  const title = `Remote ${role.h1.charAt(0).toLowerCase()}${role.h1.slice(1)}`;
+  const title = remoteRoleTitle(role.h1);
   return pageMeta({
     title,
-    description: `Remote ${role.label.toLowerCase()} jobs. Fully remote software roles only — hybrid weeks are listed on the main ${role.label.toLowerCase()} page.`,
+    description: remoteRoleDescription(role.label),
     path: `/roles/${slug}/remote`,
     index: robots.index,
     canonicalPath: robots.canonicalPath,
@@ -30,7 +30,7 @@ export default async function RemoteRolePage({ params }: { params: Promise<{ slu
   const role = roleBySlug(slug);
   if (!role) notFound();
   const jobs = filterJobs(await getAllJobs(), { title: role.slug, remote: true });
-  const h1 = `Remote ${role.h1.charAt(0).toLowerCase()}${role.h1.slice(1)}`;
+  const h1 = remoteRoleTitle(role.h1);
   return (
     <Listing
       h1={h1}

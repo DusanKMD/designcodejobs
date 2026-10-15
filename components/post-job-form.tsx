@@ -161,7 +161,7 @@ export function PostJobForm() {
               ["onsite", "On-site"],
             ] as const
           ).map(([value, label]) => (
-            <label key={value} className={`flex h-11 cursor-pointer items-center justify-center rounded-full border text-sm focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent ${values.workplace === value ? "border-fg bg-fg text-bg" : "border-line"}`}>
+            <label key={value} className={`flex h-11 cursor-pointer items-center justify-center rounded-md border text-sm focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-accent ${values.workplace === value ? "border-fg bg-fg text-bg" : "border-line"}`}>
               <input
                 className="sr-only"
                 type="radio"
@@ -281,7 +281,7 @@ export function PostJobForm() {
           <p id="description-error" role="alert" className="mt-1 text-sm text-fg">{errors.description}</p>
         ) : null}
       </div>
-      <label className="flex items-start gap-3 rounded-2xl border border-line px-4 py-3 text-sm">
+      <label className="flex items-start gap-3 rounded-md border border-line px-4 py-3 text-sm">
         <input
           type="checkbox"
           name="featured"
@@ -298,7 +298,7 @@ export function PostJobForm() {
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex h-11 items-center rounded-full bg-fg px-5 text-sm font-medium text-bg disabled:opacity-60"
+        className="inline-flex h-11 items-center rounded-md bg-fg px-5 text-sm font-medium text-bg disabled:opacity-60"
       >
         {pending ? "Creating checkout…" : `Continue to checkout · $${price}`}
       </button>

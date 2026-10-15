@@ -35,9 +35,9 @@ export async function generateMetadata({
   const page = Number(search.page || 1) || 1;
   const robots = listingRobots(jobs.length, "/", { page, filtered: Boolean(q || search.seniority || workplace) });
   return pageMeta({
-    title: "Design engineer jobs",
+    title: "Design engineer jobs — Design Code Jobs",
     description:
-      "Design engineer jobs for designers who code. Open software roles — UX engineers, UI engineers, design technologists, and creative technologists — with the full description hosted here.",
+      "Design engineer jobs for designers who code. UX engineer, UI engineer, and design technologist roles, with the description hosted here.",
     path: "/",
     index: robots.index,
     canonicalPath: robots.canonicalPath,
@@ -74,7 +74,7 @@ export default async function HomePage({
       <Listing
         hero
         h1="Design engineer jobs"
-        value="A board for designers who code. Descriptions stay here. Applications go to the original posting."
+        value="Design engineer jobs are open software roles for designers who code. The description stays on this site. You apply on the employer’s original posting."
         path="/"
         jobs={rest}
         featuredJobs={featured}
@@ -95,7 +95,7 @@ export default async function HomePage({
         <ul className="mt-6 flex gap-2 overflow-x-auto pb-1 text-sm">
           {LINKS.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="inline-flex whitespace-nowrap rounded-full border border-line bg-bg/80 px-3 py-1 hover:bg-chip">
+              <Link href={link.href} className="inline-flex whitespace-nowrap rounded-md border border-line bg-bg/80 px-3 py-1 hover:bg-chip">
                 {link.label}
               </Link>
             </li>
@@ -109,7 +109,7 @@ export default async function HomePage({
               name="q"
               defaultValue={q}
               placeholder="Titles and companies"
-              className="mt-1 h-11 w-full rounded-full border border-line bg-bg px-4 text-sm"
+              className="mt-1 h-11 w-full rounded-md border border-line bg-bg px-4 text-sm"
             />
           </div>
           <div>
@@ -118,7 +118,7 @@ export default async function HomePage({
               id="workplace"
               name="workplace"
               defaultValue={workplace || ""}
-              className="mt-1 h-11 w-full rounded-full border border-line bg-bg px-4 text-sm"
+              className="mt-1 h-11 w-full rounded-md border border-line bg-bg px-4 text-sm"
             >
               <option value="">Any</option>
               <option value="remote">Remote</option>
@@ -126,7 +126,7 @@ export default async function HomePage({
               <option value="onsite">On-site</option>
             </select>
           </div>
-          <button className="h-11 self-end rounded-full bg-fg px-5 text-sm font-medium text-bg" type="submit">
+          <button className="h-11 self-end rounded-md bg-fg px-5 text-sm font-medium text-bg" type="submit">
             Search
           </button>
         </form>

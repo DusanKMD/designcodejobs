@@ -58,17 +58,20 @@ export function Listing({
       <JsonLd data={breadcrumbLd(crumbs)} />
       <JsonLd data={faqLd(faqs)} />
       {hero ? (
-        <section className="relative overflow-hidden border-b border-line">
+        <section className="reg relative overflow-hidden border-b border-line">
           <div className="blueprint pointer-events-none absolute inset-0" aria-hidden />
-          <div className="relative mx-auto max-w-5xl px-5 pb-12 pt-10 sm:pt-14">
+          <div className="relative mx-auto max-w-5xl px-5 pb-12 pt-12 sm:pt-16">
             <nav className="flex flex-wrap gap-x-2 text-sm text-muted">
               <Crumbs crumbs={crumbs} />
             </nav>
-            <p className="mt-8 text-xs font-medium uppercase tracking-[0.16em] text-accent">Design Code Jobs</p>
+            <div className="mt-8 flex items-center gap-3">
+              <Image src="/icon.svg" alt={h1} width={28} height={28} unoptimized />
+              <p className="spec text-accent">SPEC / OPEN ROLES</p>
+            </div>
             <h1 className="mt-3 max-w-3xl text-5xl text-balance sm:text-6xl">{h1}</h1>
             {value ? <p className="mt-5 max-w-xl text-lg leading-8 text-fg">{value}</p> : null}
-            <p className="mt-4 text-sm text-muted">
-              <span className="tabular-nums font-medium text-fg">{count}</span> open {count === 1 ? "role" : "roles"} on the board
+            <p className="spec mt-4 text-muted">
+              {count} OPEN · {featured.length ? `${featured.length} FEATURED · ` : ""}BOARD
             </p>
             {children}
             {companies?.length ? <TrustStrip companies={companies} /> : null}
@@ -80,6 +83,7 @@ export function Listing({
             <Crumbs crumbs={crumbs} />
           </nav>
           <h1 className="mt-6 max-w-3xl text-4xl text-balance sm:text-5xl">{h1}</h1>
+          <p className="mt-4 max-w-2xl text-lg leading-8 text-fg">{value || `${h1}. These are open software roles. Hardware and mechanical postings stay off the list.`}</p>
           {children}
         </div>
       )}
@@ -119,14 +123,14 @@ export function Listing({
         </section>
         <section className="mt-14" aria-labelledby="questions-heading">
           <h2 id="questions-heading" className="text-lg font-medium tracking-tight">Questions</h2>
-          <dl className="mt-4 divide-y divide-line border-y border-line">
+          <div className="mt-4 divide-y divide-line border-y border-line">
             {faqs.map((faq) => (
               <div key={faq.q} className="py-4">
-                <dt className="font-medium">{faq.q}</dt>
-                <dd className="mt-1 text-sm leading-6 text-muted">{faq.a}</dd>
+                <h3 className="text-base font-medium">{faq.q}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted">{faq.a}</p>
               </div>
             ))}
-          </dl>
+          </div>
         </section>
         {related.length ? (
           <section className="mt-12" aria-labelledby="related-heading">
@@ -134,7 +138,7 @@ export function Listing({
             <ul className="mt-3 flex flex-wrap gap-2">
               {related.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="inline-flex rounded-full border border-line px-3 py-1 text-sm hover:bg-chip">
+                  <Link href={link.href} className="inline-flex rounded-md border border-line px-3 py-1 text-sm hover:bg-chip">
                     {link.label}
                   </Link>
                 </li>
@@ -155,9 +159,9 @@ export function Listing({
               required
               autoComplete="email"
               placeholder="you@company.com"
-              className="h-11 flex-1 rounded-full border border-line bg-bg px-4 text-sm"
+              className="h-11 flex-1 rounded-md border border-line bg-bg px-4 text-sm"
             />
-            <button type="submit" className="h-11 rounded-full bg-fg px-4 text-sm font-medium text-bg">
+            <button type="submit" className="h-11 rounded-md bg-fg px-4 text-sm font-medium text-bg">
               Get alerts
             </button>
           </form>
@@ -194,7 +198,7 @@ function TrustStrip({ companies }: { companies: { slug: string; name: string }[]
           <li key={company.slug}>
             <Link
               href={`/companies/${company.slug}`}
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-bg/80 px-2.5 py-1 text-sm hover:bg-chip"
+              className="inline-flex items-center gap-2 rounded-md border border-line bg-bg/80 px-2.5 py-1 text-sm hover:bg-chip"
             >
               <Image src={`/logo/${company.slug}`} alt="" width={20} height={20} className="h-5 w-5 rounded-md" unoptimized />
               {company.name}
@@ -203,7 +207,7 @@ function TrustStrip({ companies }: { companies: { slug: string; name: string }[]
         ))}
         {rest > 0 ? (
           <li>
-            <Link href="/companies" className="inline-flex h-8 items-center rounded-full px-2 text-sm text-muted hover:text-fg">
+            <Link href="/companies" className="inline-flex h-8 items-center rounded-md px-2 text-sm text-muted hover:text-fg">
               and {rest} more
             </Link>
           </li>

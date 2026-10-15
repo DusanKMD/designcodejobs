@@ -6,7 +6,7 @@ import { FEATURED_ADDON_USD, FEATURED_PRICE_USD, LISTING_DAYS, STANDARD_PRICE_US
 
 export const metadata = pageMeta({
   title: "Post a design engineer job",
-  description: `Post a software design engineer role for $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days. Featured placement adds $${FEATURED_ADDON_USD}.`,
+  description: `Post a design engineer job for $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days. Featured placement adds $${FEATURED_ADDON_USD}. The listing goes live when payment is confirmed.`,
   path: "/post-a-job",
   index: true,
 });
@@ -14,23 +14,23 @@ export const metadata = pageMeta({
 const FAQS = [
   {
     q: "When does the role go live?",
-    a: "After Dodo Payments confirms the payment. The return page does not publish the listing. A webhook does, usually within a minute.",
+    a: `The role goes live after Dodo Payments confirms the charge. Returning from checkout does not publish it. A webhook receives the succeeded payment and sets the listing active, usually within a minute. Until that event arrives the draft stays unpublished, including when payments are not configured and the form only saves a pending draft.`,
   },
   {
     q: "What does the featured add-on change?",
-    a: `A standard post is $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days. Featured is an extra $${FEATURED_ADDON_USD} ($${FEATURED_PRICE_USD} total) and highlights the role at the top of the board for those same ${LISTING_DAYS} days.`,
+    a: `A standard post is $${STANDARD_PRICE_USD} for ${LISTING_DAYS} days and includes the description, the apply link, and a place in search. Featured is an extra $${FEATURED_ADDON_USD}, so checkout is $${FEATURED_PRICE_USD}. The role is highlighted above the open list for those same ${LISTING_DAYS} days. It does not extend the listing past that window.`,
   },
   {
     q: "What is hosted here?",
-    a: "The description, company, location, and salary you submit. The apply button still sends candidates to your URL.",
+    a: "Design Code Jobs hosts the description, company name, workplace, location, and salary you submit. Candidates read that copy on this site. The apply button still sends them to your URL, with a short tracking parameter so you can see the referral. This site does not collect applications or resumes.",
   },
   {
     q: "What if the payment fails or I cancel?",
-    a: "The listing stays unpublished. You can return to this form and check out again. A refund after publication expires the role.",
+    a: "A failed or cancelled checkout leaves the listing unpublished. The form keeps what you typed, so you can correct a field and start checkout again. If a payment later succeeds and is then refunded, the published role expires. The confirmation page shows paid, pending, failed, cancelled, or not charged.",
   },
   {
     q: "Will a hardware role be listed?",
-    a: "Mechanical, hardware, chip, and audiovisual titles can be paid and still stay unpublished. This board is for software design engineers.",
+    a: "Mechanical, hardware, chip, and audiovisual titles can be paid and still stay unpublished. This board is for software design engineers, people who design and ship interface code. A title that matches a physical design job is filtered out even after payment. The charge is not a guarantee that a mismatched role will appear.",
   },
 ];
 
@@ -41,11 +41,11 @@ export default function PostJobPage() {
       <JsonLd data={faqLd(FAQS)} />
       <p className="text-sm text-muted">Jobs / Post a job</p>
       <h1 className="mt-4 max-w-2xl text-5xl text-balance">Post a design engineer job</h1>
-      <p className="mt-4 max-w-2xl text-[17px] leading-8 text-muted">
-        ${STANDARD_PRICE_USD} puts a software role on the board for {LISTING_DAYS} days. Featured placement is ${FEATURED_ADDON_USD} more. The listing goes live when payment is confirmed.
+      <p className="mt-4 max-w-2xl text-lg leading-8 text-fg">
+        Post a design engineer job for ${STANDARD_PRICE_USD}. The listing stays up for {LISTING_DAYS} days, and featured placement is ${FEATURED_ADDON_USD} more. It goes live when payment is confirmed, not when you return from checkout.
       </p>
       <div className="mt-10 grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <aside className="rounded-2xl border border-line bg-chip/60 p-5 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
+        <aside className="rounded-md border border-line bg-chip/60 p-5 lg:sticky lg:top-24 lg:col-start-2 lg:row-start-1">
           <h2 className="text-lg font-medium tracking-tight">Pricing</h2>
           <div className="mt-4 border-b border-line pb-4">
             <p className="text-sm text-muted">Standard</p>
@@ -71,14 +71,14 @@ export default function PostJobPage() {
       </div>
       <section className="mt-16 max-w-2xl" aria-labelledby="post-faq">
         <h2 id="post-faq" className="text-lg font-medium tracking-tight">Questions</h2>
-        <dl className="mt-4 divide-y divide-line border-y border-line">
+        <div className="mt-4 divide-y divide-line border-y border-line">
           {FAQS.map((faq) => (
             <div key={faq.q} className="py-4">
-              <dt className="font-medium">{faq.q}</dt>
-              <dd className="mt-1 text-sm leading-6 text-muted">{faq.a}</dd>
+              <h3 className="font-medium">{faq.q}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted">{faq.a}</p>
             </div>
           ))}
-        </dl>
+        </div>
       </section>
     </div>
   );

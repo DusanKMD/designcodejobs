@@ -16,9 +16,11 @@ export async function generateMetadata({ params }: { params: Promise<{ region: s
   if (!region) return {};
   const jobs = filterJobs(await getAllJobs(), { remote: true, region: region.slug });
   const robots = listingRobots(jobs.length, `/remote/${slug}`, {});
+  const place =
+    region.slug === "worldwide" ? "any country the employer accepts" : region.slug === "us" || region.slug === "uk" ? `the ${region.label}` : region.label;
   return pageMeta({
     title: region.title,
-    description: `${region.h1}. Fully remote software design roles open to applicants in ${region.label}.`,
+    description: `${region.h1}. Fully remote software roles open to applicants in ${place}. Hybrid weeks are not included.`,
     path: `/remote/${slug}`,
     index: robots.index,
     canonicalPath: robots.canonicalPath,
