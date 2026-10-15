@@ -121,16 +121,22 @@ export function websiteLd() {
     {
       "@context": "https://schema.org",
       "@type": "Organization",
+      "@id": `${url.replace(/\/$/, "")}/#organization`,
       name: "Design Code Jobs",
+      alternateName: "designcodejobs.com",
       url,
       logo: absoluteUrl("/logo/designcodejobs"),
-      description: "A job board for software design engineers, UX engineers, and designers who code.",
+      description:
+        "A job board for design engineers: software designers who code. Lists design engineer, UX engineer, UI engineer, design technologist, creative technologist, and design systems engineer roles, and filters out mechanical and hardware design jobs.",
+      knowsAbout: ["Design engineering", "UX engineering", "Design systems", "Creative technology", "Frontend engineering", "Prototyping"],
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Design Code Jobs",
+      alternateName: "Design engineer jobs",
       url,
+      publisher: { "@id": `${url.replace(/\/$/, "")}/#organization` },
       potentialAction: {
         "@type": "SearchAction",
         target: `${absoluteUrl("/").replace(/\/$/, "")}/?q={search_term_string}`,

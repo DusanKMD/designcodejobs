@@ -1,26 +1,32 @@
 import { ImageResponse } from "next/og";
 import { guideBySlug } from "@/lib/catalog";
+import { OG_SIZE, OgChip, OgFrame, ogFonts } from "@/lib/og";
 
 export const alt = "Design Code Jobs guide";
-export const size = { width: 1200, height: 630 };
+export const size = OG_SIZE;
 export const contentType = "image/png";
 
 export default async function Image({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const guide = guideBySlug(slug);
   const title = guide?.h1 || "Guides";
-  const description = guide?.description || "Design Code Jobs";
+  const raw = guide?.description || "Guides for designers who code.";
+  const description = raw.length > 118 ? `${raw.slice(0, 117).replace(/\s+\S*$/, "")}…` : raw;
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f6f5f2", color: "#1c1917", padding: "72px" }}>
-        <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#c2410c" }}>Design Code Jobs</div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 68, lineHeight: 1.05, letterSpacing: -1.5, maxWidth: 980, fontWeight: 700 }}>{title}</div>
-          <div style={{ fontSize: 28, marginTop: 24, color: "#57534e", maxWidth: 900 }}>{description}</div>
+      <OgFrame footer={<span>Guides for designers who code · designcodejobs.com/guides</span>}>
+        <div style={{ display: "flex" }}>
+          <OgChip tone="accent">Guide</OgChip>
         </div>
-      </div>
+        <div style={{ display: "flex", fontSize: title.length > 40 ? 68 : 80, fontWeight: 700, letterSpacing: -3, lineHeight: 1.04, marginTop: 24, maxWidth: 1040 }}>
+          {title}
+        </div>
+        <div style={{ display: "flex", fontSize: 28, color: "rgba(255,255,255,0.68)", marginTop: 22, maxWidth: 960, lineHeight: 1.35 }}>
+          {description}
+        </div>
+      </OgFrame>
     ),
-    size,
+    { ...size, fonts: await ogFonts() },
   );
 }

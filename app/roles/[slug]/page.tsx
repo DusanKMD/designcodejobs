@@ -29,6 +29,7 @@ export async function generateMetadata({
     path: `/roles/${slug}`,
     index: robots.index,
     canonicalPath: robots.canonicalPath,
+    page,
   });
 }
 

@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Listing } from "@/components/listing";
 import { seniorityBySlug, SENIORITIES } from "@/lib/catalog";
-import { filterJobs, listingIntro, listingRobots, updatedLabel } from "@/lib/query";
+import { filterJobs, listingIntro, listingRobots, pageParam, updatedLabel } from "@/lib/query";
 import { pageMeta } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
 
@@ -9,23 +9,38 @@ export function generateStaticParams() {
   return SENIORITIES.map((item) => ({ slug: item.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
+  const page = pageParam(await searchParams);
   const level = seniorityBySlug(slug);
   if (!level) return {};
   const jobs = filterJobs(await getAllJobs(), { seniority: level.slug });
-  const robots = listingRobots(jobs.length, `/seniority/${slug}`, {});
+  const robots = listingRobots(jobs.length, `/seniority/${slug}`, { page });
   return pageMeta({
     title: level.title,
     description: level.description,
     path: `/seniority/${slug}`,
     index: robots.index,
     canonicalPath: robots.canonicalPath,
+    page,
   });
 }
 
-export default async function SeniorityPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function SeniorityPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
+  const page = pageParam(await searchParams);
   const level = seniorityBySlug(slug);
   if (!level) notFound();
   const jobs = filterJobs(await getAllJobs(), { seniority: level.slug });
@@ -34,6 +49,7 @@ export default async function SeniorityPage({ params }: { params: Promise<{ slug
       h1={level.h1}
       path={`/seniority/${slug}`}
       jobs={jobs}
+      page={page}
       crumbs={[
         { name: "Jobs", path: "/" },
         { name: level.h1, path: `/seniority/${slug}` },

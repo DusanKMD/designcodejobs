@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { ArrowRight } from "@/components/icons";
 import { JsonLd } from "@/components/json-ld";
+import { PageHeader } from "@/components/page-header";
+import { SectionHeading, StatStrip } from "@/components/ui";
 import { SALARY_ROLES } from "@/lib/catalog";
 import { formatMoney, formatSalary } from "@/lib/format";
 import { breadcrumbLd, datasetLd, faqLd } from "@/lib/jsonld";
@@ -48,7 +51,7 @@ export default async function SalaryPage() {
   const design = salaryBands(jobs.filter((job) => job.titleFamily === "design-engineer"));
 
   return (
-    <article className="mx-auto max-w-3xl px-5 py-10">
+    <article>
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Design engineer salary", path: "/salary" }])} />
       <JsonLd data={faqLd(SALARY_FAQS)} />
       <JsonLd
@@ -58,80 +61,110 @@ export default async function SalaryPage() {
           path: "/salary",
         })}
       />
-      <p className="text-sm text-muted"><Link href="/" className="hover:text-fg">Jobs</Link> / Design engineer salary</p>
-      <h1 className="mt-4 text-5xl text-balance">Design engineer salary</h1>
-      <p className="mt-5 max-w-2xl text-lg leading-8 text-fg">
-        Design engineer salary here is the yearly base employers wrote on software postings. It is not a mechanical average, and it is not estimated.
-      </p>
-      <p className="mt-5 text-[15px] leading-7 text-muted">
-        Design engineer salary on the open web is mostly mechanical and hardware data. This page uses only base pay that employers wrote on software postings: design engineers who ship UI, plus UX engineer, UI engineer, design technologist, and design systems roles. Nothing here is estimated, crowdsourced, or converted from total compensation.
-      </p>
-      <p className="mt-3 text-[15px] leading-7 text-muted">
-        {usd
-          ? `${usd.count} open listings include a yearly USD range, from ${formatMoney(usd.min, "USD")} to ${formatMoney(usd.max, "USD")}, with a median midpoint near ${formatMoney(usd.median, "USD")}.`
-          : "None of the open listings publish a yearly USD range yet. The table stays empty until an employer includes pay. Check back after the next board sync."}
-        {others.length
-          ? ` ${others.map((item) => `${item.currency} ranges run ${formatMoney(item.min, item.currency)}–${formatMoney(item.max, item.currency)} (${item.count})`).join(". ")}. Those figures stay in the currency the employer posted.`
-          : ""}
-      </p>
-      {usd ? (
-        <p className="mt-8 border-y border-line py-6">
-          <span className="block text-sm text-muted">Median posted midpoint, yearly USD</span>
-          <span className="mt-1 block text-5xl tabular-nums">{formatMoney(usd.median, "USD")}</span>
-          <span className="mt-2 block text-sm text-muted">Across {usd.count} employer-posted ranges. Not a market estimate.</span>
-        </p>
-      ) : null}
-      {design.length ? (
-        <p className="mt-3 text-[15px] leading-7 text-muted">
-          Software design engineer postings with pay: {rangeLabel(design)} ({design.reduce((sum, item) => sum + item.count, 0)} listings).
-        </p>
-      ) : null}
+      <PageHeader
+        crumbs={[{ name: "Jobs", path: "/" }, { name: "Design engineer salary", path: "/salary" }]}
+        kicker="Salary data"
+        title="Design engineer salary"
+        lede="Design engineer salary here is the yearly base employers wrote on software postings. It is not a mechanical average, and it is not estimated."
+      >
+        {usd ? (
+          <div className="mt-8 max-w-3xl">
+            <StatStrip
+              stats={[
+                { label: "Median posted midpoint", value: formatMoney(usd.median, "USD") },
+                { label: "Lowest posted minimum", value: formatMoney(usd.min, "USD") },
+                { label: "Highest posted maximum", value: formatMoney(usd.max, "USD") },
+                { label: "USD ranges counted", value: String(usd.count) },
+              ]}
+            />
+          </div>
+        ) : null}
+      </PageHeader>
 
-      <h2 className="mt-10 text-xl font-medium tracking-tight">{SALARY_FAQS[0].q}</h2>
-      <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">{SALARY_FAQS[0].a}</p>
-      <div className="mt-4 overflow-x-auto">
-        <table className="w-full text-left text-sm">
-          <caption className="sr-only">Posted yearly salary by role</caption>
-          <thead className="text-muted">
-            <tr className="border-b border-line">
-              <th scope="col" className="py-2 font-medium">Role</th>
-              <th scope="col" className="py-2 font-medium">Posted range</th>
-              <th scope="col" className="py-2 font-medium">Listings</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="border-b border-line">
-              <td className="py-3"><Link href="/roles/design-engineer" className="underline underline-offset-4">Design engineer</Link></td>
-              <td className="py-3 tabular-nums">{rangeLabel(design)}</td>
-              <td className="py-3 tabular-nums">{design.reduce((sum, item) => sum + item.count, 0)}</td>
-            </tr>
-            {families.map(({ role, bands: roleBands }) => (
-              <tr key={role.slug} className="border-b border-line">
-                <td className="py-3"><Link href={`/salary/${role.slug}`} className="underline underline-offset-4">{role.h1.replace(" salary", "")}</Link></td>
-                <td className="py-3 tabular-nums">{rangeLabel(roleBands)}</td>
-                <td className="py-3 tabular-nums">{roleBands.reduce((sum, item) => sum + item.count, 0)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="mx-auto max-w-3xl px-5 sm:px-6">
+        <div className="mt-10 space-y-4 text-[15.5px] leading-7 text-fg-2">
+          <p>
+            Design engineer salary on the open web is mostly mechanical and hardware data. This page uses only base pay that employers wrote on software postings: design engineers who ship UI, plus UX engineer, UI engineer, design technologist, and design systems roles. Nothing here is estimated, crowdsourced, or converted from total compensation.
+          </p>
+          <p>
+            {usd
+              ? `${usd.count} open listings include a yearly USD range, from ${formatMoney(usd.min, "USD")} to ${formatMoney(usd.max, "USD")}, with a median midpoint near ${formatMoney(usd.median, "USD")}.`
+              : "None of the open listings publish a yearly USD range yet. The table stays empty until an employer includes pay. Check back after the next board sync."}
+            {others.length
+              ? ` ${others.map((item) => `${item.currency} ranges run ${formatMoney(item.min, item.currency)}–${formatMoney(item.max, item.currency)} (${item.count})`).join(". ")}. Those figures stay in the currency the employer posted.`
+              : ""}
+          </p>
+          {design.length ? (
+            <p>
+              Software design engineer postings with pay: {rangeLabel(design)} ({design.reduce((sum, item) => sum + item.count, 0)} listings).
+            </p>
+          ) : null}
+        </div>
+
+        <section className="reveal mt-14" aria-labelledby="by-role-heading">
+          <SectionHeading id="by-role-heading" kicker="By role" title={SALARY_FAQS[0].q} />
+          <p className="mt-3 text-[15px] leading-7 text-muted">{SALARY_FAQS[0].a}</p>
+          <div className="card mt-5 overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <caption className="sr-only">Posted yearly salary by role</caption>
+              <thead className="border-b border-line bg-chip/60 text-[12px] text-muted">
+                <tr>
+                  <th scope="col" className="px-5 py-3 font-medium">Role</th>
+                  <th scope="col" className="px-5 py-3 font-medium">Posted range</th>
+                  <th scope="col" className="px-5 py-3 text-right font-medium">Listings</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-line">
+                <tr className="transition-colors hover:bg-chip/50">
+                  <td className="px-5 py-3.5"><Link href="/roles/design-engineer" className="font-medium hover:text-accent-text">Design engineer</Link></td>
+                  <td className="px-5 py-3.5 tabular text-fg-2">{rangeLabel(design)}</td>
+                  <td className="px-5 py-3.5 text-right font-mono text-[13px] tabular">{design.reduce((sum, item) => sum + item.count, 0)}</td>
+                </tr>
+                {families.map(({ role, bands: roleBands }) => (
+                  <tr key={role.slug} className="transition-colors hover:bg-chip/50">
+                    <td className="px-5 py-3.5"><Link href={`/salary/${role.slug}`} className="font-medium hover:text-accent-text">{role.h1.replace(" salary", "")}</Link></td>
+                    <td className="px-5 py-3.5 tabular text-fg-2">{rangeLabel(roleBands)}</td>
+                    <td className="px-5 py-3.5 text-right font-mono text-[13px] tabular">{roleBands.reduce((sum, item) => sum + item.count, 0)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className="reveal mt-14" aria-labelledby="listings-heading">
+          <SectionHeading id="listings-heading" kicker="Source listings" title={SALARY_FAQS[1].q} />
+          <p className="mt-3 text-[15px] leading-7 text-muted">{SALARY_FAQS[1].a}</p>
+          <ul className="card mt-5 divide-y divide-line">
+            {paid.length ? (
+              paid.map((job) => (
+                <li key={job.id}>
+                  <Link href={`/jobs/${job.slug}`} className="group flex flex-col gap-1 px-5 py-3.5 transition-colors hover:bg-chip/50 sm:flex-row sm:items-center sm:justify-between">
+                    <span>
+                      <span className="block font-medium text-fg">{job.title}</span>
+                      <span className="text-[13px] text-muted">{job.companyName}</span>
+                    </span>
+                    <span className="flex items-center gap-3">
+                      <span className="chip chip-salary tabular">{formatSalary(job)}</span>
+                      <ArrowRight className="arrow hidden text-subtle sm:block" />
+                    </span>
+                  </Link>
+                </li>
+              ))
+            ) : (
+              <li className="px-5 py-6 text-sm text-muted">No posted ranges yet.</li>
+            )}
+          </ul>
+        </section>
+
+        <section className="reveal mt-14" aria-labelledby="method-heading">
+          <SectionHeading id="method-heading" kicker="Method" title={SALARY_FAQS[2].q} />
+          <p className="mt-3 text-[15px] leading-7 text-muted">{SALARY_FAQS[2].a}</p>
+          <p className="mt-3 text-sm leading-7 text-muted">
+            A range is included only when the source board exposes it as salary (Ashby compensation, Lever salary range, or a figure written in the Greenhouse description) and it is yearly base pay. Equity, OTE, and hidden compensation are left out of the schema and this table. Each currency is counted on its own. The median is the median of USD range midpoints when a USD range exists, otherwise the currency with a posted range. Nothing is converted. The <Link href="/guides/design-engineer-salary" className="link">salary guide</Link> explains the method. Per-role pages: {SALARY_ROLES.map((role) => role.h1).join(", ")}.
+          </p>
+        </section>
       </div>
-
-      <h2 className="mt-10 text-xl font-medium tracking-tight">{SALARY_FAQS[1].q}</h2>
-      <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">{SALARY_FAQS[1].a}</p>
-      <ul className="mt-4 divide-y divide-line border-y border-line">
-        {paid.length ? paid.map((job) => (
-          <li key={job.id} className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between">
-            <Link href={`/jobs/${job.slug}`} className="font-medium hover:underline">{job.title}</Link>
-            <span className="text-sm tabular-nums text-muted">{job.companyName} · {formatSalary(job)}</span>
-          </li>
-        )) : <li className="py-6 text-sm text-muted">No posted ranges yet.</li>}
-      </ul>
-
-      <h2 className="mt-10 text-xl font-medium tracking-tight">{SALARY_FAQS[2].q}</h2>
-      <p className="mt-3 max-w-2xl text-[15px] leading-7 text-muted">{SALARY_FAQS[2].a}</p>
-      <p className="mt-3 text-sm leading-7 text-muted">
-        A range is included only when the source board exposes it as salary (Ashby compensation, Lever salary range, or a figure written in the Greenhouse description) and it is yearly base pay. Equity, OTE, and hidden compensation are left out of the schema and this table. Each currency is counted on its own. The median is the median of USD range midpoints when a USD range exists, otherwise the currency with a posted range. Nothing is converted. The <Link href="/guides/design-engineer-salary" className="text-fg underline underline-offset-4">salary guide</Link> explains the method. Per-role pages: {SALARY_ROLES.map((role) => role.h1).join(", ")}.
-      </p>
     </article>
   );
 }

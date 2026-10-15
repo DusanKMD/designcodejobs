@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Listing } from "@/components/listing";
 import { roleBySlug, ROLES } from "@/lib/catalog";
-import { filterJobs, listingIntro, listingRobots, updatedLabel } from "@/lib/query";
+import { filterJobs, listingIntro, listingRobots, pageParam, updatedLabel } from "@/lib/query";
 import { pageMeta, remoteRoleDescription, remoteRoleTitle } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
 
@@ -9,12 +9,19 @@ export function generateStaticParams() {
   return ROLES.map((role) => ({ slug: role.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
+  const page = pageParam(await searchParams);
   const role = roleBySlug(slug);
   if (!role) return {};
   const jobs = filterJobs(await getAllJobs(), { title: role.slug, remote: true });
-  const robots = listingRobots(jobs.length, `/roles/${slug}/remote`, {});
+  const robots = listingRobots(jobs.length, `/roles/${slug}/remote`, { page });
   const title = remoteRoleTitle(role.h1);
   return pageMeta({
     title,
@@ -22,11 +29,19 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     path: `/roles/${slug}/remote`,
     index: robots.index,
     canonicalPath: robots.canonicalPath,
+    page,
   });
 }
 
-export default async function RemoteRolePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function RemoteRolePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
+  const page = pageParam(await searchParams);
   const role = roleBySlug(slug);
   if (!role) notFound();
   const jobs = filterJobs(await getAllJobs(), { title: role.slug, remote: true });
@@ -36,6 +51,7 @@ export default async function RemoteRolePage({ params }: { params: Promise<{ slu
       h1={h1}
       path={`/roles/${slug}/remote`}
       jobs={jobs}
+      page={page}
       crumbs={[
         { name: "Jobs", path: "/" },
         { name: role.h1, path: `/roles/${slug}` },

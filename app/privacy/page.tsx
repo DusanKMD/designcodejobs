@@ -1,4 +1,5 @@
 import { JsonLd } from "@/components/json-ld";
+import { PageHeader } from "@/components/page-header";
 import { breadcrumbLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 
@@ -11,13 +12,16 @@ export const metadata = pageMeta({
 
 export default function PrivacyPage() {
   return (
-    <article className="mx-auto max-w-3xl px-5 py-12">
+    <article>
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Privacy", path: "/privacy" }])} />
-      <h1 className="text-5xl text-balance">Privacy policy for Design Code Jobs</h1>
-      <p className="mt-5 max-w-2xl text-lg leading-8 text-fg">
-        Design Code Jobs reads public Greenhouse, Lever, and Ashby job posts and hosts the description on this site. Those posts were already public. Salary is shown only when the employer published it.
-      </p>
-      <div className="mt-8 space-y-4 text-[17px] leading-8 text-muted">
+      <PageHeader
+        narrow
+        crumbs={[{ name: "Jobs", path: "/" }, { name: "Privacy", path: "/privacy" }]}
+        kicker="Legal"
+        title="Privacy policy for Design Code Jobs"
+        lede={<>Design Code Jobs reads public Greenhouse, Lever, and Ashby job posts and hosts the description on this site. Those posts were already public. Salary is shown only when the employer published it.</>}
+      />
+      <div className="mx-auto mt-10 max-w-3xl space-y-5 px-5 text-[16.5px] leading-8 text-fg-2 sm:px-6">
         <p>
           A paid listing stores the work email, company, job text, apply URL, and salary you submit, so the role can be published after payment. Card numbers are handled by Dodo Payments. This site stores the payment id that Dodo sends, not the card.
         </p>

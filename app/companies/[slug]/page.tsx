@@ -1,29 +1,44 @@
 import { notFound } from "next/navigation";
 import { Listing } from "@/components/listing";
 import { getCompany } from "@/lib/companies";
-import { companyStats, listingIntro, listingRobots, updatedLabel } from "@/lib/query";
+import { companyStats, listingIntro, listingRobots, pageParam, updatedLabel } from "@/lib/query";
 import { pageMeta } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
+  const page = pageParam(await searchParams);
   const jobs = await getAllJobs();
   const stats = companyStats(jobs, slug);
   const company = getCompany(slug);
-  const name = company?.name || stats.open[0]?.companyName;
+  const name = company?.name || stats.open[0]?.companyName || stats.all[0]?.companyName;
   if (!name) return {};
-  const robots = listingRobots(stats.open.length, `/companies/${slug}`, { company: true });
+  const robots = listingRobots(stats.open.length, `/companies/${slug}`, { company: true, page });
   return pageMeta({
     title: `${name} design engineer jobs`,
     description: `Open design engineer and UX engineer roles at ${name}, plus how many past roles this board has seen.`,
     path: `/companies/${slug}`,
     index: robots.index,
     canonicalPath: robots.canonicalPath,
+    page,
   });
 }
 
-export default async function CompanyPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function CompanyPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ slug: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}) {
   const { slug } = await params;
+  const page = pageParam(await searchParams);
   const jobs = await getAllJobs();
   const stats = companyStats(jobs, slug);
   const company = getCompany(slug);
@@ -35,6 +50,7 @@ export default async function CompanyPage({ params }: { params: Promise<{ slug: 
       h1={`${name} design engineer jobs`}
       path={`/companies/${slug}`}
       jobs={stats.open}
+      page={page}
       crumbs={[
         { name: "Companies", path: "/companies" },
         { name, path: `/companies/${slug}` },

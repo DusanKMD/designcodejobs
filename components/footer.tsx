@@ -1,56 +1,103 @@
 import Link from "next/link";
-import { ROLES, SKILLS } from "@/lib/catalog";
+import { ArrowRight, Rss } from "@/components/icons";
+import { Logo } from "@/components/logo";
+import { ROLES, SENIORITIES, SKILLS } from "@/lib/catalog";
+import { LISTING_DAYS, STANDARD_PRICE_USD } from "@/lib/site";
+
+const SKILL_SLUGS = ["react", "figma", "framer", "design-systems", "motion", "threejs"] as const;
+const LEVEL_SLUGS = ["senior", "staff", "lead", "founding", "internship"] as const;
+
+function reportPath(now = new Date()) {
+  return `/reports/${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
+}
 
 export function Footer() {
   const roles = ROLES.filter((role) => role.priority);
+  const skills = SKILLS.filter((skill) => (SKILL_SLUGS as readonly string[]).includes(skill.slug));
+  const levels = SENIORITIES.filter((level) => (LEVEL_SLUGS as readonly string[]).includes(level.slug));
   return (
-    <footer className="mt-20 border-t border-line bg-card">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 text-sm text-muted sm:grid-cols-4">
-        <div>
-          <p className="font-medium text-fg">Design Code Jobs</p>
-          <p className="mt-3 leading-relaxed">
-            Software roles for designers who code. Mechanical, hardware, and chip jobs are left out.
-          </p>
+    <footer className="mt-24 border-t border-line bg-card">
+      <div className="mx-auto max-w-6xl px-5 sm:px-6">
+        <div className="flex flex-col gap-6 border-b border-line py-10 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="text-lg font-semibold tracking-tight">Hiring a designer who codes?</p>
+            <p className="mt-1 text-sm text-muted">
+              ${STANDARD_PRICE_USD} for {LISTING_DAYS} days. Live within a minute of payment. Applicants go straight to your ATS.
+            </p>
+          </div>
+          <Link href="/post-a-job" className="btn btn-primary btn-lg shrink-0">
+            Post a job
+            <ArrowRight className="arrow" />
+          </Link>
         </div>
-        <div>
-          <p className="font-medium text-fg">Roles</p>
-          <ul className="mt-3 space-y-2">
-            {roles.map((role) => (
-              <li key={role.slug}>
-                <Link href={`/roles/${role.slug}`} className="hover:text-fg">
-                  {role.h1}
-                </Link>
-              </li>
-            ))}
-          </ul>
+
+        <div className="grid gap-10 py-12 text-sm sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
+          <div>
+            <Logo />
+            <p className="mt-4 max-w-xs leading-relaxed text-muted">
+              Design Code Jobs is a job board for design engineers: software designers who code. Mechanical, hardware, and chip jobs are left out.
+            </p>
+            <Link href="/feed.xml" className="mt-5 inline-flex items-center gap-1.5 text-muted hover:text-fg">
+              <Rss /> RSS feed
+            </Link>
+          </div>
+          <FooterColumn
+            title="Roles"
+            links={[
+              ...roles.map((role) => ({ href: `/roles/${role.slug}`, label: role.h1 })),
+              { href: "/roles/design-engineer", label: "Software design engineer jobs" },
+            ]}
+          />
+          <FooterColumn
+            title="Browse"
+            links={[
+              { href: "/remote", label: "Remote jobs" },
+              ...skills.map((skill) => ({ href: `/skills/${skill.slug}`, label: skill.h1 })),
+            ]}
+          />
+          <FooterColumn
+            title="Levels and pay"
+            links={[
+              ...levels.map((level) => ({ href: `/seniority/${level.slug}`, label: level.h1 })),
+              { href: "/salary", label: "Design engineer salary" },
+              { href: reportPath(), label: "Monthly jobs report" },
+            ]}
+          />
+          <FooterColumn
+            title="Company"
+            links={[
+              { href: "/post-a-job", label: "Post a job" },
+              { href: "/companies", label: "Companies hiring" },
+              { href: "/guides", label: "Guides" },
+              { href: "/about", label: "About" },
+              { href: "/privacy", label: "Privacy" },
+              { href: "/terms", label: "Terms" },
+            ]}
+          />
         </div>
-        <div>
-          <p className="font-medium text-fg">Browse</p>
-          <ul className="mt-3 space-y-2">
-            <li><Link href="/remote" className="hover:text-fg">Remote design engineer jobs</Link></li>
-            <li><Link href="/seniority/internship" className="hover:text-fg">Design engineer internship</Link></li>
-            <li><Link href="/skills/framer" className="hover:text-fg">Framer jobs</Link></li>
-            <li><Link href="/salary" className="hover:text-fg">Design engineer salary</Link></li>
-            <li><Link href="/companies" className="hover:text-fg">Companies</Link></li>
-            <li><Link href="/guides" className="hover:text-fg">Guides</Link></li>
-          </ul>
-        </div>
-        <div>
-          <p className="font-medium text-fg">About</p>
-          <ul className="mt-3 space-y-2">
-            <li><Link href="/about" className="hover:text-fg">About</Link></li>
-            {/* TODO: no support email is configured. Link it here when one exists. */}
-            <li><Link href="/about#contact" className="hover:text-fg">Contact</Link></li>
-            <li><Link href="/privacy" className="hover:text-fg">Privacy</Link></li>
-            <li><Link href="/terms" className="hover:text-fg">Terms</Link></li>
-            <li><Link href="/feed.xml" className="hover:text-fg">RSS</Link></li>
-            <li><Link href="/post-a-job" className="hover:text-fg">Post a job · $129</Link></li>
-          </ul>
+
+        <div className="flex flex-col gap-2 border-t border-line py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getUTCFullYear()} Design Code Jobs. Listings link out to the original application.</p>
+          <p>Framer means the design tool, not carpentry.</p>
         </div>
       </div>
-      <p className="mx-auto max-w-6xl px-5 pb-10 text-xs leading-5 text-muted">
-        {SKILLS.find((skill) => skill.slug === "framer")?.label} means the design tool. Listings link out to the original application.
-      </p>
     </footer>
+  );
+}
+
+function FooterColumn({ title, links }: { title: string; links: { href: string; label: string }[] }) {
+  return (
+    <div>
+      <p className="font-medium text-fg">{title}</p>
+      <ul className="mt-4 space-y-2.5">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className="text-muted transition-colors hover:text-fg">
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

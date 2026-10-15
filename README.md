@@ -98,6 +98,18 @@ Finished guides are MDX in `content/guides/`. Salary figures in the salary guide
 - Design engineer salary guide (the live numbers stay on `/salary`)
 - Design engineer job description (includes a UX engineer job description section)
 
+## Brand and design system
+
+The mark is a `</>` code tag whose slash is a pen-tool handle with a selected anchor point. `lib/brand.ts` holds the colours and the SVG. `public/mark.svg` (ink tile) and `app/icon.svg` (indigo tile) are generated from it, and `app/favicon.ico` holds the 16–64 px renders. `/apple-icon` and `/logo/designcodejobs` (the Organization logo in JSON-LD, 512 px) are rendered from the same SVG.
+
+Open Graph images (`/opengraph-image`, `/jobs/[slug]/opengraph-image`, `/guides/[slug]/opengraph-image`) share `lib/og.tsx`, which loads Geist from `assets/fonts` (SIL OFL). The home image shows live counts.
+
+Tokens live at the top of `app/globals.css` (light and `.dark`). Component classes (`btn`, `chip`, `job-card`, `field`, `faq`, `sel-frame`, and the rest) are in `@layer components`, so Tailwind utilities still override them. Type is Geist and Geist Mono, with Instrument Serif italic for accents. Motion respects `prefers-reduced-motion`. Sections with `.reveal` fade in through `components/reveal-observer.tsx`. Content stays visible without JavaScript.
+
+## Answer engines
+
+`/llms.txt` is a plain-text summary of the board with live counts, for AI assistants. `robots.txt` allows search and AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and others) and keeps `/review` and the checkout return page out.
+
 ## Posting a job
 
 `/post-a-job` saves the listing as `pending_payment`, creates a Dodo checkout session, and redirects to `checkout_url`. Standard is $129 for 30 days. Featured adds the $99 product on the same cart ($228 total). The return URL is `https://designcodejobs.com/post-a-job/confirmation?submission=<id>`. Dodo appends `payment_id`, `status`, and the customer email. The browser return does not publish the role.

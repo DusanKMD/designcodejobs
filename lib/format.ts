@@ -49,6 +49,47 @@ export function formatSalary(job: Pick<Job, "salaryMin" | "salaryMax" | "salaryC
   return job.salaryUnit ? `${range} ${UNIT_LABEL[job.salaryUnit]}` : range;
 }
 
+const UNIT_SHORT: Record<SalaryUnit, string> = {
+  YEAR: "/yr",
+  MONTH: "/mo",
+  WEEK: "/wk",
+  DAY: "/day",
+  HOUR: "/hr",
+};
+
+function compactMoney(amount: number, currency: string) {
+  try {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency,
+      notation: amount >= 10_000 ? "compact" : "standard",
+      maximumFractionDigits: amount >= 1_000_000 ? 1 : 0,
+    })
+      .format(amount)
+      .replace(/K$/, "k");
+  } catch {
+    return `${currency} ${Math.round(amount).toLocaleString("en-US")}`;
+  }
+}
+
+/** Card-sized salary: "$200k–240k/yr". Same figures as formatSalary, shorter. */
+export function formatSalaryShort(job: Pick<Job, "salaryMin" | "salaryMax" | "salaryCurrency" | "salaryUnit">) {
+  if (job.salaryMin == null && job.salaryMax == null) return null;
+  const currency = job.salaryCurrency || "USD";
+  const min = job.salaryMin;
+  const max = job.salaryMax;
+  let range: string;
+  if (min != null && max != null && min !== max) {
+    const low = compactMoney(min, currency);
+    const high = compactMoney(max, currency);
+    const prefix = low.match(/^[^\d]*/)?.[0] || "";
+    range = `${low}–${prefix && high.startsWith(prefix) ? high.slice(prefix.length) : high}`;
+  } else {
+    range = compactMoney((min ?? max) as number, currency);
+  }
+  return job.salaryUnit ? `${range}${UNIT_SHORT[job.salaryUnit]}` : range;
+}
+
 export function formatDate(iso: string | null | undefined) {
   if (!iso) return null;
   const date = new Date(iso);
