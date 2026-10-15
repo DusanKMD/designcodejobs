@@ -1,0 +1,129 @@
+keyword,cluster,intent,signal_source_and_notes,priority,target_page
+design engineer jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineering jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer job,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+software design engineer jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+product design engineer jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer roles,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer job board,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer careers,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer hiring,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+founding design engineer,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer startup jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer jobs entry level,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+junior design engineer jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+senior design engineer jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+staff design engineer,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+lead design engineer jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineer internship,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+design engineering manager jobs,core,transactional,autocomplete-confirmed for several; HEAD term ambiguous w/ mechanical/hardware (SERP mixed),P1,"/ , /jobs, /seniority/*"
+remote design engineer jobs,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs remote,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+remote design engineer jobs uk,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+remote design engineer jobs usa,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+remote design engineer roles,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs europe,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+remote design engineer jobs europe,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs london,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineering jobs london,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs nyc,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs new york,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs san francisco,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs seattle,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs toronto,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs berlin,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs amsterdam,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs canada,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineering jobs germany,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+design engineer jobs near me,remote/location,transactional,"autocomplete-confirmed: remote, remote uk, remote usa, nyc, london, seattle, near me, germany; others estimate",P1,"/remote, /remote/{region}, /locations/{city}"
+ux engineer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ux engineer jobs remote,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ui engineer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ui engineer jobs remote,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+design technologist jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+design technologist jobs remote,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative developer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative developer jobs remote,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative developer jobs london,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative technologist jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative technologist jobs remote,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative technologist jobs nyc,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+creative technologist jobs london,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ux prototyper jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+prototyper jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+design systems engineer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+design systems engineer,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+frontend design engineer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+front end designer jobs remote,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ui developer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ux developer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+interaction designer developer jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+design engineer webgl jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+ai prototyper jobs,title variants,transactional,autocomplete-confirmed for most (see suggest.txt),P1,/titles/{slug}
+vercel design engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+vercel design engineering,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+vercel design engineer salary,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+vercel design engineer interview,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+linear design engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+stripe design engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+ramp design engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+figma design engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+framer design engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+google ux engineer,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+amazon design technologist,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+apple design engineer prototyper,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+airbnb design technologist,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+design engineer jobs at startups,company-specific,navigational/transactional,"vercel*, google ux engineer, amazon design technologist autocomplete-confirmed; rest estimate",P2,/companies/{slug}
+design engineer salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary software,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary nyc,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary california,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary uk,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary san francisco,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary reddit,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design engineer salary range,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+ux engineer salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+ui engineer salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design technologist salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+creative developer salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+design systems engineer salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+staff design engineer salary,salary,informational (commercial),autocomplete-confirmed for most; SERPs dominated by mechanical-engineer data (Glassdoor/Indeed) = gap,P1,"/salaries, /salaries/{title}"
+what is a design engineer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+what is a design engineer in software,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer vs frontend engineer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer vs product designer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer vs software engineer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer vs designer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+ux engineer vs ux designer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+ux engineer job description,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design technologist job description,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design technologist role,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+creative developer roadmap,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+how to become a design engineer,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer skills,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer portfolio,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer portfolio examples,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer portfolio website,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+ux engineer portfolio,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design technologist portfolio,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+creative developer portfolio,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer interview questions,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer interview process,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+vercel design engineer interview,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer resume,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineer reddit,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+design engineering principles,career informational,informational,autocomplete-confirmed for most,P1/P2,/guides/*
+framer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+framer jobs remote,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+framer developer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+react design engineer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+figma to code jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+figma developer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+three.js jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+webgl developer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+gsap developer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+motion design engineer,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+swiftui design engineer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+tailwind jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+next.js design engineer jobs,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}
+design tokens engineer,tool-specific,transactional,'framer jobs' autocomplete is polluted by carpentry framers (SERP ambiguity); others estimate,P2/P3,/skills/{slug}

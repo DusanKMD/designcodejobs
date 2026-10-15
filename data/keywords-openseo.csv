@@ -1,0 +1,209 @@
+keyword,cluster,volume,kd,cpc,intent,target_page,source
+design engineer jobs,core,2900,0,1.99,informational,"/ , /jobs, /seniority/*",metrics
+design engineering jobs,core,2900,0,1.99,informational,"/ , /jobs, /seniority/*",metrics
+design engineer job,core,2900,0,1.99,informational,"/ , /jobs, /seniority/*",metrics
+software design engineer jobs,core,10,38,—,informational,"/ , /jobs, /seniority/*",metrics
+product design engineer jobs,core,260,0,0.84,navigational,"/ , /jobs, /seniority/*",metrics
+design engineer roles,core,70,0,4.94,informational,"/ , /jobs, /seniority/*",metrics
+design engineer job board,core,no data,no data,no data,no data,"/ , /jobs, /seniority/*",metrics
+design engineer careers,core,90,3,1.78,informational,"/ , /jobs, /seniority/*",metrics
+design engineer hiring,core,10,0,—,commercial,"/ , /jobs, /seniority/*",metrics
+founding design engineer,core,10,—,—,informational,"/ , /jobs, /seniority/*",metrics
+design engineer startup jobs,core,no data,no data,no data,no data,"/ , /jobs, /seniority/*",metrics
+design engineer jobs entry level,core,—,0,—,navigational,"/ , /jobs, /seniority/*",metrics
+junior design engineer jobs,core,20,—,—,navigational,"/ , /jobs, /seniority/*",metrics
+senior design engineer jobs,core,30,0,3.95,navigational,"/ , /jobs, /seniority/*",metrics
+staff design engineer,core,20,17,—,navigational,"/ , /jobs, /seniority/*",metrics
+lead design engineer jobs,core,10,—,—,navigational,"/ , /jobs, /seniority/*",metrics
+design engineer internship,core,320,0,3.21,informational,"/ , /jobs, /seniority/*",metrics
+design engineering manager jobs,core,10,—,0.84,navigational,"/ , /jobs, /seniority/*",metrics
+remote design engineer jobs,remote/location,170,0,2.51,informational,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs remote,remote/location,70,0,0.19,informational,"/remote, /remote/{region}, /locations/{city}",metrics
+remote design engineer jobs uk,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+remote design engineer jobs usa,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+remote design engineer roles,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs europe,remote/location,10,—,—,navigational,"/remote, /remote/{region}, /locations/{city}",metrics
+remote design engineer jobs europe,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs london,remote/location,10,—,—,navigational,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineering jobs london,remote/location,10,—,—,navigational,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs nyc,remote/location,40,0,0.18,navigational,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs new york,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs san francisco,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs seattle,remote/location,10,—,—,navigational,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs toronto,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs berlin,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs amsterdam,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs canada,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineering jobs germany,remote/location,no data,no data,no data,no data,"/remote, /remote/{region}, /locations/{city}",metrics
+design engineer jobs near me,remote/location,390,11,1.26,informational,"/remote, /remote/{region}, /locations/{city}",metrics
+ux engineer jobs,title variants,260,0,0.07,navigational,/titles/{slug},metrics
+ux engineer jobs remote,title variants,20,0,—,informational,/titles/{slug},metrics
+ui engineer jobs,title variants,90,0,5.12,navigational,/titles/{slug},metrics
+ui engineer jobs remote,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+design technologist jobs,title variants,210,0,4.48,navigational,/titles/{slug},metrics
+design technologist jobs remote,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+creative developer jobs,title variants,30,0,9.04,informational,/titles/{slug},metrics
+creative developer jobs remote,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+creative developer jobs london,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+creative technologist jobs,title variants,590,0,1.68,navigational,/titles/{slug},metrics
+creative technologist jobs remote,title variants,30,0,—,navigational,/titles/{slug},metrics
+creative technologist jobs nyc,title variants,30,0,—,navigational,/titles/{slug},metrics
+creative technologist jobs london,title variants,10,—,—,navigational,/titles/{slug},metrics
+ux prototyper jobs,title variants,10,47,—,navigational,/titles/{slug},metrics
+prototyper jobs,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+design systems engineer jobs,title variants,30,0,0.98,navigational,/titles/{slug},metrics
+design systems engineer,title variants,590,11,4.06,informational,/titles/{slug},metrics
+frontend design engineer jobs,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+front end designer jobs remote,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+ui developer jobs,title variants,210,0,4.43,navigational,/titles/{slug},metrics
+ux developer jobs,title variants,50,0,2,navigational,/titles/{slug},metrics
+interaction designer developer jobs,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+design engineer webgl jobs,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+ai prototyper jobs,title variants,no data,no data,no data,no data,/titles/{slug},metrics
+vercel design engineer,company-specific,50,21,—,navigational,/companies/{slug},metrics
+vercel design engineering,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+vercel design engineer salary,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+vercel design engineer interview,career informational,no data,no data,no data,no data,/guides/*,metrics
+linear design engineer,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+stripe design engineer,company-specific,20,—,—,navigational,/companies/{slug},metrics
+ramp design engineer,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+figma design engineer,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+framer design engineer,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+google ux engineer,company-specific,70,2,—,navigational,/companies/{slug},metrics
+amazon design technologist,company-specific,40,0,—,navigational,/companies/{slug},metrics
+apple design engineer prototyper,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+airbnb design technologist,company-specific,—,—,—,informational,/companies/{slug},metrics
+design engineer jobs at startups,company-specific,no data,no data,no data,no data,/companies/{slug},metrics
+design engineer salary,salary,1600,0,51.95,informational,"/salaries, /salaries/{title}",metrics
+design engineer salary software,salary,no data,no data,no data,no data,"/salaries, /salaries/{title}",metrics
+design engineer salary nyc,salary,no data,no data,no data,no data,"/salaries, /salaries/{title}",metrics
+design engineer salary california,salary,10,0,—,informational,"/salaries, /salaries/{title}",metrics
+design engineer salary uk,salary,10,—,—,informational,"/salaries, /salaries/{title}",metrics
+design engineer salary san francisco,salary,—,—,—,informational,"/salaries, /salaries/{title}",metrics
+design engineer salary reddit,salary,10,—,—,informational,"/salaries, /salaries/{title}",metrics
+design engineer salary range,salary,10,—,—,informational,"/salaries, /salaries/{title}",metrics
+ux engineer salary,salary,140,8,86.68,informational,"/salaries, /salaries/{title}",metrics
+ui engineer salary,salary,50,0,—,informational,"/salaries, /salaries/{title}",metrics
+design technologist salary,salary,50,0,—,informational,"/salaries, /salaries/{title}",metrics
+creative developer salary,salary,10,0,—,informational,"/salaries, /salaries/{title}",metrics
+design systems engineer salary,salary,—,0,—,informational,"/salaries, /salaries/{title}",metrics
+staff design engineer salary,salary,10,1,—,informational,"/salaries, /salaries/{title}",metrics
+what is a design engineer,career informational,880,3,1.67,informational,/guides/*,metrics
+what is a design engineer in software,career informational,10,—,—,informational,/guides/*,metrics
+design engineer vs frontend engineer,career informational,no data,no data,no data,no data,/guides/*,metrics
+design engineer vs product designer,career informational,10,—,—,commercial,/guides/*,metrics
+design engineer vs software engineer,career informational,10,18,—,informational,/guides/*,metrics
+design engineer vs designer,career informational,no data,no data,no data,no data,/guides/*,metrics
+ux engineer vs ux designer,career informational,20,0,—,informational,/guides/*,metrics
+ux engineer job description,career informational,70,1,—,informational,/guides/*,metrics
+design technologist job description,career informational,10,18,—,informational,/guides/*,metrics
+design technologist role,career informational,no data,no data,no data,no data,/guides/*,metrics
+creative developer roadmap,career informational,10,—,—,informational,/guides/*,metrics
+how to become a design engineer,career informational,90,13,16.73,informational,/guides/*,metrics
+design engineer skills,career informational,50,0,—,informational,/guides/*,metrics
+design engineer portfolio,career informational,110,0,—,informational,/guides/*,metrics
+design engineer portfolio examples,career informational,70,0,—,informational,/guides/*,metrics
+design engineer portfolio website,career informational,—,—,—,navigational,/guides/*,metrics
+ux engineer portfolio,career informational,30,3,—,navigational,/guides/*,metrics
+design technologist portfolio,career informational,20,22,—,navigational,/guides/*,metrics
+creative developer portfolio,career informational,10,—,13.91,navigational,/guides/*,metrics
+design engineer interview questions,career informational,70,8,—,informational,/guides/*,metrics
+design engineer interview process,career informational,no data,no data,no data,no data,/guides/*,metrics
+design engineer resume,career informational,70,0,10.74,informational,/guides/*,metrics
+design engineer reddit,career informational,40,0,—,navigational,/guides/*,metrics
+design engineering principles,career informational,10,3,—,informational,/guides/*,metrics
+framer jobs,tool-specific,1600,0,1.63,navigational,/skills/{slug},metrics
+framer jobs remote,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+framer developer jobs,tool-specific,10,—,2.26,navigational,/skills/{slug},metrics
+react design engineer jobs,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+figma to code jobs,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+figma developer jobs,tool-specific,10,—,—,navigational,/skills/{slug},metrics
+three.js jobs,tool-specific,90,0,—,informational,/skills/{slug},metrics
+webgl developer jobs,tool-specific,10,0,—,informational,/skills/{slug},metrics
+gsap developer jobs,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+motion design engineer,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+swiftui design engineer jobs,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+tailwind jobs,tool-specific,40,0,—,informational,/skills/{slug},metrics
+next.js design engineer jobs,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+design tokens engineer,tool-specific,no data,no data,no data,no data,/skills/{slug},metrics
+ui/ux engineer jobs,expansion:ux engineer jobs,30,0,6.80,navigational,/roles/ux-engineer,research_keywords
+ux design engineer jobs,expansion:ux engineer jobs,20,—,—,commercial,/jobs,research_keywords
+senior ui engineer jobs,expansion:ui engineer jobs,10,—,—,navigational,/roles/ui-engineer,research_keywords
+ui ux engineer,expansion:ui engineer jobs,170,0,1.60,navigational,/roles/ux-engineer,research_keywords
+ux engineer,expansion:ui engineer jobs,880,0,18.95,navigational,/roles/ux-engineer,research_keywords
+ui engineer,expansion:ui engineer jobs,260,0,—,informational,/roles/ui-engineer,research_keywords
+ui ux developer requirements,expansion:ui engineer jobs,10,—,—,informational,/jobs,research_keywords
+architectural design technologist jobs,expansion:design technologist jobs,20,0,—,navigational,/roles/design-technologist,research_keywords
+design technologist amazon,expansion:design technologist jobs,40,0,—,navigational,/roles/design-technologist,research_keywords
+interior design technologist jobs edmonton,expansion:design technologist jobs,10,0,—,informational,/roles/design-technologist,research_keywords
+design system designer jobs,expansion:design technologist jobs,50,0,0.02,navigational,/roles/design-systems-engineer,research_keywords
+interior design technologist jobs,expansion:design technologist jobs,10,0,—,navigational,/roles/design-technologist,research_keywords
+design system jobs,expansion:design technologist jobs,320,0,10.72,navigational,/roles/design-systems-engineer,research_keywords
+design system manager jobs,expansion:design technologist jobs,10,—,—,navigational,/roles/design-systems-engineer,research_keywords
+innovation and design engineer amazon,expansion:design technologist jobs,40,0,—,navigational,/jobs,research_keywords
+creative technologist portfolio examples,expansion:design technologist jobs,—,—,—,informational,/guides/*,research_keywords
+design technology specialist,expansion:design technologist jobs,20,0,—,informational,/roles/design-technologist,research_keywords
+design engineer job description,expansion:design engineer jobs,260,0,—,informational,/guides/*,research_keywords
+industrial design engineer jobs,expansion:design engineer jobs,40,0,0.34,navigational,/jobs,research_keywords
+secondary design engineer,expansion:design engineer jobs,10,—,—,informational,/jobs,research_keywords
+entry level design engineer jobs,expansion:design engineer jobs,70,0,1.03,navigational,/jobs,research_keywords
+project engineer vs design engineer,expansion:design engineer jobs,40,0,—,informational,/guides/*,research_keywords
+prototype engineer job description,expansion:design engineer jobs,10,17,—,informational,/guides/*,research_keywords
+optical design engineer jobs,expansion:design engineer jobs,40,0,—,navigational,/jobs,research_keywords
+formwork design engineer jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+design engineer jobs switzerland,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+osp design engineer jobs,expansion:design engineer jobs,40,0,—,navigational,/jobs,research_keywords
+medical device design engineer jobs,expansion:design engineer jobs,30,0,2.63,navigational,/jobs,research_keywords
+design engineer jobs uk,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+design engineer ii jobs,expansion:design engineer jobs,10,—,1.05,navigational,/jobs,research_keywords
+gear design engineer jobs,expansion:design engineer jobs,10,0,0.04,navigational,/jobs,research_keywords
+design engineer jobs leeds,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+firearms design engineer jobs,expansion:design engineer jobs,30,5,0.15,navigational,/jobs,research_keywords
+prototype design engineer jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+computer aided design engineer jobs,expansion:design engineer jobs,30,0,—,navigational,/jobs,research_keywords
+design engineer jobs glasgow,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+mmic design engineer jobs,expansion:design engineer jobs,30,0,—,navigational,/jobs,research_keywords
+architect design engineer jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+substation design engineer jobs,expansion:design engineer jobs,30,0,1.48,navigational,/jobs,research_keywords
+panel design engineer jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+aircraft design engineer jobs,expansion:design engineer jobs,30,0,—,navigational,/jobs,research_keywords
+architecture design engineer jobs,expansion:design engineer jobs,10,—,—,informational,/jobs,research_keywords
+plastics design engineer jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+transformer design engineer jobs,expansion:design engineer jobs,20,0,0.92,navigational,/jobs,research_keywords
+diploma design engineer jobs,expansion:design engineer jobs,10,47,—,navigational,/jobs,research_keywords
+fiber design engineer jobs,expansion:design engineer jobs,20,0,—,navigational,/jobs,research_keywords
+fresh design engineer jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+design engineer graduate jobs,expansion:design engineer jobs,10,—,—,navigational,/jobs,research_keywords
+design engineer jobs denver,expansion:design engineer jobs,20,—,—,commercial,/jobs,research_keywords
+package design engineer jobs,expansion:design engineer jobs,20,0,1.11,navigational,/jobs,research_keywords
+harness design engineer jobs,expansion:design engineer jobs,20,0,—,navigational,/jobs,research_keywords
+sustainable design engineering jobs,expansion:design engineer jobs,10,0,—,informational,/jobs,research_keywords
+innovation design engineering jobs,expansion:design engineer jobs,10,0,—,navigational,/jobs,research_keywords
+industrial design engineer salary,expansion:design engineer salary,50,2,—,informational,/salary/*,research_keywords
+system design engineer salary,expansion:design engineer salary,50,0,—,informational,/salary/*,research_keywords
+substation design engineer salary,expansion:design engineer salary,40,0,—,informational,/salary/*,research_keywords
+aircraft design engineer salary,expansion:design engineer salary,40,0,—,informational,/salary/*,research_keywords
+entry-level design engineer salary,expansion:design engineer salary,30,0,—,informational,/salary/*,research_keywords
+what is a design engineer salary,expansion:design engineer salary,30,14,—,informational,/guides/*,research_keywords
+tooling design engineer salary,expansion:design engineer salary,30,0,—,informational,/salary/*,research_keywords
+network design engineer salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+computer aided design engineer salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+medical device design engineer salary,expansion:design engineer salary,20,14,—,informational,/salary/*,research_keywords
+soc design engineer intel salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+manufacturing design engineer salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+design engineer salary per hour,expansion:design engineer salary,20,39,—,informational,/salary/*,research_keywords
+distribution design engineer salary,expansion:design engineer salary,20,17,—,informational,/salary/*,research_keywords
+osp design engineer salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+principal design engineer salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+design engineer starting salary,expansion:design engineer salary,20,45,—,informational,/salary/*,research_keywords
+senior silicon design engineer amd salary,expansion:design engineer salary,20,17,—,informational,/salary/*,research_keywords
+product design engineer meta salary,expansion:design engineer salary,20,—,—,informational,/salary/*,research_keywords
+process design engineer salary,expansion:design engineer salary,20,1,—,informational,/salary/*,research_keywords
+silicon design engineer 2 amd salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+amd silicon design engineer salary,expansion:design engineer salary,20,—,—,informational,/salary/*,research_keywords
+lead design engineer salary,expansion:design engineer salary,20,0,—,informational,/salary/*,research_keywords
+apple design engineer salary,expansion:design engineer salary,20,32,—,informational,/salary/*,research_keywords
+design engineer jobs salary,expansion:design engineer salary,10,—,—,informational,/salary/*,research_keywords
+remote product design engineer jobs,expansion:remote design engineer jobs,10,—,—,informational,/remote,research_keywords
+solar design engineer remote jobs,expansion:remote design engineer jobs,10,—,—,informational,/remote,research_keywords
+ai creative technologist jobs,expansion:creative technologist jobs,20,—,—,commercial,/roles/creative-technologist,research_keywords
