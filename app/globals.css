@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --fg: #171717;
+  --muted: #626262;
+  --line: #ebebeb;
+  --chip: #f6f6f6;
+  --accent: #111111;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #090909;
+  --fg: #ededed;
+  --muted: #a0a0a0;
+  --line: #262626;
+  --chip: #141414;
+  --accent: #ededed;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-chip: var(--chip);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  background: var(--bg);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #171717;
+  color: #fff;
+}
+
+.dark ::selection {
+  background: #ededed;
+  color: #111;
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
+.prose h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+
+.prose h2 {
+  margin-top: 2.25rem;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+  font-weight: 550;
+}
+
+.prose h3 {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  font-weight: 550;
+}
+
+.prose p,
+.prose li {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.prose p {
+  margin-top: 0.85rem;
+}
+
+.prose ul,
+.prose ol {
+  margin-top: 0.75rem;
+  padding-left: 1.2rem;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.job-body h2,
+.job-body h3 {
+  margin-top: 1.75rem;
+  font-size: 1.05rem;
+  font-weight: 550;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+}
+
+.job-body p,
+.job-body li,
+.job-body div {
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.job-body p,
+.job-body ul,
+.job-body ol {
+  margin-top: 0.8rem;
+}
+
+.job-body ul,
+.job-body ol {
+  padding-left: 1.15rem;
+}
+
+.job-body ul {
+  list-style: disc;
+}
+
+.job-body ol {
+  list-style: decimal;
+}
+
+.job-body a {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
