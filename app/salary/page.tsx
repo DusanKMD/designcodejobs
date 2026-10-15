@@ -100,7 +100,7 @@ export default async function SalaryPage() {
 
       <h2 className="mt-10 text-xl font-medium tracking-tight">How this is counted</h2>
       <p className="mt-3 text-sm leading-7 text-muted">
-        A range is included only when the source board exposes it as salary (Ashby compensation, Lever salary range, or a figure written in the Greenhouse description) and it is yearly base pay. Equity, OTE, and hidden compensation are left out of the schema and this table. Each currency is counted on its own. The median is the median of USD range midpoints when a USD range exists, otherwise the currency with a posted range. Nothing is converted. See the <Link href="/guides/design-engineer-salary" className="text-fg underline underline-offset-4">salary guide outline</Link> for what a fuller write-up will cover. Per-role pages: {SALARY_ROLES.map((role) => role.h1).join(", ")}.
+        A range is included only when the source board exposes it as salary (Ashby compensation, Lever salary range, or a figure written in the Greenhouse description) and it is yearly base pay. Equity, OTE, and hidden compensation are left out of the schema and this table. Each currency is counted on its own. The median is the median of USD range midpoints when a USD range exists, otherwise the currency with a posted range. Nothing is converted. The <Link href="/guides/design-engineer-salary" className="text-fg underline underline-offset-4">salary guide</Link> explains the method. Per-role pages: {SALARY_ROLES.map((role) => role.h1).join(", ")}.
       </p>
     </article>
   );

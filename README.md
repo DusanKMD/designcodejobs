@@ -14,7 +14,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open http://localhost:3000. The seed catalog is enough to click through home, a job, role hubs, salary, remote, Framer, and the guide outlines.
+Open http://localhost:3000. The seed catalog is enough to click through home, a job, role hubs, salary, remote, Framer, and the guides.
 
 ```bash
 npm test
@@ -92,7 +92,7 @@ Canonical paths follow `docs/SEO_PLAN.md`, including the OpenSEO priorities in s
 
 A facet page is `noindex,follow` until it has at least 5 open roles (3 for a company page). Salary role pages are indexable with at least one yearly range. Query-string filters are `noindex` and canonical to the parent. Pages 2 and 3 of a list are indexable and self-canonical. Page 4+ is `noindex`. JobPosting JSON-LD is only on an active job page with a real description and a mappable location. Fully remote roles use `TELECOMMUTE` plus applicant countries, and omit `jobLocation`. Hybrid roles never use `TELECOMMUTE`. `baseSalary` is included only when the employer posted a base range. Worldwide remote roles with no country omit the markup. Expired jobs drop the markup. Sitemaps, `robots.txt`, RSS (`/feed.xml`), and dynamic OG images are included.
 
-Guide outlines, not finished essays, are MDX in `content/guides/`:
+Finished guides are MDX in `content/guides/`. Salary figures in the salary guide are rendered from the open listings, the same source as `/salary`:
 
 - What is a design engineer?
 - Design engineer salary guide (the live numbers stay on `/salary`)

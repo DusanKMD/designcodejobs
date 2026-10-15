@@ -4,7 +4,7 @@ import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "Guides",
-  description: "Outlines for what a design engineer is, how software design engineer salary is counted, and how to write the job description.",
+  description: "What a design engineer is, how software design engineer salary is counted, and how to write the job description.",
   path: "/guides",
   index: true,
 });
@@ -14,7 +14,7 @@ export default function GuidesPage() {
     <div className="mx-auto max-w-3xl px-5 py-10">
       <h1 className="text-4xl font-medium tracking-tight">Guides</h1>
       <p className="mt-4 text-[15px] leading-7 text-muted">
-        The first three articles are outlines. They target the career queries with real volume: what the role is, salary, and the job description. Live pay figures stay on the salary pages.
+        What the role is, how posted salary is counted, and how to write the job description. Pay figures in the salary guide are rendered from the same open listings as the salary pages.
       </p>
       <ul className="mt-8 divide-y divide-line border-y border-line">
         {GUIDES.map((guide) => (

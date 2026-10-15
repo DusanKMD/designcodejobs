@@ -1,35 +1,49 @@
+import { NamedPostings, RolePayTable, SalarySnapshot, UxSalaryNote, WorkplacePay } from "@/components/guide-facts";
+
 # Design engineer salary guide
 
-Search results for “design engineer salary” are dominated by mechanical and manufacturing pay. The software number is a different dataset. Live ranges from postings on this board are on the [design engineer salary](/salary) page. This guide is the outline for the write-up around that data.
+Design engineer salary, as most salary sites publish it, is mechanical and manufacturing pay. The software number is a different set of jobs: people who design and build product UI. This guide uses only base pay an employer wrote on a posting. It does not use crowdsourced averages, total-compensation guesses, or equity counted as cash. The live table is [design engineer salary](/salary). The figures in this article are rendered from the same listings.
 
-## Outline
+## What gets counted
 
-### What the number is, and what it is not
-- Employer-posted base salary only. No Glassdoor estimates, no total-comp guesses, no equity counted as cash.
-- Say when a range is yearly, and drop hourly or OTE figures from the headline.
-- Note the sample size next to every figure so a single posting cannot look like a market.
+A range is included when the source board exposes it as salary and the unit is a year. Ashby compensation, a Lever salary range, or a yearly figure written in a Greenhouse description can qualify. Hourly rates, OTE, and compensation the employer hid from the public posting are left out. Each currency stays in that currency. Nothing is converted to dollars.
 
-### Design engineer salary by level
-- Internship and junior, senior, staff, lead.
-- Use the same seniority rules as the job list.
-- Link [design engineer internship](/seniority/internship) for the entry-level path. Senior and junior pages stay thin until volume shows up.
+The headline median is the median of the USD range midpoints, when any USD yearly range exists. A wide band often means the requisition covers more than one level. The midpoint is a summary of the band the employer published, not an offer.
 
-### Breakouts that have their own pages
-- [UX engineer salary](/salary/ux-engineer) — the highest-CPC salary query in this niche.
-- [UI engineer salary](/salary/ui-engineer).
-- [Design technologist salary](/salary/design-technologist).
-- [Design systems engineer salary](/salary/design-systems-engineer).
-- [Creative technologist salary](/salary/creative-technologist).
+<SalarySnapshot />
 
-### Remote versus office
-- Compare fully remote postings with city-specific ones only when both have at least a few ranges.
-- Do not invent a city premium. City pages are not a priority; US search volume for “design engineer jobs nyc” and similar is small next to the role and salary terms.
+## By role
 
-### How to read a posted range
-- A range is the employer’s band for the requisition, not an offer.
-- Level inside one req (IC3 vs IC5) can explain a wide band.
-- Currency stays as posted. No silent USD conversion.
+The head term mixes every software title on the board. The breakouts are the queries people actually type. UX engineer salary is the one with a high cost-per-click in US keyword data, which is a sign advertisers pay to reach that search, not a sign the wage is higher.
 
-### What gets updated monthly
-- Median midpoint, count of postings with pay, and which companies published.
-- The [salary page](/salary) is the dataset. This article explains the method and links every breakout.
+<RolePayTable />
+
+## UX engineer salary
+
+<UxSalaryNote />
+
+UI engineer, design technologist, design systems engineer, and creative technologist each have their own salary page, linked in the table. If a cell says there is no yearly range, that is the sample, not a claim that the role is unpaid. [Design technologist jobs](/roles/design-technologist), [UI engineer jobs](/roles/ui-engineer), [design systems engineer jobs](/roles/design-systems-engineer), and [creative technologist jobs](/roles/creative-technologist) list the open roles either way.
+
+## Examples from public postings
+
+Two companies in the current sample publish a clear yearly USD band on a design engineer req. A third, Linear, is hiring the title and does not publish pay on the open listings.
+
+<NamedPostings />
+
+A separate look at public postings on 15 October 2026, outside this sample, found other published bands: Linear around $120,000–$190,000, Samsara around $137,000–$231,000, and Cal.com around $100,000–$150,000. Those are examples of ranges employers have posted. They enter the median only when the role is open here with a yearly figure. Vercel’s $208,000–$312,000 and WorkOS’s $175,000–$225,000 showed up in that same pass and are also in the live sample, so the open listings above are the numbers to use while those roles are up.
+
+## Level, remote, and city
+
+Seniority on this board is read from the title: intern, junior, senior, staff, principal, lead, manager. Most design engineer postings do not put a level in the title, so a level table would be a handful of rows and would look more precise than it is. [Design engineer internship](/seniority/internship) is the entry path with its own page. Senior and junior pages stay thin until there are enough open roles to support them.
+
+<WorkplacePay />
+
+City pages are not a priority. US search volume for design engineer jobs in a named city is small next to the role and salary terms, and a city premium computed from one or two postings would be a fiction. Where a posting names a city, the job page carries it. The salary page does not invent a San Francisco or New York differential on top.
+
+## How to read a single range
+
+An employer’s band is the range they are willing to write on the requisition. It is not a prediction of the offer, and it is not a percentile of “design engineers” in a metro. A staff req and a mid-level req at the same company can both be titled design engineer. Ashby, for example, posts a staff band and a separate design engineer band, in more than one currency, for different regions. Comparing the USD Americas number with the GBP UK number, without saying they are different currencies and different reqs, is how salary pages go wrong.
+
+If you are writing an offer, publish the base range on the job. Listings with a yearly range are the only ones that can appear here and the only ones that can carry salary in the job’s structured data. The structured data is added on the individual job page, and only when the figure is visible there. Guides do not carry job markup.
+
+For the definition of the role these numbers belong to, see [what is a design engineer](/guides/what-is-a-design-engineer). For the posting that should sit next to the range, see the [design engineer job description](/guides/design-engineer-job-description).

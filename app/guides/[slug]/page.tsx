@@ -48,7 +48,6 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
       <JsonLd data={article} />
       <p className="text-sm text-muted">
         <Link href="/guides" className="hover:text-fg">Guides</Link>
-        <span className="ml-2 rounded-full border border-line px-2 py-0.5 text-xs">Outline</span>
       </p>
       <div className="mt-4">
         <Content />
