@@ -1,38 +1,50 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --fg: #171717;
-  --muted: #626262;
-  --line: #ebebeb;
-  --chip: #f6f6f6;
-  --accent: #111111;
+  --bg: #f6f5f2;
+  --card: #ffffff;
+  --fg: #1c1917;
+  --muted: #57534e;
+  --line: #e7e5e4;
+  --chip: #f5f5f4;
+  --accent: #c2410c;
+  --accent-fg: #ffffff;
+  --salary: #fff7ed;
+  --salary-fg: #9a3412;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #090909;
-  --fg: #ededed;
-  --muted: #a0a0a0;
-  --line: #262626;
-  --chip: #141414;
-  --accent: #ededed;
+  --bg: #1c1410;
+  --card: #292018;
+  --fg: #faf6f1;
+  --muted: #d6d3d1;
+  --line: #3f342c;
+  --chip: #342820;
+  --accent: #fb923c;
+  --accent-fg: #1c1410;
+  --salary: #3b2414;
+  --salary-fg: #fdba74;
   color-scheme: dark;
 }
 
 @theme inline {
   --color-bg: var(--bg);
+  --color-card: var(--card);
   --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-chip: var(--chip);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-accent-fg: var(--accent-fg);
+  --color-salary: var(--salary);
+  --color-salary-fg: var(--salary-fg);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
 html {
   background: var(--bg);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -42,80 +54,101 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection {
-  background: #171717;
-  color: #fff;
+h1,
+h2,
+h3 {
+  letter-spacing: -0.03em;
 }
 
-.dark ::selection {
-  background: #ededed;
-  color: #111;
+h1 {
+  font-weight: 700;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 22%, var(--card));
+  color: var(--fg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-.prose h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  font-weight: 500;
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 50;
+  transform: translateY(-150%);
+  border-radius: 0.75rem;
+  background: var(--accent);
+  color: var(--accent-fg);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
-.prose h2 {
-  margin-top: 2.25rem;
-  font-size: 1.25rem;
-  letter-spacing: -0.02em;
-  font-weight: 550;
+.skip-link:focus {
+  transform: none;
+}
+
+#content {
+  scroll-margin-top: 5.5rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  box-shadow: 0 1px 2px rgb(28 25 23 / 0.04);
+}
+
+.lift {
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgb(28 25 23 / 0.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lift:hover {
+    transform: none;
+  }
+}
+
+.prose h2,
+.job-body h2,
+.job-body h3 {
+  margin-top: 1.85rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--fg);
 }
 
 .prose h3 {
   margin-top: 1.5rem;
-  font-size: 1rem;
-  font-weight: 550;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--fg);
 }
 
 .prose p,
-.prose li {
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.prose p {
-  margin-top: 0.85rem;
-}
-
-.prose ul,
-.prose ol {
-  margin-top: 0.75rem;
-  padding-left: 1.2rem;
-}
-
-.prose ul {
-  list-style: disc;
-}
-
-.prose ol {
-  list-style: decimal;
-}
-
-.prose a {
-  color: var(--fg);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.job-body h2,
-.job-body h3 {
-  margin-top: 1.75rem;
-  font-size: 1.05rem;
-  font-weight: 550;
-  letter-spacing: -0.01em;
-  color: var(--fg);
-}
-
+.prose li,
 .job-body p,
 .job-body li,
 .job-body div {
@@ -123,25 +156,32 @@ body {
   line-height: 1.7;
 }
 
+.prose p,
 .job-body p,
 .job-body ul,
 .job-body ol {
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
 }
 
+.prose ul,
+.prose ol,
 .job-body ul,
 .job-body ol {
-  padding-left: 1.15rem;
+  margin-top: 0.85rem;
+  padding-left: 1.2rem;
 }
 
+.prose ul,
 .job-body ul {
   list-style: disc;
 }
 
+.prose ol,
 .job-body ol {
   list-style: decimal;
 }
 
+.prose a,
 .job-body a {
   color: var(--fg);
   text-decoration: underline;

@@ -1,5 +1,5 @@
 import { ROLES } from "@/lib/catalog";
-import { formatDate, formatSalary, wordCount } from "@/lib/format";
+import { formatDate, wordCount } from "@/lib/format";
 import { isListed } from "@/lib/model";
 import { COMPANY_INDEX_THRESHOLD, INDEX_THRESHOLD, PAGE_SIZE } from "@/lib/site";
 import type { Job, RegionSlug, Seniority, SkillSlug, TitleFamily } from "@/lib/types";
@@ -143,20 +143,29 @@ export function listingFaqs(subject: string, jobs: Job[]) {
   const companies = [...new Set(jobs.map((job) => job.companyName))].slice(0, 4);
   const salaryJobs = jobs.filter((job) => job.salaryUnit === "YEAR" && job.salaryMin != null);
   const sample = salaryJobs[0];
+  const companyAnswer = companies.length
+    ? `${companies.join(", ")} ${companies.length === 1 ? "has" : "have"} an open role in this list. The names are taken from the listings on the page, not from a paid logo wall. A company appears here only while at least one of its software roles is still open.`
+    : `No company has an open role in this list right now. The page stays up so the next board sync can fill it. Mechanical and hardware employers are not added to stand in for an empty software list.`;
+  const salaryAnswer = sample
+    ? `${salaryJobs.length} ${salaryJobs.length === 1 ? "listing includes" : "listings include"} a yearly range the employer published. Ranges are not estimated, converted, or copied from a salary site. One posted example is ${sample.companyName}. The figure is the band they wrote, not a market rate. A single posting is not a wage survey.`
+    : `None of the roles in this list publish a yearly range. Pay is shown only when the employer wrote it on the posting. This page does not estimate a market rate to fill the gap. A missing figure is not a guess waiting to be filled in from another site.`;
+  const companyText = companies.length
+    ? companyAnswer
+    : `${companyAnswer} Names appear only while a software role is open.`;
+  // Home already uses the head term in the title, H1, and intro. Other pages need it in each question so the FAQ is unique.
+  const hiring = subject === "Design engineer jobs" ? "these software roles" : subject;
   return [
     {
       q: `How many ${subject} are open?`,
-      a: `${jobs.length} open ${jobs.length === 1 ? "role matches" : "roles match"} this page today.`,
+      a: `${jobs.length} ${jobs.length === 1 ? "open role matches" : "open roles match"} this page today. The count is software interface work that is still listed, not every design-engineer posting on the web. Hardware, mechanical, chip, and audiovisual titles stay off the list even when the words match. The number changes when a board sync adds or closes a role.`,
     },
     {
-      q: `Which companies are hiring?`,
-      a: companies.length ? `${companies.join(", ")} ${companies.length === 1 ? "has" : "have"} an open role on this list.` : "None yet. The page stays up so it can fill as boards are rechecked.",
+      q: `Which companies are hiring for ${hiring}?`,
+      a: companyText,
     },
     {
-      q: `Do these roles publish salary?`,
-      a: sample
-        ? `${salaryJobs.length} ${salaryJobs.length === 1 ? "listing includes" : "listings include"} an employer-posted range. One example is ${sample.title} at ${sample.companyName} (${formatSalary(sample)}).`
-        : "Not on the current list. Ranges appear only when the employer wrote them on the posting.",
+      q: subject === "Design engineer jobs" ? "Do these software roles publish salary?" : `Do these ${subject} publish salary?`,
+      a: salaryAnswer,
     },
   ];
 }

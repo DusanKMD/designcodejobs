@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { JsonLd } from "@/components/json-ld";
 import { GUIDES, guideBySlug } from "@/lib/catalog";
-import { breadcrumbLd } from "@/lib/jsonld";
+import { breadcrumbLd, faqLd } from "@/lib/jsonld";
+import { guideFaqs } from "@/lib/guide-faqs";
 import { pageMeta } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -25,6 +26,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: guide.description,
     path: `/guides/${slug}`,
     index: true,
+    ogType: "article",
+    image: `/guides/${slug}/opengraph-image`,
   });
 }
 
@@ -36,16 +39,19 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
   const Content = (await load()).default;
   const article = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "TechArticle",
     headline: guide.h1,
     description: guide.description,
-    author: { "@type": "Organization", name: "Design Code Jobs" },
+    author: { "@type": "Organization", name: "Design Code Jobs", url: absoluteUrl("/") },
+    publisher: { "@type": "Organization", name: "Design Code Jobs", url: absoluteUrl("/") },
+    image: absoluteUrl(`/guides/${slug}/opengraph-image`),
     mainEntityOfPage: absoluteUrl(`/guides/${slug}`),
   };
   return (
-    <article className="mx-auto max-w-3xl px-5 py-10">
+    <article className="mx-auto max-w-3xl px-5 py-12">
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Guides", path: "/guides" }, { name: guide.title, path: `/guides/${slug}` }])} />
       <JsonLd data={article} />
+      {guideFaqs[slug as keyof typeof guideFaqs] ? <JsonLd data={faqLd([...guideFaqs[slug as keyof typeof guideFaqs]])} /> : null}
       <p className="text-sm text-muted">
         <Link href="/guides" className="hover:text-fg">Guides</Link>
       </p>

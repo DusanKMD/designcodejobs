@@ -1,56 +1,65 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const NAV = [
   { href: "/roles/ux-engineer", label: "UX engineer" },
   { href: "/salary", label: "Salary" },
   { href: "/remote", label: "Remote" },
-  { href: "/guides/what-is-a-design-engineer", label: "Guides" },
+  { href: "/guides", label: "Guides" },
+  { href: "/about", label: "About" },
 ];
 
 export function Header() {
+  const path = usePathname();
   return (
-    <header className="sticky top-0 z-20 border-b border-line bg-bg/85 backdrop-blur">
-      <div className="mx-auto flex h-14 max-w-5xl items-center gap-4 px-5">
-        <Link href="/" className="flex items-center gap-2 text-[15px] font-medium tracking-tight">
+    <header className="sticky top-0 z-20 border-b border-line bg-card/90 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-2 px-5 py-3">
+        <Link href="/" className="flex items-center gap-2.5 text-[15px] font-bold tracking-tight">
           <Mark />
-          designcodejobs
+          Design Code Jobs
         </Link>
-        <nav className="ml-auto hidden items-center gap-5 text-sm text-muted sm:flex">
-          {NAV.map((item) => (
-            <Link key={item.href} href={item.href} className="hover:text-fg">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="ml-auto flex items-center gap-2 sm:ml-0">
+        <PrimaryNav path={path} />
+        <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
           <Link
             href="/post-a-job"
-            className="inline-flex h-8 items-center rounded-full bg-fg px-3 text-sm font-medium text-bg"
+            className="inline-flex h-9 items-center rounded-xl bg-accent px-3.5 text-sm font-semibold text-accent-fg hover:opacity-90"
           >
             Post a job
           </Link>
         </div>
       </div>
-      <nav className="flex gap-4 overflow-x-auto border-t border-line px-5 py-2 text-sm text-muted sm:hidden">
-        {NAV.map((item) => (
-          <Link key={item.href} href={item.href} className="shrink-0 hover:text-fg">
+    </header>
+  );
+}
+
+function PrimaryNav({ path }: { path: string }) {
+  return (
+    <nav aria-label="Primary" className="order-last flex basis-full gap-4 overflow-x-auto border-t border-line pt-2 text-sm sm:order-none sm:basis-auto sm:border-0 sm:pt-0">
+      {NAV.map((item) => {
+        const current = path === item.href || path.startsWith(`${item.href}/`);
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={current ? "page" : undefined}
+            className={`shrink-0 hover:text-fg ${current ? "text-fg" : "text-muted"}`}
+          >
             {item.label}
           </Link>
-        ))}
-      </nav>
-    </header>
+        );
+      })}
+    </nav>
   );
 }
 
 function Mark() {
   return (
-    <span className="grid grid-cols-2 gap-[2px]" aria-hidden>
-      <span className="h-1.5 w-1.5 bg-fg" />
-      <span className="h-1.5 w-1.5 bg-fg/35" />
-      <span className="h-1.5 w-1.5 bg-fg/35" />
-      <span className="h-1.5 w-1.5 bg-fg" />
+    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-bold text-accent-fg" aria-hidden>
+      D
     </span>
   );
 }

@@ -15,12 +15,12 @@ export default async function Image({ params }: { params: Promise<{ slug: string
 
   return new ImageResponse(
     (
-      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#0a0a0a", color: "#f5f5f5", padding: "72px", fontFamily: "sans-serif" }}>
-        <div style={{ display: "flex", fontSize: 22, letterSpacing: 2, textTransform: "uppercase", color: "#a3a3a3" }}>Design Code Jobs</div>
+      <div style={{ width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", background: "#f6f5f2", color: "#1c1917", padding: "72px" }}>
+        <div style={{ display: "flex", fontSize: 24, fontWeight: 700, color: "#c2410c" }}>Design Code Jobs</div>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 28, color: "#a3a3a3" }}>{company}</div>
-          <div style={{ fontSize: 68, lineHeight: 1.05, letterSpacing: -1.5, marginTop: 12, maxWidth: 980 }}>{title}</div>
-          <div style={{ fontSize: 28, marginTop: 24, color: "#d4d4d4" }}>{meta}</div>
+          <div style={{ fontSize: 28, color: "#57534e" }}>{company}</div>
+          <div style={{ fontSize: 68, lineHeight: 1.05, letterSpacing: -1.5, marginTop: 12, maxWidth: 980, fontWeight: 700 }}>{title}</div>
+          <div style={{ fontSize: 28, marginTop: 24, color: "#c2410c" }}>{meta}</div>
         </div>
       </div>
     ),

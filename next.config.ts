@@ -4,10 +4,14 @@ import createMDX from "@next/mdx";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  // Dynamic pages otherwise stream <title> and <meta name="description"> into the body.
+  // Crawlers that read <head> then miss them. Block so metadata is in the head for every UA.
+  htmlLimitedBots: /.*/,
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "www.google.com", pathname: "/s2/favicons**" },
+      { protocol: "https", hostname: "logo.clearbit.com" },
     ],
   },
   async redirects() {
