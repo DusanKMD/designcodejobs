@@ -7,6 +7,7 @@ import type { AlertSubscription, Job, Submission } from "@/lib/types";
 import { LISTING_DAYS } from "@/lib/site";
 import { absoluteUrl } from "@/lib/site";
 import { notifyIndexing } from "@/lib/indexing";
+import { submitIndexNow } from "@/lib/indexnow";
 
 type RuntimeFile = {
   jobs: Job[];
@@ -110,6 +111,22 @@ export async function setIngestCursor(cursor: number, stats: unknown) {
   writeRuntime(runtime);
 }
 
+export function jobContentChanged(prev: Job, next: Job) {
+  return (
+    prev.title !== next.title ||
+    prev.slug !== next.slug ||
+    prev.descriptionHtml !== next.descriptionHtml ||
+    prev.applyUrl !== next.applyUrl ||
+    prev.workplace !== next.workplace ||
+    prev.locationRaw !== next.locationRaw ||
+    prev.status !== next.status ||
+    prev.salaryMin !== next.salaryMin ||
+    prev.salaryMax !== next.salaryMax ||
+    prev.salaryCurrency !== next.salaryCurrency ||
+    prev.salaryUnit !== next.salaryUnit
+  );
+}
+
 export async function saveIngestedJobs(incoming: Job[], board: { source: string; token: string; seenExternalIds: string[] }) {
   const existing = await readAllJobs();
   const byId = new Map(existing.map((job) => [job.id, job]));
@@ -146,12 +163,19 @@ export async function saveIngestedJobs(incoming: Job[], board: { source: string;
   }
 
   await persistJobs([...saved, ...expired]);
+  const indexNowUrls: string[] = [];
   for (const job of saved) {
-    if (job.status === "active") void notifyIndexing(absoluteUrl(`/jobs/${job.slug}`), "URL_UPDATED");
+    if (job.status !== "active") continue;
+    const prev = existing.find((item) => item.id === job.id);
+    const changed = !prev || jobContentChanged(prev, job);
+    if (changed) indexNowUrls.push(absoluteUrl(`/jobs/${job.slug}`));
+    void notifyIndexing(absoluteUrl(`/jobs/${job.slug}`), "URL_UPDATED");
   }
   for (const job of expired) {
+    indexNowUrls.push(absoluteUrl(`/jobs/${job.slug}`));
     void notifyIndexing(absoluteUrl(`/jobs/${job.slug}`), "URL_DELETED");
   }
+  if (indexNowUrls.length) void submitIndexNow(indexNowUrls);
   return { upserted: saved.length, expired: expired.length };
 }
 
@@ -308,7 +332,9 @@ export async function publishPaidSubmission(submissionId: string, orderId: strin
     lemonsqueezyOrderId: orderId,
     paidAt: now.toISOString(),
   });
-  void notifyIndexing(absoluteUrl(`/jobs/${job.slug}`), "URL_UPDATED");
+  const url = absoluteUrl(`/jobs/${job.slug}`);
+  void notifyIndexing(url, "URL_UPDATED");
+  void submitIndexNow([url]);
   return { ok: true as const, duplicate: false, jobId: job.id, slug: job.slug };
 }
 
@@ -345,7 +371,9 @@ export async function refundSubmission(orderId: string) {
   const closed = expireJob(job);
   await persistJobs([closed]);
   await updateSubmission(submission.id, { status: "refunded" });
-  void notifyIndexing(absoluteUrl(`/jobs/${closed.slug}`), "URL_DELETED");
+  const url = absoluteUrl(`/jobs/${closed.slug}`);
+  void notifyIndexing(url, "URL_DELETED");
+  void submitIndexNow([url]);
 }
 
 export async function createAlert(email: string, filters: AlertSubscription["filters"]) {

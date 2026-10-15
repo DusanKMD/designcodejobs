@@ -1,11 +1,13 @@
 import { GUIDES, REGIONS, ROLES, SALARY_ROLES, SENIORITIES, SKILLS } from "@/lib/catalog";
-import { companyStats, filterJobs, listedJobs } from "@/lib/query";
+import { companyStats, filterJobs, listedJobs, listingRobots } from "@/lib/query";
 import { COMPANY_INDEX_THRESHOLD, INDEX_THRESHOLD } from "@/lib/site";
 import { getAllJobs } from "@/lib/store";
 
 export async function indexablePagePaths() {
   const jobs = await getAllJobs();
-  const paths = ["/", "/salary", "/about", "/post-a-job", "/companies", "/guides"];
+  const paths: string[] = [];
+  if (listingRobots(filterJobs(jobs, {}).length, "/", {}).index) paths.push("/");
+  paths.push("/salary", "/about", "/post-a-job", "/companies", "/guides");
   for (const guide of GUIDES) paths.push(`/guides/${guide.slug}`);
   for (const role of ROLES) {
     if (filterJobs(jobs, { title: role.slug }).length >= INDEX_THRESHOLD) paths.push(`/roles/${role.slug}`);

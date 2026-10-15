@@ -2,9 +2,9 @@
 
 A job board for software design engineers: designers who code, UX engineers, UI engineers, design technologists, creative technologists, and design systems engineers. Mechanical, hardware, chip, and audiovisual roles are filtered out.
 
-The site is a Next.js App Router app. It reads public Greenhouse, Lever, and Ashby boards, hosts the full description, and marks up each open role with JobPosting structured data. It runs without accounts: jobs fall back to `data/seed/jobs.json`. Supabase, Lemon Squeezy, and Google Indexing are optional and stay off until their env vars are set.
+The site is a Next.js App Router app. It reads public Greenhouse, Lever, and Ashby boards, hosts the full description, and marks up each open role with JobPosting structured data. It runs without accounts: jobs fall back to `data/seed/jobs.json`. Supabase, Lemon Squeezy, Google Indexing, and IndexNow are optional and stay off until their env vars are set.
 
-Do not point DNS or create those accounts until you are ready to launch. Nothing in this repo deploys itself.
+Pushes to this branch deploy on Railway. The public site is https://designcodejobs.com.
 
 ## Local setup
 
@@ -28,10 +28,10 @@ See `.env.example`.
 
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | No | Canonical origin. Defaults to `https://designcodejobs.com`. No trailing slash. |
+| `NEXT_PUBLIC_SITE_URL` | No | Set to `https://designcodejobs.com` with no trailing slash. `www`, a `*.up.railway.app` host, or a trailing slash are still published as `https://designcodejobs.com`. Localhost is left alone. |
 | `SUPABASE_URL` | No | Server-only. When set with the service role key, reads and writes go to Postgres. |
 | `SUPABASE_SERVICE_ROLE_KEY` | No | Bypasses RLS. Never prefix it with `NEXT_PUBLIC_`. |
-| `CRON_SECRET` | Production | `Authorization: Bearer` for `/api/cron/ingest`. Production returns 401 if it is missing. |
+| `CRON_SECRET` | Production | `Authorization: Bearer` for `/api/cron/ingest` and `/api/indexnow`. Production returns 401 if it is missing. |
 | `REVIEW_SECRET` | No | Cookie gate for `/review`, the low-confidence queue. |
 | `LEMONSQUEEZY_CHECKOUT_STANDARD_URL` | To charge | Hosted checkout for the $129 listing. |
 | `LEMONSQUEEZY_CHECKOUT_FEATURED_URL` | To charge | Hosted checkout for the $228 featured listing. |
@@ -40,6 +40,7 @@ See `.env.example`.
 | `LEMONSQUEEZY_WEBHOOK_SECRET` | To publish paid posts | HMAC-SHA256 of the raw body, compared to `X-Signature`. |
 | `GOOGLE_INDEXING_CREDENTIALS` | No | Service-account JSON on one line. Empty means the Indexing API is a no-op. |
 | `INGEST_BATCH` | No | Company boards per cron run. Default 20. |
+| `INDEXNOW_KEY` | To notify IndexNow | Public key, 8–128 characters (`a-z`, `A-Z`, `0-9`, `-`). Served at `https://designcodejobs.com/<key>.txt`. The committed default is `10bf5cfa82ac960b7a1d23c83bbf60ab`. |
 
 Stripe is not used. Lemon Squeezy is the checkout, including for a seller in Serbia.
 
@@ -111,25 +112,33 @@ The signup form stores an address. `lib/email.ts` defines an `EmailSender` inter
 
 When `GOOGLE_INDEXING_CREDENTIALS` is a service-account JSON string, publish sends `URL_UPDATED` and expiry sends `URL_DELETED`. Leave it empty to skip the call. This repo does not create a Google Cloud project.
 
-## Deploy on Vercel
+## IndexNow
 
-1. Import the repo. Framework preset is Next.js.
-2. Set the env vars above. Set `CRON_SECRET` before production cron runs.
-3. Confirm the cron in `vercel.json` is enabled on a plan that allows it.
-4. Apply the Supabase migration and set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
-5. Add the Lemon Squeezy webhook and checkout URLs.
-6. Attach `designcodejobs.com`.
+Set `INDEXNOW_KEY`. The app serves that key at `https://designcodejobs.com/<INDEXNOW_KEY>.txt` (UTF-8, key only). `public/10bf5cfa82ac960b7a1d23c83bbf60ab.txt` is the same key checked in, so the file exists for the documented value even before the env var is read. If Railway sets a different key, middleware serves the new file at the new path.
 
-### Namecheap DNS
+Submissions go to `https://api.indexnow.org/indexnow` in batches of at most 10,000 URLs. Only `https://designcodejobs.com` URLs are sent. A URL is not sent again within 10 minutes. A `429` waits for `Retry-After` when that wait fits the caller, then tries once. Ingest and checkout do not block on a long wait.
 
-At the registrar for `designcodejobs.com`, use the records Vercel shows for the project. The usual pair is:
+IndexNow runs after ingest for new, changed, or newly expired job URLs, and after a paid post is published (or refunded and expired). Submit every sitemap URL once:
 
-| Type | Host | Value |
-| --- | --- | --- |
-| A | `@` | `76.76.21.21` |
-| CNAME | `www` | `cname.vercel-dns.com` |
+```bash
+INDEXNOW_KEY=10bf5cfa82ac960b7a1d23c83bbf60ab npm run indexnow
+```
 
-Vercel may also ask for an `AAAA` record. Use the values on the project’s Domains screen if they differ.
+Or `GET`/`POST` `https://designcodejobs.com/api/indexnow` with `Authorization: Bearer $CRON_SECRET`.
+
+## Deploy on Railway
+
+The GitHub branch deploys itself on Railway. This is not a Vercel app. `vercel.json` is unused there.
+
+1. In the Railway service, set the env vars in `.env.example`. Production needs `CRON_SECRET`, `NEXT_PUBLIC_SITE_URL=https://designcodejobs.com`, and `INDEXNOW_KEY=10bf5cfa82ac960b7a1d23c83bbf60ab`.
+2. Attach `designcodejobs.com`. Requests to `www.designcodejobs.com` and any `*.up.railway.app` host 301 to `https://designcodejobs.com`, keeping the path and query.
+3. Apply the Supabase migration and set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` when Postgres is ready.
+4. Add the Lemon Squeezy webhook and checkout URLs.
+5. Schedule a daily request to `GET /api/cron/ingest` with `Authorization: Bearer $CRON_SECRET`. Railway does not run the Vercel cron in `vercel.json`.
+
+### DNS
+
+At the registrar, use the records Railway shows for the apex and for `www`. The app sends `www` and the default Railway hostname to the apex, so both names can stay attached.
 
 ## Review queue
 
@@ -137,4 +146,4 @@ Set `REVIEW_SECRET`, open `/review`, and submit the secret. The page lists match
 
 ## Tests
 
-`npm test` covers title matching (including hardware exclusions and design-systems titles), JobPosting field mapping, salary currency separation, and Lemon Squeezy signature checks.
+`npm test` covers title matching (including hardware exclusions and design-systems titles), JobPosting field mapping, salary currency separation, Lemon Squeezy signature checks, canonical URLs, the sitemap, and IndexNow batching.

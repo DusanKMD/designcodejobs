@@ -133,7 +133,7 @@ export function websiteLd() {
       url,
       potentialAction: {
         "@type": "SearchAction",
-        target: `${absoluteUrl("/")}?q={search_term_string}`,
+        target: `${absoluteUrl("/").replace(/\/$/, "")}/?q={search_term_string}`,
         "query-input": "required name=search_term_string",
       },
     },

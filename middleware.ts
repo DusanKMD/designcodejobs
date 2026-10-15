@@ -1,7 +1,26 @@
 import { NextResponse, type NextRequest } from "next/server";
 import gone from "./data/seed/gone.json";
+import { indexNowKey } from "./lib/indexnow";
+import { canonicalTarget, publicHostFrom, shouldCanonicalRedirect } from "./lib/site";
 
 export async function middleware(request: NextRequest) {
+  const host = publicHostFrom(request.headers, request.nextUrl.host);
+  if (shouldCanonicalRedirect(host)) {
+    const location = canonicalTarget(request.nextUrl.pathname, request.nextUrl.search);
+    return new NextResponse(null, { status: 301, headers: { location } });
+  }
+
+  const key = indexNowKey();
+  if (key && request.nextUrl.pathname === `/${key}.txt`) {
+    return new NextResponse(key, {
+      status: 200,
+      headers: {
+        "content-type": "text/plain; charset=utf-8",
+        "cache-control": "public, max-age=3600",
+      },
+    });
+  }
+
   const match = request.nextUrl.pathname.match(/^\/jobs\/([^/]+)$/);
   if (!match) return NextResponse.next();
   const slug = decodeURIComponent(match[1]);
@@ -34,4 +53,6 @@ async function expiredInDatabase(slug: string) {
   }
 }
 
-export const config = { matcher: ["/jobs/:slug"] };
+export const config = {
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|icon.svg).*)"],
+};
