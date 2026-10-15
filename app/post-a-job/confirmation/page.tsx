@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight, Check, Clock, Plus } from "@/components/icons";
 import { checkoutOutcome, type CheckoutOutcome } from "@/lib/post-job";
 import { pageMeta } from "@/lib/seo";
 import { LISTING_DAYS } from "@/lib/site";
@@ -9,6 +10,15 @@ export const metadata = pageMeta({
   path: "/post-a-job/confirmation",
   index: false,
 });
+
+const TONE: Record<CheckoutOutcome, string> = {
+  paid: "bg-salary text-salary-fg",
+  pending: "bg-accent-soft text-accent-text",
+  failed: "bg-featured text-featured-fg",
+  cancelled: "bg-chip text-muted",
+  unconfigured: "bg-accent-soft text-accent-text",
+  unknown: "bg-chip text-muted",
+};
 
 const KICKER: Record<CheckoutOutcome, string> = {
   paid: "Paid",
@@ -81,44 +91,56 @@ export default async function ConfirmationPage({
   const copy = COPY[outcome];
   const submission = first(search.submission);
   const payment = first(search.payment_id);
+  const tone = TONE[outcome];
   return (
-    <div className="mx-auto max-w-xl px-5 py-16">
-      <p className="text-sm font-semibold text-accent">{KICKER[outcome]}</p>
-      <h1 className="mt-3 text-5xl text-balance">{copy.title}</h1>
-      <p className="mt-5 text-[17px] leading-8 text-muted">{copy.body}</p>
-      <h2 className="mt-8 text-lg font-medium tracking-tight">Next steps</h2>
-      <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm leading-6 text-muted">
-        {copy.steps.map((step) => (
-          <li key={step}>{step}</li>
-        ))}
-      </ol>
-      <div className="mt-8 flex flex-wrap gap-3">
-        <Link href="/" className="inline-flex h-11 items-center rounded-xl bg-accent px-5 text-sm font-semibold text-accent-fg">
-          Design engineer jobs
-        </Link>
-        {outcome === "failed" || outcome === "cancelled" || outcome === "unknown" || outcome === "unconfigured" ? (
-          <Link href="/post-a-job" className="inline-flex h-11 items-center rounded-xl border border-line bg-card px-5 text-sm font-semibold">
-            Post a job
-          </Link>
-        ) : null}
+    <section className="relative overflow-hidden">
+      <div className="canvas canvas-fade absolute inset-0 -z-10" aria-hidden />
+      <div className="mx-auto max-w-xl px-5 py-16 sm:py-24">
+        <div className="card p-6 sm:p-8">
+          <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${tone}`} aria-hidden>
+            {outcome === "paid" ? <Check size={20} /> : outcome === "failed" || outcome === "cancelled" ? <Plus size={20} className="rotate-45" /> : <Clock size={20} />}
+          </span>
+          <p className="mt-5 font-mono text-[11.5px] font-medium uppercase tracking-[0.12em] text-accent-text">{KICKER[outcome]}</p>
+          <h1 className="mt-2 text-[34px] leading-tight sm:text-[40px]">{copy.title}</h1>
+          <p className="mt-4 text-[16px] leading-7 text-fg-2">{copy.body}</p>
+          <h2 className="mt-8 text-[15px] font-semibold tracking-tight">Next steps</h2>
+          <ol className="mt-3 grid gap-2.5">
+            {copy.steps.map((step, index) => (
+              <li key={step} className="flex gap-3 text-sm leading-6 text-fg-2">
+                <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-chip font-mono text-[11px] text-muted">{index + 1}</span>
+                {step}
+              </li>
+            ))}
+          </ol>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/" className="btn btn-primary">
+              Design engineer jobs <ArrowRight className="arrow" />
+            </Link>
+            {outcome === "failed" || outcome === "cancelled" || outcome === "unknown" || outcome === "unconfigured" ? (
+              <Link href="/post-a-job" className="btn btn-secondary">
+                Post a job
+              </Link>
+            ) : null}
+          </div>
+          {submission || payment ? (
+            <dl className="mt-8 grid gap-1 rounded-xl bg-chip px-4 py-3 font-mono text-[12px] text-muted">
+              {submission ? (
+                <div className="flex justify-between gap-3">
+                  <dt>Reference</dt>
+                  <dd className="truncate tabular text-fg-2">{submission}</dd>
+                </div>
+              ) : null}
+              {payment ? (
+                <div className="flex justify-between gap-3">
+                  <dt>Payment</dt>
+                  <dd className="truncate tabular text-fg-2">{payment}</dd>
+                </div>
+              ) : null}
+            </dl>
+          ) : null}
+        </div>
       </div>
-      {submission || payment ? (
-        <dl className="mt-8 text-xs text-muted">
-          {submission ? (
-            <div>
-              <dt className="inline">Reference </dt>
-              <dd className="inline tabular-nums">{submission}</dd>
-            </div>
-          ) : null}
-          {payment ? (
-            <div>
-              <dt className="inline">Payment </dt>
-              <dd className="inline tabular-nums">{payment}</dd>
-            </div>
-          ) : null}
-        </dl>
-      ) : null}
-    </div>
+    </section>
   );
 }
 

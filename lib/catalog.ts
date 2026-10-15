@@ -306,6 +306,8 @@ export function salaryRoleBySlug(slug: string) {
 export const GUIDES = [
   {
     slug: "what-is-a-design-engineer",
+    published: "2026-10-15",
+    updated: "2026-10-15",
     title: "What is a design engineer?",
     description:
       "What a software design engineer is: prototypes, design systems, and production UI, distinct from mechanical design engineering.",
@@ -313,6 +315,8 @@ export const GUIDES = [
   },
   {
     slug: "design-engineer-salary",
+    published: "2026-10-15",
+    updated: "2026-10-15",
     title: "Design engineer salary guide",
     description:
       "Software design engineer salary from employer-posted yearly ranges, plus UX engineer salary. Mechanical averages are a different dataset.",
@@ -320,6 +324,8 @@ export const GUIDES = [
   },
   {
     slug: "design-engineer-job-description",
+    published: "2026-10-15",
+    updated: "2026-10-15",
     title: "Design engineer job description",
     description:
       "A design engineer job description for software roles, with a UX engineer job description section and the lines that attract the wrong applicants.",

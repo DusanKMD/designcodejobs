@@ -20,6 +20,7 @@ export async function generateMetadata({
     path: "/remote",
     index: robots.index,
     canonicalPath: robots.canonicalPath,
+    page,
   });
 }
 

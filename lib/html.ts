@@ -26,6 +26,22 @@ export function stripTags(html: string) {
     .trim();
 }
 
+/**
+ * Shift heading levels so the highest one in the description becomes `top`.
+ * The job page renders the description under its own h2, so employer h4s or
+ * h2s would otherwise skip or collide with the page outline.
+ */
+export function normalizeHeadings(html: string, top = 3) {
+  const levels = [...html.matchAll(/<h([1-6])\b/gi)].map((match) => Number(match[1]));
+  if (!levels.length) return html;
+  const offset = top - Math.min(...levels);
+  if (offset === 0) return html;
+  return html.replace(/<(\/?)h([1-6])\b/gi, (_, slash: string, level: string) => {
+    const next = Math.min(6, Math.max(1, Number(level) + offset));
+    return `<${slash}h${next}`;
+  });
+}
+
 export function sanitizeJobHtml(html: string) {
   const decoded = decodeHtmlEntities(html || "");
   return sanitizeHtml(decoded, {

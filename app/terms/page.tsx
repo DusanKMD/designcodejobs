@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
+import { PageHeader } from "@/components/page-header";
 import { breadcrumbLd } from "@/lib/jsonld";
 import { pageMeta } from "@/lib/seo";
 import { FEATURED_ADDON_USD, FEATURED_PRICE_USD, LISTING_DAYS, STANDARD_PRICE_USD } from "@/lib/site";
@@ -13,13 +14,16 @@ export const metadata = pageMeta({
 
 export default function TermsPage() {
   return (
-    <article className="mx-auto max-w-3xl px-5 py-12">
+    <article>
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Terms", path: "/terms" }])} />
-      <h1 className="text-5xl text-balance">Terms for posting a design engineer job</h1>
-      <p className="mt-5 max-w-2xl text-lg leading-8 text-fg">
-        Posting a design engineer job costs ${STANDARD_PRICE_USD} for {LISTING_DAYS} days. Featured placement is ${FEATURED_ADDON_USD} more, ${FEATURED_PRICE_USD} at checkout. The role goes live when payment is confirmed.
-      </p>
-      <div className="mt-8 space-y-4 text-[17px] leading-8 text-muted">
+      <PageHeader
+        narrow
+        crumbs={[{ name: "Jobs", path: "/" }, { name: "Terms", path: "/terms" }]}
+        kicker="Legal"
+        title="Terms for posting a design engineer job"
+        lede={<>Posting a design engineer job costs ${STANDARD_PRICE_USD} for {LISTING_DAYS} days. Featured placement is ${FEATURED_ADDON_USD} more, ${FEATURED_PRICE_USD} at checkout. The role goes live when payment is confirmed.</>}
+      />
+      <div className="mx-auto mt-10 max-w-3xl space-y-5 px-5 text-[16.5px] leading-8 text-fg-2 sm:px-6">
         <p>
           The role is published when Dodo Payments confirms the payment. Closing the checkout, a failed payment, or a missing payment status does not publish it. A refund expires the listing.
         </p>
@@ -33,7 +37,7 @@ export default function TermsPage() {
           The salary pages repeat employer-posted ranges. They are not an offer of pay and they are not converted between currencies.
         </p>
         <p>
-          These terms describe how the board works. They are not a substitute for advice from a lawyer. See also the <Link href="/privacy" className="text-fg underline underline-offset-4">privacy page</Link>.
+          These terms describe how the board works. They are not a substitute for advice from a lawyer. See also the <Link href="/privacy" className="link">privacy page</Link>.
         </p>
       </div>
     </article>

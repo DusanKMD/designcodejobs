@@ -49,6 +49,12 @@ function compareJobs(a: Job, b: Job) {
   return new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime();
 }
 
+export function pageParam(search: Record<string, string | string[] | undefined>) {
+  const raw = Array.isArray(search.page) ? search.page[0] : search.page;
+  const value = Number(raw || 1);
+  return Number.isFinite(value) && value > 0 ? Math.floor(value) : 1;
+}
+
 export function paginate<T>(items: T[], page = 1, size = PAGE_SIZE) {
   const safe = Number.isFinite(page) && page > 0 ? Math.floor(page) : 1;
   const pages = Math.max(1, Math.ceil(items.length / size));
