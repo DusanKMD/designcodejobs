@@ -1,10 +1,9 @@
 import { loadCompanies } from "@/lib/companies";
-import { decodeHtmlEntities } from "@/lib/html";
-import { getIngestCursor, saveIngestedJobs, setIngestCursor } from "@/lib/store";
+import { decodeHtmlEntities, stripTags } from "@/lib/html";
+import { getIngestCursor, saveIngestedJobs, setIngestCursor, upsertIngestedBoard } from "@/lib/store";
 import { buildJob } from "@/lib/model";
 import { shouldFetchDescription } from "@/lib/matching";
 import { parseSalaryFromText, salaryFromStructured } from "@/lib/salary";
-import { stripTags } from "@/lib/html";
 import type { Ats, Board, Company, EmploymentType, Job, Workplace } from "@/lib/types";
 
 type BoardRef = { company: Company; board: Board };
@@ -238,6 +237,7 @@ export async function readBoard(companySlug: string, ats: Ats) {
 
 export async function ingestBoard(ref: BoardRef) {
   const collected = await FETCHERS[ref.board.ats](ref.company, ref.board);
+  await upsertIngestedBoard(ref.company, ref.board);
   const kept = collected.jobs.filter((job) => job.status === "active" || job.status === "review");
   const result = await saveIngestedJobs(kept, {
     source: ref.board.ats,

@@ -3,7 +3,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { buildJob, expireJob, type JobDraft } from "@/lib/model";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
-import type { AlertSubscription, Job, Submission } from "@/lib/types";
+import type { AlertSubscription, Ats, Job, Submission } from "@/lib/types";
 import { LISTING_DAYS } from "@/lib/site";
 import { absoluteUrl } from "@/lib/site";
 import { notifyIndexing } from "@/lib/indexing";
@@ -16,8 +16,12 @@ type RuntimeFile = {
   cursor: number;
 };
 
-const RUNTIME = path.join(process.cwd(), "data", "runtime", "store.json");
 const SEED = path.join(process.cwd(), "data", "seed", "jobs.json");
+
+function runtimePath() {
+  if (process.env.NODE_ENV === "test" && process.env.RUNTIME_STORE_PATH) return process.env.RUNTIME_STORE_PATH;
+  return path.join(process.cwd(), "data", "runtime", "store.json");
+}
 
 let memo: { at: number; jobs: Job[] } | null = null;
 
@@ -27,15 +31,16 @@ function emptyRuntime(): RuntimeFile {
 
 function readRuntime(): RuntimeFile {
   try {
-    return { ...emptyRuntime(), ...JSON.parse(fs.readFileSync(RUNTIME, "utf8")) };
+    return { ...emptyRuntime(), ...JSON.parse(fs.readFileSync(runtimePath(), "utf8")) };
   } catch {
     return emptyRuntime();
   }
 }
 
 function writeRuntime(data: RuntimeFile) {
-  fs.mkdirSync(path.dirname(RUNTIME), { recursive: true });
-  fs.writeFileSync(RUNTIME, JSON.stringify(data, null, 2));
+  const file = runtimePath();
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
   memo = null;
 }
 
@@ -212,13 +217,13 @@ function jobRow(job: Job) {
   };
 }
 
-export async function createSubmission(input: Omit<Submission, "id" | "status" | "jobId" | "lemonsqueezyOrderId" | "createdAt" | "paidAt">) {
+export async function createSubmission(input: Omit<Submission, "id" | "status" | "jobId" | "paymentId" | "createdAt" | "paidAt">) {
   const submission: Submission = {
     ...input,
     id: crypto.randomUUID(),
     status: "pending_payment",
     jobId: null,
-    lemonsqueezyOrderId: null,
+    paymentId: null,
     createdAt: new Date().toISOString(),
     paidAt: null,
   };
@@ -276,7 +281,7 @@ function submissionFromRow(row: Record<string, unknown>): Submission {
     featured: Boolean(row.featured),
     status: row.status as Submission["status"],
     jobId: (row.job_id as string | null) ?? null,
-    lemonsqueezyOrderId: (row.lemonsqueezy_order_id as string | null) ?? null,
+    paymentId: (row.payment_id as string | null) ?? null,
     createdAt: String(row.created_at),
     paidAt: (row.paid_at as string | null) ?? null,
   };
@@ -312,9 +317,12 @@ export async function publishPaidSubmission(submissionId: string, orderId: strin
     featured,
   };
   const job = buildJob(draft);
+  if (submission.paymentId === orderId && submission.status === "paid" && !submission.jobId) {
+    return { ok: false as const, duplicate: true, reason: "paid, but the role did not match a software design job" };
+  }
   if (job.status === "rejected") {
-    await updateSubmission(submission.id, { status: "paid", lemonsqueezyOrderId: orderId, paidAt: new Date().toISOString() });
-    return { ok: false as const, reason: "paid, but the role did not match a software design job" };
+    await updateSubmission(submission.id, { status: "paid", paymentId: orderId, paidAt: new Date().toISOString() });
+    return { ok: false as const, duplicate: false, reason: "paid, but the role did not match a software design job" };
   }
   const now = new Date();
   const until = new Date(now.getTime() + LISTING_DAYS * 86_400_000).toISOString();
@@ -329,7 +337,7 @@ export async function publishPaidSubmission(submissionId: string, orderId: strin
   await updateSubmission(submission.id, {
     status: "published",
     jobId: job.id,
-    lemonsqueezyOrderId: orderId,
+    paymentId: orderId,
     paidAt: now.toISOString(),
   });
   const url = absoluteUrl(`/jobs/${job.slug}`);
@@ -341,12 +349,12 @@ export async function publishPaidSubmission(submissionId: string, orderId: strin
 async function updateSubmission(id: string, patch: Partial<Submission>) {
   if (isSupabaseConfigured()) {
     const supabase = getSupabase();
-    const { error } = await supabase!.from("submissions").update({
-      status: patch.status,
-      job_id: patch.jobId,
-      lemonsqueezy_order_id: patch.lemonsqueezyOrderId,
-      paid_at: patch.paidAt,
-    }).eq("id", id);
+    const row: Record<string, unknown> = {};
+    if (patch.status !== undefined) row.status = patch.status;
+    if (patch.jobId !== undefined) row.job_id = patch.jobId;
+    if (patch.paymentId !== undefined) row.payment_id = patch.paymentId;
+    if (patch.paidAt !== undefined) row.paid_at = patch.paidAt;
+    const { error } = await supabase!.from("submissions").update(row).eq("id", id);
     if (error) throw error;
     return;
   }
@@ -360,20 +368,49 @@ export async function refundSubmission(orderId: string) {
   let submission: Submission | null = null;
   if (isSupabaseConfigured()) {
     const supabase = getSupabase();
-    const { data } = await supabase!.from("submissions").select("*").eq("lemonsqueezy_order_id", orderId).maybeSingle();
+    const { data } = await supabase!.from("submissions").select("*").eq("payment_id", orderId).maybeSingle();
     submission = data ? submissionFromRow(data) : null;
   } else {
-    submission = readRuntime().submissions.find((item) => item.lemonsqueezyOrderId === orderId) || null;
+    submission = readRuntime().submissions.find((item) => item.paymentId === orderId) || null;
   }
-  if (!submission?.jobId) return;
+  if (!submission?.jobId) return { ok: true as const, expired: false };
   const job = jobs.find((item) => item.id === submission!.jobId);
-  if (!job) return;
+  if (!job) return { ok: true as const, expired: false };
   const closed = expireJob(job);
   await persistJobs([closed]);
   await updateSubmission(submission.id, { status: "refunded" });
   const url = absoluteUrl(`/jobs/${closed.slug}`);
   void notifyIndexing(url, "URL_DELETED");
   void submitIndexNow([url]);
+  return { ok: true as const, expired: true, slug: closed.slug };
+}
+
+/** Record a company and its ATS board after a successful ingest read. No-op without Supabase. */
+export async function upsertIngestedBoard(
+  company: { slug: string; name: string; domain: string },
+  board: { ats: Ats; token: string; apiUrl: string },
+) {
+  if (!isSupabaseConfigured()) return;
+  const supabase = getSupabase();
+  if (!supabase) return;
+  const now = new Date().toISOString();
+  const { data, error } = await supabase
+    .from("companies")
+    .upsert({ slug: company.slug, name: company.name, domain: company.domain, updated_at: now }, { onConflict: "slug" })
+    .select("id")
+    .single();
+  if (error) throw error;
+  const { error: boardError } = await supabase.from("company_boards").upsert(
+    {
+      company_id: data.id,
+      ats: board.ats,
+      board_token: board.token,
+      api_url: board.apiUrl,
+      last_synced_at: now,
+    },
+    { onConflict: "ats,board_token" },
+  );
+  if (boardError) throw boardError;
 }
 
 export async function createAlert(email: string, filters: AlertSubscription["filters"]) {
