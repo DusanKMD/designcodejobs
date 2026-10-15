@@ -6,6 +6,7 @@ import { websiteLd } from "@/lib/jsonld";
 import { filterJobs, listingIntro, listingRobots, updatedLabel } from "@/lib/query";
 import { pageMeta } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
+import type { Workplace } from "@/lib/types";
 
 const LINKS = [
   ...ROLES.filter((role) => role.priority).map((role) => ({ href: `/roles/${role.slug}`, label: role.h1 })),
@@ -15,15 +16,24 @@ const LINKS = [
   { href: "/salary", label: "Design engineer salary" },
 ];
 
+function workplaceParam(value: string | string[] | undefined): Workplace | undefined {
+  const raw = Array.isArray(value) ? value[0] : value;
+  if (raw === "remote" || raw === "hybrid" || raw === "onsite") return raw;
+  return undefined;
+}
+
 export async function generateMetadata({
   searchParams,
 }: {
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const search = await searchParams;
-  const jobs = filterJobs(await getAllJobs(), { q: typeof search.q === "string" ? search.q : undefined });
+  const q = typeof search.q === "string" ? search.q : undefined;
+  const workplace = workplaceParam(search.workplace);
+  let jobs = filterJobs(await getAllJobs(), { q });
+  if (workplace) jobs = jobs.filter((job) => job.workplace === workplace);
   const page = Number(search.page || 1) || 1;
-  const robots = listingRobots(jobs.length, "/", { page, filtered: Boolean(search.q || search.seniority) });
+  const robots = listingRobots(jobs.length, "/", { page, filtered: Boolean(q || search.seniority || workplace) });
   return pageMeta({
     title: "Design engineer jobs",
     description:
@@ -41,19 +51,37 @@ export default async function HomePage({
 }) {
   const search = await searchParams;
   const q = typeof search.q === "string" ? search.q : undefined;
-  const jobs = filterJobs(await getAllJobs(), { q });
+  const workplace = workplaceParam(search.workplace);
+  const all = await getAllJobs();
+  const open = filterJobs(all, {});
+  let jobs = filterJobs(all, { q });
+  if (workplace) jobs = jobs.filter((job) => job.workplace === workplace);
   const page = Number(search.page || 1) || 1;
   const saved = search.alert === "saved";
+  const invalid = search.alert === "invalid";
+  const featured = jobs.filter((job) => job.featured);
+  const rest = featured.length ? jobs.filter((job) => !job.featured) : jobs;
+  const companies = [...new Map(open.map((job) => [job.companySlug, job.companyName])).entries()]
+    .map(([slug, name]) => ({ slug, name }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  const params = new URLSearchParams();
+  if (q) params.set("q", q);
+  if (workplace) params.set("workplace", workplace);
 
   return (
     <>
       <JsonLd data={websiteLd()} />
       <Listing
+        hero
         h1="Design engineer jobs"
+        value="A board for designers who code. Descriptions stay here. Applications go to the original posting."
         path="/"
-        jobs={jobs}
+        jobs={rest}
+        featuredJobs={featured}
+        openCount={open.length}
+        companies={companies}
         page={page}
-        query={q ? `q=${encodeURIComponent(q)}` : undefined}
+        query={params.toString() || undefined}
         crumbs={[{ name: "Design engineer jobs", path: "/" }]}
         intro={listingIntro({
           subject: "Design engineer jobs",
@@ -67,17 +95,43 @@ export default async function HomePage({
         <ul className="mt-6 flex gap-2 overflow-x-auto pb-1 text-sm">
           {LINKS.map((link) => (
             <li key={link.href}>
-              <Link href={link.href} className="inline-flex whitespace-nowrap rounded-full border border-line px-3 py-1 hover:bg-chip">
+              <Link href={link.href} className="inline-flex whitespace-nowrap rounded-full border border-line bg-bg/80 px-3 py-1 hover:bg-chip">
                 {link.label}
               </Link>
             </li>
           ))}
         </ul>
-        <form action="/" className="mt-4 flex max-w-md gap-2">
-          <input name="q" defaultValue={q} placeholder="Search titles and companies" className="h-10 flex-1 rounded-full border border-line bg-bg px-4 text-sm" />
-          <button className="h-10 rounded-full border border-line px-4 text-sm" type="submit">Search</button>
+        <form action="/" className="mt-4 grid max-w-2xl gap-3 sm:grid-cols-[1fr_auto_auto]">
+          <div>
+            <label htmlFor="q" className="text-sm font-medium">Search</label>
+            <input
+              id="q"
+              name="q"
+              defaultValue={q}
+              placeholder="Titles and companies"
+              className="mt-1 h-11 w-full rounded-full border border-line bg-bg px-4 text-sm"
+            />
+          </div>
+          <div>
+            <label htmlFor="workplace" className="text-sm font-medium">Workplace</label>
+            <select
+              id="workplace"
+              name="workplace"
+              defaultValue={workplace || ""}
+              className="mt-1 h-11 w-full rounded-full border border-line bg-bg px-4 text-sm"
+            >
+              <option value="">Any</option>
+              <option value="remote">Remote</option>
+              <option value="hybrid">Hybrid</option>
+              <option value="onsite">On-site</option>
+            </select>
+          </div>
+          <button className="h-11 self-end rounded-full bg-fg px-5 text-sm font-medium text-bg" type="submit">
+            Search
+          </button>
         </form>
-        {saved ? <p className="mt-3 text-sm text-muted">Alert saved. Nothing is emailed yet.</p> : null}
+        {saved ? <p className="mt-3 text-sm text-muted" role="status">Alert saved. Nothing is emailed yet.</p> : null}
+        {invalid ? <p className="mt-3 text-sm text-fg" role="alert">Enter a valid email to save an alert.</p> : null}
       </Listing>
     </>
   );

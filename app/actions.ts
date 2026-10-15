@@ -4,9 +4,9 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { createCheckoutSession } from "@/lib/dodo";
 import { sendAlertConfirmation } from "@/lib/email";
+import { parsePostJob, valuesFromForm } from "@/lib/post-job";
 import { absoluteUrl } from "@/lib/site";
 import { createAlert, createSubmission, unsubscribeAlert } from "@/lib/store";
-import type { Workplace } from "@/lib/types";
 
 function text(form: FormData, key: string) {
   return String(form.get(key) || "").trim();
@@ -26,46 +26,30 @@ export async function subscribeAction(form: FormData) {
   redirect("/?alert=saved");
 }
 
-export async function postJobAction(form: FormData) {
-  if (text(form, "company_website")) return;
-  const email = text(form, "email").toLowerCase();
-  const companyName = text(form, "company");
-  const title = text(form, "title");
-  const description = text(form, "description");
-  const applyUrl = text(form, "apply_url");
-  const workplace = text(form, "workplace") as Workplace;
-  if (!emailOk(email) || companyName.length < 2 || title.length < 4 || description.length < 80) {
-    redirect("/post-a-job?error=1");
-  }
-  let parsed: URL;
-  try {
-    parsed = new URL(applyUrl);
-    if (parsed.protocol !== "http:" && parsed.protocol !== "https:") throw new Error("bad");
-  } catch {
-    redirect("/post-a-job?error=1");
-  }
-  const min = Number(text(form, "salary_min")) || null;
-  const max = Number(text(form, "salary_max")) || null;
-  const featured = form.get("featured") === "on";
+export async function postJobAction(form: FormData): Promise<{ ok: false; errors: Record<string, string> } | { ok: true } | void> {
+  if (text(form, "company_website")) return { ok: true };
+  const parsed = parsePostJob(valuesFromForm(form));
+  if (!parsed.ok) return parsed;
+  const data = parsed.data;
   const submission = await createSubmission({
-    email,
-    companyName,
-    companyDomain: text(form, "domain").replace(/^https?:\/\//, "").replace(/\/.*$/, ""),
-    title,
-    location: text(form, "location"),
-    workplace: workplace === "remote" || workplace === "hybrid" ? workplace : "onsite",
-    descriptionHtml: `<p>${description.replace(/</g, "").replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>")}</p>`,
-    applyUrl: parsed.toString(),
-    salaryMin: min,
-    salaryMax: max || min,
-    salaryCurrency: text(form, "salary_currency") || "USD",
-    featured,
+    email: data.email,
+    companyName: data.companyName,
+    companyDomain: data.companyDomain,
+    title: data.title,
+    location: data.location,
+    workplace: data.workplace,
+    descriptionHtml: data.descriptionHtml,
+    applyUrl: data.applyUrl,
+    salaryMin: data.salaryMin,
+    salaryMax: data.salaryMax,
+    salaryCurrency: data.salaryCurrency,
+    featured: data.featured,
   });
   const url = await createCheckoutSession({
     submissionId: submission.id,
-    email,
-    name: companyName,
-    featured,
+    email: data.email,
+    name: data.companyName,
+    featured: data.featured,
     returnUrl: absoluteUrl(`/post-a-job/confirmation?submission=${submission.id}`),
   });
   if (!url) redirect(`/post-a-job/confirmation?submission=${submission.id}&pending=1`);

@@ -25,6 +25,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: guide.description,
     path: `/guides/${slug}`,
     index: true,
+    ogType: "article",
+    image: `/guides/${slug}/opengraph-image`,
   });
 }
 
@@ -40,10 +42,11 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
     headline: guide.h1,
     description: guide.description,
     author: { "@type": "Organization", name: "Design Code Jobs" },
+    image: absoluteUrl(`/guides/${slug}/opengraph-image`),
     mainEntityOfPage: absoluteUrl(`/guides/${slug}`),
   };
   return (
-    <article className="mx-auto max-w-3xl px-5 py-10">
+    <article className="mx-auto max-w-3xl px-5 py-12">
       <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Guides", path: "/guides" }, { name: guide.title, path: `/guides/${slug}` }])} />
       <JsonLd data={article} />
       <p className="text-sm text-muted">

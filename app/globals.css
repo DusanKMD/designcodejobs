@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --fg: #171717;
-  --muted: #626262;
-  --line: #ebebeb;
-  --chip: #f6f6f6;
-  --accent: #111111;
+  --bg: #faf9f6;
+  --fg: #1a1916;
+  --muted: #534f48;
+  --line: #e4e1d8;
+  --chip: #f1efe8;
+  --accent: #1d4ed8;
+  --accent-fg: #ffffff;
   color-scheme: light;
 }
 
 .dark {
-  --bg: #090909;
-  --fg: #ededed;
-  --muted: #a0a0a0;
-  --line: #262626;
-  --chip: #141414;
-  --accent: #ededed;
+  --bg: #0e0e0c;
+  --fg: #f4f2ea;
+  --muted: #c8c4b8;
+  --line: #2c2b26;
+  --chip: #1a1916;
+  --accent: #9db4ff;
+  --accent-fg: #0e0e0c;
   color-scheme: dark;
 }
 
@@ -27,12 +29,14 @@
   --color-line: var(--line);
   --color-chip: var(--chip);
   --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 html {
   background: var(--bg);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -42,54 +46,113 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-::selection {
-  background: #171717;
-  color: #fff;
+h1 {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
 }
 
-.dark ::selection {
-  background: #ededed;
-  color: #111;
+::selection {
+  background: color-mix(in srgb, var(--accent) 24%, var(--bg));
+  color: var(--fg);
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: 0.75rem;
+  z-index: 50;
+  transform: translateY(-150%);
+  border-radius: 999px;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.5rem 0.9rem;
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+#content {
+  scroll-margin-top: 5.5rem;
+}
+
+.blueprint {
+  background-image:
+    radial-gradient(color-mix(in srgb, var(--fg) 14%, transparent) 1px, transparent 1px),
+    linear-gradient(to right, color-mix(in srgb, var(--accent) 18%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--accent) 18%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px, 88px 88px, 88px 88px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+}
+
+.lift {
+  transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.lift:hover {
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lift,
+  .lift:hover {
+    transform: none;
+  }
+}
+
 .prose h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  font-weight: 500;
+  font-size: 2.75rem;
+  line-height: 1.05;
 }
 
 .prose h2 {
-  margin-top: 2.25rem;
-  font-size: 1.25rem;
+  margin-top: 2.5rem;
+  font-size: 1.35rem;
   letter-spacing: -0.02em;
   font-weight: 550;
+  color: var(--fg);
 }
 
 .prose h3 {
-  margin-top: 1.5rem;
-  font-size: 1rem;
+  margin-top: 1.75rem;
+  font-size: 1.05rem;
   font-weight: 550;
+  color: var(--fg);
 }
 
 .prose p,
 .prose li {
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .prose p {
-  margin-top: 0.85rem;
+  margin-top: 1rem;
 }
 
 .prose ul,
 .prose ol {
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
   padding-left: 1.2rem;
 }
 
@@ -109,7 +172,7 @@ body {
 
 .job-body h2,
 .job-body h3 {
-  margin-top: 1.75rem;
+  margin-top: 1.85rem;
   font-size: 1.05rem;
   font-weight: 550;
   letter-spacing: -0.01em;
@@ -120,13 +183,13 @@ body {
 .job-body li,
 .job-body div {
   color: var(--muted);
-  line-height: 1.7;
+  line-height: 1.75;
 }
 
 .job-body p,
 .job-body ul,
 .job-body ol {
-  margin-top: 0.8rem;
+  margin-top: 0.9rem;
 }
 
 .job-body ul,

@@ -11,7 +11,7 @@ export const metadata = pageMeta({
 export default function AboutPage() {
   return (
     <article className="mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-medium tracking-tight">About</h1>
+      <h1 className="text-5xl">About</h1>
       <div className="mt-6 space-y-4 text-[15px] leading-7 text-muted">
         <p>
           Design Code Jobs lists software roles for designers who code: design engineers, UX engineers, UI engineers, design technologists, creative technologists, and design systems engineers. The phrase “design engineer” also means mechanical, hardware, chip, and AV work. Those jobs are filtered out.
@@ -26,7 +26,14 @@ export default function AboutPage() {
           <Link href="/post-a-job" className="text-fg underline underline-offset-4">Post a job</Link>
           {" · "}
           <Link href="/guides/what-is-a-design-engineer" className="text-fg underline underline-offset-4">What is a design engineer?</Link>
+          {" · "}
+          <Link href="/privacy" className="text-fg underline underline-offset-4">Privacy</Link>
+          {" · "}
+          <Link href="/terms" className="text-fg underline underline-offset-4">Terms</Link>
         </p>
+        <h2 id="contact" className="pt-4 text-xl font-medium tracking-tight text-fg">Contact</h2>
+        {/* TODO: no support email is configured. Publish it here when one exists. */}
+        <p>A public support email is not configured yet.</p>
       </div>
     </article>
   );

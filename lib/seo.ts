@@ -7,8 +7,11 @@ export function pageMeta(input: {
   path: string;
   index: boolean;
   canonicalPath?: string;
+  ogType?: "website" | "article";
+  image?: string;
 }): Metadata {
   const canonical = absoluteUrl(input.canonicalPath || input.path);
+  const image = absoluteUrl(input.image || "/opengraph-image");
   return {
     title: input.title,
     description: input.description,
@@ -19,8 +22,14 @@ export function pageMeta(input: {
       description: input.description,
       url: canonical,
       siteName: SITE_NAME,
-      type: "website",
+      type: input.ogType || "website",
+      images: [{ url: image, width: 1200, height: 630, alt: input.title }],
     },
-    twitter: { card: "summary_large_image", title: input.title, description: input.description },
+    twitter: {
+      card: "summary_large_image",
+      title: input.title,
+      description: input.description,
+      images: [image],
+    },
   };
 }

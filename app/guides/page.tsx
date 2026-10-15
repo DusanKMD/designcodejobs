@@ -12,7 +12,7 @@ export const metadata = pageMeta({
 export default function GuidesPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-10">
-      <h1 className="text-4xl font-medium tracking-tight">Guides</h1>
+      <h1 className="text-5xl">Guides</h1>
       <p className="mt-4 text-[15px] leading-7 text-muted">
         What the role is, how posted salary is counted, and how to write the job description. Pay figures in the salary guide are rendered from the same open listings as the salary pages.
       </p>

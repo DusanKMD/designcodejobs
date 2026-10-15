@@ -43,7 +43,7 @@ export default async function SalaryPage() {
         })}
       />
       <p className="text-sm text-muted"><Link href="/" className="hover:text-fg">Jobs</Link> / Design engineer salary</p>
-      <h1 className="mt-4 text-4xl font-medium tracking-tight sm:text-5xl">Design engineer salary</h1>
+      <h1 className="mt-4 text-5xl text-balance">Design engineer salary</h1>
       <p className="mt-5 text-[15px] leading-7 text-muted">
         Design engineer salary on the open web is mostly mechanical and hardware data. This page uses only base pay that employers wrote on software postings: design engineers who ship UI, plus UX engineer, UI engineer, design technologist, and design systems roles. Nothing here is estimated, crowdsourced, or converted from total compensation.
       </p>
@@ -55,6 +55,13 @@ export default async function SalaryPage() {
           ? ` ${others.map((item) => `${item.currency} ranges run ${formatMoney(item.min, item.currency)}–${formatMoney(item.max, item.currency)} (${item.count})`).join(". ")}. Those figures stay in the currency the employer posted.`
           : ""}
       </p>
+      {usd ? (
+        <p className="mt-8 border-y border-line py-6">
+          <span className="block text-sm text-muted">Median posted midpoint, yearly USD</span>
+          <span className="mt-1 block text-5xl tabular-nums">{formatMoney(usd.median, "USD")}</span>
+          <span className="mt-2 block text-sm text-muted">Across {usd.count} employer-posted ranges. Not a market estimate.</span>
+        </p>
+      ) : null}
       {design.length ? (
         <p className="mt-3 text-[15px] leading-7 text-muted">
           Software design engineer postings with pay: {rangeLabel(design)} ({design.reduce((sum, item) => sum + item.count, 0)} listings).
@@ -64,11 +71,12 @@ export default async function SalaryPage() {
       <h2 className="mt-10 text-xl font-medium tracking-tight">By role</h2>
       <div className="mt-4 overflow-x-auto">
         <table className="w-full text-left text-sm">
+          <caption className="sr-only">Posted yearly salary by role</caption>
           <thead className="text-muted">
             <tr className="border-b border-line">
-              <th className="py-2 font-medium">Role</th>
-              <th className="py-2 font-medium">Posted range</th>
-              <th className="py-2 font-medium">Listings</th>
+              <th scope="col" className="py-2 font-medium">Role</th>
+              <th scope="col" className="py-2 font-medium">Posted range</th>
+              <th scope="col" className="py-2 font-medium">Listings</th>
             </tr>
           </thead>
           <tbody>
