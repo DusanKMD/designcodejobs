@@ -20,7 +20,7 @@ export default function AboutPage() {
           Listings are read from public Greenhouse, Lever, and Ashby boards. The full description is hosted here, and the apply link goes to the original posting. Salary is shown only when the employer published it.
         </p>
         <p>
-          A standard post is $129 for 30 days. Featured placement is an extra $99. Checkout uses Lemon Squeezy. The board is built to be indexed as job pages, with role, salary, remote, internship, and Framer pages aimed at the searches that actually have volume.
+          A standard post is $129 for 30 days. Featured placement is an extra $99. Checkout uses Dodo Payments. The board is built to be indexed as job pages, with role, salary, remote, internship, and Framer pages aimed at the searches that actually have volume.
         </p>
         <p>
           <Link href="/post-a-job" className="text-fg underline underline-offset-4">Post a job</Link>

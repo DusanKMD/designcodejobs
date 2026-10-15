@@ -2,9 +2,9 @@
 
 A job board for software design engineers: designers who code, UX engineers, UI engineers, design technologists, creative technologists, and design systems engineers. Mechanical, hardware, chip, and audiovisual roles are filtered out.
 
-The site is a Next.js App Router app. It reads public Greenhouse, Lever, and Ashby boards, hosts the full description, and marks up each open role with JobPosting structured data. It runs without accounts: jobs fall back to `data/seed/jobs.json`. Supabase, Lemon Squeezy, Google Indexing, and IndexNow are optional and stay off until their env vars are set.
+The site is a Next.js App Router app. It reads public Greenhouse, Lever, and Ashby boards, hosts the full description, and marks up each open role with JobPosting structured data. It runs without accounts: jobs fall back to `data/seed/jobs.json`. Supabase, Dodo Payments, Google Indexing, and IndexNow are optional and stay off until their env vars are set.
 
-Pushes to this branch deploy on Railway. The public site is https://designcodejobs.com.
+The `main` branch deploys on Railway. The public site is https://designcodejobs.com.
 
 ## Local setup
 
@@ -33,16 +33,16 @@ See `.env.example`.
 | `SUPABASE_SERVICE_ROLE_KEY` | No | Bypasses RLS. Never prefix it with `NEXT_PUBLIC_`. |
 | `CRON_SECRET` | Production | `Authorization: Bearer` for `/api/cron/ingest` and `/api/indexnow`. Production returns 401 if it is missing. |
 | `REVIEW_SECRET` | No | Cookie gate for `/review`, the low-confidence queue. |
-| `LEMONSQUEEZY_CHECKOUT_STANDARD_URL` | To charge | Hosted checkout for the $129 listing. |
-| `LEMONSQUEEZY_CHECKOUT_FEATURED_URL` | To charge | Hosted checkout for the $228 featured listing. |
-| `LEMONSQUEEZY_VARIANT_STANDARD` | No | When set, the webhook only treats this variant as standard. |
-| `LEMONSQUEEZY_VARIANT_FEATURED` | No | When set, the webhook treats this variant as featured. |
-| `LEMONSQUEEZY_WEBHOOK_SECRET` | To publish paid posts | HMAC-SHA256 of the raw body, compared to `X-Signature`. |
+| `DODO_PAYMENTS_API_KEY` | To charge | API key from Developer → API Keys. Test and live keys are separate. |
+| `DODO_PAYMENTS_WEBHOOK_KEY` | To publish paid posts | Signing secret from Developer → Webhooks. Standard Webhooks (`webhook-id`, `webhook-signature`, `webhook-timestamp`). |
+| `DODO_PAYMENTS_ENVIRONMENT` | To charge | `test_mode` (`https://test.dodopayments.com`) or `live_mode` (`https://live.dodopayments.com`). There is no default. |
+| `DODO_PAYMENTS_PRODUCT_STANDARD` | To charge | Product id for the $129 one-time 30-day post. |
+| `DODO_PAYMENTS_PRODUCT_FEATURED` | To charge | Product id for the $99 featured add-on. A featured checkout includes both products. |
 | `GOOGLE_INDEXING_CREDENTIALS` | No | Service-account JSON on one line. Empty means the Indexing API is a no-op. |
 | `INGEST_BATCH` | No | Company boards per cron run. Default 20. |
 | `INDEXNOW_KEY` | To notify IndexNow | Public key, 8–128 characters (`a-z`, `A-Z`, `0-9`, `-`). Served at `https://designcodejobs.com/<key>.txt`. The committed default is `10bf5cfa82ac960b7a1d23c83bbf60ab`. |
 
-Stripe is not used. Lemon Squeezy is the checkout, including for a seller in Serbia.
+Paid posts are charged through Dodo Payments. The listing stays pending until `payment.succeeded` arrives.
 
 ## Data
 
@@ -52,7 +52,9 @@ Stripe is not used. Lemon Squeezy is the checkout, including for a seller in Ser
 
 Without Supabase, the app reads the seed file and overlays `data/runtime/store.json` (gitignored) for local submissions, alerts, and ingest writes.
 
-With Supabase, apply the migration in `supabase/migrations/20261015103000_init_job_board.sql` (SQL editor or `supabase db push` once the CLI is linked). Tables: `companies`, `company_boards`, `jobs` (jsonb payload plus denormalized columns), `submissions`, `alert_subscriptions`, `ingest_state`. RLS is on. Public `SELECT` is limited to companies, boards, and jobs with status `active` or `expired`. Service role does the writes. If a Supabase read fails, the app falls back to the seed file.
+With Supabase, apply `supabase/migrations/20261015103000_init_job_board.sql` and then `supabase/migrations/20261015150000_dodo_payments.sql` (SQL editor or `supabase db push` once the CLI is linked). The second migration renames `submissions.lemonsqueezy_order_id` to `payment_id`. Tables: `companies`, `company_boards`, `jobs` (jsonb payload plus denormalized columns), `submissions`, `alert_subscriptions`, `ingest_state`. RLS is on. Public `SELECT` is limited to companies, boards, and jobs with status `active` or `expired`. Service role does the writes. If a Supabase read fails, the app falls back to the seed file.
+
+A successful board read upserts that company (`slug`) and board (`ats`, `board_token`) and sets `last_synced_at`. A failed board is left alone. Without Supabase the upsert is skipped.
 
 ## Ingest
 
@@ -98,11 +100,17 @@ Guide outlines, not finished essays, are MDX in `content/guides/`:
 
 ## Posting a job
 
-`/post-a-job` collects the listing and sends the buyer to Lemon Squeezy. Standard is $129 for 30 days. Featured adds $99 ($228 total).
+`/post-a-job` saves the listing as `pending_payment`, creates a Dodo checkout session, and redirects to `checkout_url`. Standard is $129 for 30 days. Featured adds the $99 product on the same cart ($228 total). The return URL is `https://designcodejobs.com/post-a-job/confirmation?submission=<id>`. Dodo appends `payment_id`, `status`, and the customer email. The browser return does not publish the role.
 
-In Lemon Squeezy, create those two products and paste each variant’s hosted checkout URL into the env vars. Point a webhook at `https://designcodejobs.com/api/webhooks/lemonsqueezy` for `order_created` and `order_refunded`. The signing secret is `LEMONSQUEEZY_WEBHOOK_SECRET`. The app checks `X-Signature` against the raw body. A paid order publishes the submission. A refund expires it. A title that matches a hard exclusion can be paid and still stay unpublished. If the checkout URL is empty, the form returns to the confirmation page with `pending=1` and nothing is charged.
+### Dodo dashboard
 
-The checkout link adds `checkout[custom][submission_id]` and `checkout[email]`.
+Use the same mode (Test or Live) for the API key, the products, and the webhook.
+
+1. Products → create two one-time products: a standard 30-day job post at $129, and a featured add-on at $99. Copy each product id into `DODO_PAYMENTS_PRODUCT_STANDARD` and `DODO_PAYMENTS_PRODUCT_FEATURED`.
+2. Developer → API Keys → create a key. Set `DODO_PAYMENTS_API_KEY` and `DODO_PAYMENTS_ENVIRONMENT` to `test_mode` or `live_mode`.
+3. Developer → Webhooks → add `https://designcodejobs.com/api/webhooks/dodo`. Subscribe to `payment.succeeded`, `payment.failed`, `payment.cancelled`, and `refund.succeeded`. Copy the signing secret into `DODO_PAYMENTS_WEBHOOK_KEY`.
+
+`payment.succeeded` publishes the post for 30 days. Featured is set when the add-on product is in `product_cart` or `metadata.featured` is true, and `featured_until` matches the listing expiry. A repeat delivery of the same payment is a no-op. `payment.failed` and `payment.cancelled` leave the submission pending so the buyer can try again. `refund.succeeded` expires the job. A title that matches a hard exclusion can be paid and still stay unpublished. If the API key, environment, or product ids are missing, the form returns to the confirmation page with `pending=1` and nothing is charged.
 
 ## Email alerts
 
@@ -133,7 +141,7 @@ The GitHub branch deploys itself on Railway. This is not a Vercel app. `vercel.j
 1. In the Railway service, set the env vars in `.env.example`. Production needs `CRON_SECRET`, `NEXT_PUBLIC_SITE_URL=https://designcodejobs.com`, and `INDEXNOW_KEY=10bf5cfa82ac960b7a1d23c83bbf60ab`.
 2. Attach `designcodejobs.com`. Requests to `www.designcodejobs.com` and any `*.up.railway.app` host 301 to `https://designcodejobs.com`, keeping the path and query.
 3. Apply the Supabase migration and set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` when Postgres is ready.
-4. Add the Lemon Squeezy webhook and checkout URLs.
+4. Add the Dodo Payments env vars and the webhook in the same mode as the API key. See Posting a job.
 5. Schedule a daily request to `GET /api/cron/ingest` with `Authorization: Bearer $CRON_SECRET`. Railway does not run the Vercel cron in `vercel.json`.
 
 ### DNS
@@ -146,4 +154,4 @@ Set `REVIEW_SECRET`, open `/review`, and submit the secret. The page lists match
 
 ## Tests
 
-`npm test` covers title matching (including hardware exclusions and design-systems titles), JobPosting field mapping, salary currency separation, Lemon Squeezy signature checks, canonical URLs, the sitemap, and IndexNow batching.
+`npm test` covers title matching (including hardware exclusions and design-systems titles), JobPosting field mapping, salary currency separation, Dodo webhook signatures and paid publish, canonical URLs, the sitemap, and IndexNow batching.

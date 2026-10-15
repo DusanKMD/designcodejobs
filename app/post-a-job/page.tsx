@@ -19,7 +19,7 @@ export default async function PostJobPage({
     <div className="mx-auto max-w-xl px-5 py-10">
       <h1 className="text-4xl font-medium tracking-tight">Post a job</h1>
       <p className="mt-4 text-[15px] leading-7 text-muted">
-        ${STANDARD_PRICE_USD} for 30 days. Add featured placement for ${FEATURED_PRICE_USD - STANDARD_PRICE_USD} more (${FEATURED_PRICE_USD} total). The role goes live when Lemon Squeezy confirms payment. Hardware and mechanical roles are not listed.
+        ${STANDARD_PRICE_USD} for 30 days. Add featured placement for ${FEATURED_PRICE_USD - STANDARD_PRICE_USD} more (${FEATURED_PRICE_USD} total). The role goes live when Dodo Payments confirms the payment. Hardware and mechanical roles are not listed.
       </p>
       {search.error ? <p className="mt-4 text-sm">Check the email, title, apply link, and description (at least a short paragraph).</p> : null}
       <form action={postJobAction} className="mt-8 space-y-4">

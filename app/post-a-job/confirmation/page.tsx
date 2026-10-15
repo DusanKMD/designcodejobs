@@ -19,7 +19,7 @@ export default async function ConfirmationPage({
       <h1 className="text-4xl font-medium tracking-tight">Listing received</h1>
       <p className="mt-4 text-[15px] leading-7 text-muted">
         {pending
-          ? "The draft is saved. Checkout is not configured in this environment, so the role is not public yet. Add the Lemon Squeezy checkout URLs and the webhook will publish it after payment."
+          ? "The draft is saved. Checkout is not configured in this environment, so the role is not public yet. Set the Dodo Payments API key, product IDs, and environment, and the webhook will publish the role after payment."
           : "If payment succeeded, the role is published for 30 days. It can take a moment for the webhook to land."}
       </p>
       {typeof search.submission === "string" ? <p className="mt-4 font-mono text-xs text-muted">Reference {search.submission}</p> : null}

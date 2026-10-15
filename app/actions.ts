@@ -2,8 +2,9 @@
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { createCheckoutSession } from "@/lib/dodo";
 import { sendAlertConfirmation } from "@/lib/email";
-import { checkoutUrl } from "@/lib/lemonsqueezy";
+import { absoluteUrl } from "@/lib/site";
 import { createAlert, createSubmission, unsubscribeAlert } from "@/lib/store";
 import type { Workplace } from "@/lib/types";
 
@@ -60,7 +61,13 @@ export async function postJobAction(form: FormData) {
     salaryCurrency: text(form, "salary_currency") || "USD",
     featured,
   });
-  const url = checkoutUrl(featured, submission.id, email);
+  const url = await createCheckoutSession({
+    submissionId: submission.id,
+    email,
+    name: companyName,
+    featured,
+    returnUrl: absoluteUrl(`/post-a-job/confirmation?submission=${submission.id}`),
+  });
   if (!url) redirect(`/post-a-job/confirmation?submission=${submission.id}&pending=1`);
   redirect(url);
 }

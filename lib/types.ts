@@ -119,7 +119,7 @@ export type Submission = {
   featured: boolean;
   status: "pending_payment" | "paid" | "published" | "refunded";
   jobId: string | null;
-  lemonsqueezyOrderId: string | null;
+  paymentId: string | null;
   createdAt: string;
   paidAt: string | null;
 };
