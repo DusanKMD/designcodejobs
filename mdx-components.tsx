@@ -10,6 +10,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ul: (props: ComponentProps<"ul">) => <ul className="mt-3 list-disc space-y-1.5 pl-5 text-[15px] leading-7 text-muted" {...props} />,
     ol: (props: ComponentProps<"ol">) => <ol className="mt-3 list-decimal space-y-1.5 pl-5 text-[15px] leading-7 text-muted" {...props} />,
     a: (props: ComponentProps<"a">) => <a className="text-fg underline underline-offset-4" {...props} />,
+    strong: (props: ComponentProps<"strong">) => <strong className="font-medium text-fg" {...props} />,
+    pre: (props: ComponentProps<"pre">) => (
+      <pre className="mt-4 overflow-x-auto rounded-lg border border-line p-4 text-[13px] leading-6 text-fg" {...props} />
+    ),
     ...components,
   };
 }

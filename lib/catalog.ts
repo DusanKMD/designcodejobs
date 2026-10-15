@@ -308,21 +308,21 @@ export const GUIDES = [
     slug: "what-is-a-design-engineer",
     title: "What is a design engineer?",
     description:
-      "What a software design engineer does, how the work differs from mechanical design engineering, and the titles teams actually hire.",
+      "What a software design engineer is and what design engineers do: prototypes, design systems, and production UI, as distinct from mechanical design engineering.",
     h1: "What is a design engineer?",
   },
   {
     slug: "design-engineer-salary",
     title: "Design engineer salary guide",
     description:
-      "Outline of the software design engineer salary guide. Live ranges from posted jobs live on the salary page.",
+      "Software design engineer salary from employer-posted yearly ranges, plus UX engineer salary. Mechanical averages are a different dataset.",
     h1: "Design engineer salary guide",
   },
   {
     slug: "design-engineer-job-description",
     title: "Design engineer job description",
     description:
-      "Outline for a design engineer job description template, plus a UX engineer job description section.",
+      "A design engineer job description for software roles, with a UX engineer job description section and the lines that attract the wrong applicants.",
     h1: "Design engineer job description",
   },
 ] as const;

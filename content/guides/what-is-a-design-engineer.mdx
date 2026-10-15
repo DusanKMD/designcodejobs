@@ -1,40 +1,54 @@
+import { SampleSignals } from "@/components/guide-facts";
+
 # What is a design engineer?
 
-A software design engineer builds the interface, not the enclosure. They sit between product design and frontend engineering: they prototype in code, shape design systems, and ship UI that matches the craft of the design. This is the same question as “what do design engineers do,” answered for software. Mechanical, industrial, and chip design engineers are a different job that happens to share the title.
+A design engineer, in software, builds the interface. They sit with product design and with frontend engineering, and the work is the overlap: a prototype that runs, a component that other people can reuse, and a shipped UI that still looks like the design. “What do design engineers do” is the same question. The day is spent turning interaction decisions into code, and code constraints back into design decisions.
 
-This page is an outline of the full guide. The sections below are the argument, not the finished essay.
+The title also belongs to mechanical, industrial, civil, and chip design. Those engineers design physical parts, boards, and structures. Search results mix the two, because the words are identical. This guide is about the software job: designers who code, and the titles teams use when they hire them. Open roles are on [design engineer jobs](/).
 
-## Outline
+## What do design engineers do
 
-### The software meaning, stated in one paragraph
-- Define the role with the vocabulary of the field: Figma, React, prototypes, tokens, motion, accessibility.
-- Say explicitly what it is not: CAD, mechanical design, physical design, AV.
-- Point at the open list of [design engineer jobs](/).
+The useful description is concrete. A design engineer takes a flow that exists as a Figma file, a rough sketch, or a sentence in a ticket, and makes it work in the product. Often that means a prototype the same day, then the production version: layout, states, motion, empty and error cases, keyboard access, and the CSS that holds up when the content is longer than the mock.
 
-### What do design engineers do day to day
-- Turn a designed flow into a working prototype, often the same day.
-- Build and maintain the components other designers and engineers reuse.
-- Pair with product designers on interaction details and with frontend engineers on production constraints.
-- Write, review, and sometimes own the CSS and component API.
+They also build the shared surface. Design systems work is a large part of the job on product teams: tokens, component APIs, documentation, and the small decisions (focus rings, icon sizes, density) that make a product feel like one product. Brand and marketing teams use the same title for campaign sites and product pages, sometimes in Framer, sometimes in a custom React codebase. [Framer jobs](/skills/framer) on this board mean Framer the design tool.
 
-### Three archetypes
-- Product: in-app UI, design systems, quality of the product surface.
-- Brand and web: marketing sites, campaigns, Framer or custom web work. See [Framer jobs](/skills/framer).
-- Systems: tokens, documentation, multi-platform components. See [design systems engineer jobs](/roles/design-systems-engineer).
+The collaboration is specific. With a product designer, the question is whether the interaction is right. With a frontend or product engineer, the question is whether it can live in the existing app: data loading, performance, and the component boundaries already in the repo. The design engineer is often the person who can hold both conversations without translating through a third.
 
-### Titles teams actually hire
-- [UX engineer jobs](/roles/ux-engineer) — closest to the Google-style UXE role.
-- [UI engineer jobs](/roles/ui-engineer) and UI developer jobs.
-- [Design technologist jobs](/roles/design-technologist).
-- [Creative technologist jobs](/roles/creative-technologist).
-- Software design engineer, which is the filtered list on this site, not the mechanical SERP.
+<SampleSignals />
 
-### How this differs from a frontend engineer and a product designer
-- Frontend engineer: broader platform ownership, less of the visual and interaction call.
-- Product designer: owns the problem and the design, less of the production code.
-- The overlap is the job. A later article will put the comparison in a table.
+That mix is the job description in practice. A posting that asks only for CAD, GD&T, or a cleanroom is the other profession. A posting that asks for React, a design tool, and a system is this one.
 
-### What the postings on this board actually ask for
-- Pull the repeated requirements from live descriptions: prototyping, React or SwiftUI, design systems, taste, communication.
-- Update the counts when the monthly report is published.
-- Link a sample [design engineer job description](/guides/design-engineer-job-description).
+## Three ways the role shows up
+
+Teams hire the same skills under different scopes.
+
+**Product.** The surface of the app: in-product UI, quality of interaction, and the design system other designers and engineers ship on. Most listings under [software design engineer jobs](/roles/design-engineer) are this shape.
+
+**Brand and web.** Marketing sites, launch pages, and campaign work. The craft is still interface code, with more emphasis on motion, typography, and a page that has to be finished on a date. Linear’s open design engineer roles are filed as web and brand. Baseten and Perplexity have hired the title onto brand and growth surfaces.
+
+**Systems.** Tokens, documentation, and components that have to work across products or platforms. See [design systems engineer jobs](/roles/design-systems-engineer). The title on the posting is often “design systems” plus engineer or frontend, not “design engineer” alone.
+
+These are scopes, not a ladder. A staff design engineer on a product can spend a quarter on the system. A design systems engineer still ships UI.
+
+## Titles teams actually post
+
+“Design engineer” is the head term, and it is also the noisiest, because mechanical search shares it. The cleaner titles are the ones a software-only board can file without a disclaimer:
+
+- [UX engineer jobs](/roles/ux-engineer). Closest to the role large companies have used for a designer-engineer who prototypes at high fidelity and builds the system.
+- [UI engineer jobs](/roles/ui-engineer), including postings that say UI developer. The emphasis is implementation quality: layout, states, and the component API.
+- [Design technologist jobs](/roles/design-technologist). Often the bridge role: prototypes that are real enough for engineering to adopt, inside a design org.
+- [Creative technologist jobs](/roles/creative-technologist). More often agency, marketing, or WebGL-heavy product work.
+
+A software design engineer, a UX engineer, and a design technologist can be the same seat with a different org chart. Read the responsibilities, not the noun.
+
+## How the work sits next to nearby roles
+
+A frontend engineer owns more of the platform: routing, data, performance, and features that are not primarily a design problem. A design engineer owns more of the visual and interaction call, and is expected to have taste about it, not only to implement a spec.
+
+A product designer owns the problem, the flows, and the design. Many product designers prototype. The design engineer is the person for whom the prototype and the production UI are the main output, in the codebase the company ships.
+
+The overlap is intentional. Hiring managers who want a pure frontend engineer, or a pure product designer, should say that in the title. Hiring managers who want both should say design engineer, UX engineer, or design technologist, and then show the stack. A template for that posting is the [design engineer job description](/guides/design-engineer-job-description).
+
+## What this board treats as the role
+
+Listings here are kept when the title and the description match software interface work, and dropped when they match hardware, mechanical, chip, or AV design. Pay, when the employer published a yearly base range, is on [design engineer salary](/salary). Remote roles are on [remote design engineer jobs](/remote). The salary guide explains how those ranges are counted, and what a single posting can and cannot say about the market.
