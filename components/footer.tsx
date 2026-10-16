@@ -3,6 +3,7 @@ import { ArrowRight, Rss } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import { ROLES, SENIORITIES, SKILLS } from "@/lib/catalog";
 import { LISTING_DAYS, STANDARD_PRICE_USD } from "@/lib/site";
+import { TOOLS } from "@/lib/tool-copy";
 
 const SKILL_SLUGS = ["react", "figma", "framer", "design-systems", "motion", "threejs"] as const;
 const LEVEL_SLUGS = ["senior", "staff", "lead", "founding", "internship"] as const;
@@ -16,7 +17,7 @@ export function Footer() {
   const skills = SKILLS.filter((skill) => (SKILL_SLUGS as readonly string[]).includes(skill.slug));
   const levels = SENIORITIES.filter((level) => (LEVEL_SLUGS as readonly string[]).includes(level.slug));
   return (
-    <footer className="mt-24 border-t border-line bg-card">
+    <footer className="mt-24 border-t border-line bg-card print:hidden">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
         <div className="flex flex-col gap-6 border-b border-line py-10 sm:flex-row sm:items-center sm:justify-between">
           <div>
@@ -31,7 +32,7 @@ export function Footer() {
           </Link>
         </div>
 
-        <div className="grid gap-10 py-12 text-sm sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 py-12 text-sm sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
           <div>
             <Logo />
             <p className="mt-4 max-w-xs leading-relaxed text-muted">
@@ -62,6 +63,10 @@ export function Footer() {
               { href: "/salary", label: "Design engineer salary" },
               { href: reportPath(), label: "Monthly jobs report" },
             ]}
+          />
+          <FooterColumn
+            title="Tools"
+            links={TOOLS.map((tool) => ({ href: tool.href, label: tool.title }))}
           />
           <FooterColumn
             title="Company"

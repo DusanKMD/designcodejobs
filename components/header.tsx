@@ -13,6 +13,7 @@ const NAV = [
   { href: "/salary", label: "Salary" },
   { href: "/companies", label: "Companies" },
   { href: "/guides", label: "Guides" },
+  { href: "/tools", label: "Tools" },
 ];
 
 const ROLE_LINKS = [
@@ -41,7 +42,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="site-header sticky top-0 z-40">
+    <header className="site-header sticky top-0 z-40 print:hidden">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:px-6">
         <Logo />
         <nav aria-label="Primary" className="hidden items-center gap-0.5 md:flex">
