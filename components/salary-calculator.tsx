@@ -128,7 +128,7 @@ export function SalaryCalculator({ rows }: { rows: SalaryRow[] }) {
               ].map((stat) => (
                 <div key={stat.label} className={stat.label === "Median" ? "text-fg" : "text-fg-2"}>
                   <dt className="text-[12px] font-medium text-muted">{stat.label}</dt>
-                  <dd className={`mt-0.5 font-mono tracking-tight tabular ${stat.label === "Median" ? "text-[26px] font-semibold sm:text-[34px]" : "text-[18px] font-medium sm:text-[22px]"}`}>
+                  <dd className={`mt-0.5 font-mono tracking-tight tabular ${stat.label === "Median" ? "text-[21px] font-semibold sm:text-[34px]" : "text-[15px] font-medium sm:text-[22px]"}`}>
                     {formatMoney(stat.value, result.used.currency)}
                   </dd>
                 </div>
