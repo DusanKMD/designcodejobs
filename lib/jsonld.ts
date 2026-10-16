@@ -180,9 +180,23 @@ export function webApplicationLd(input: { name: string; description: string; pat
     url: absoluteUrl(input.path),
     applicationCategory: "BusinessApplication",
     operatingSystem: "Any",
-    browserRequirements: "Requires JavaScript for filtering. The default estimate renders without it.",
+    browserRequirements: "Requires JavaScript for the interactive controls. The explanation and the default result render without it.",
     isAccessibleForFree: true,
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     creator: { "@type": "Organization", name: "Design Code Jobs", url: absoluteUrl("/") },
+  };
+}
+
+export function itemListLd(items: { name: string; path: string; description: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      url: absoluteUrl(item.path),
+      description: item.description,
+    })),
   };
 }

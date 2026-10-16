@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "www.google.com", pathname: "/s2/favicons**" },
     ],
   },
+  webpack: (config) => {
+    // pdfjs-dist optionally requires these Node packages. Resume parsing runs in the browser.
+    config.resolve.alias.canvas = false;
+    config.resolve.alias.encoding = false;
+    return config;
+  },
   async redirects() {
     return [
       { source: "/jobs", destination: "/", permanent: true },

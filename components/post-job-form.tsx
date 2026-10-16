@@ -12,6 +12,7 @@ import {
   POST_JOB_LIMITS,
   type PostJobValues,
 } from "@/lib/post-job";
+import { draftFromSearch, POST_DRAFT_KEY } from "@/lib/job-description";
 import { FEATURED_ADDON_USD, FEATURED_PRICE_USD, LISTING_DAYS, STANDARD_PRICE_USD } from "@/lib/site";
 
 const FIELD_ORDER = [
@@ -41,6 +42,24 @@ export function PostJobForm() {
   const [submitted, setSubmitted] = useState(false);
   const [pending, setPending] = useState(false);
   const [formError, setFormError] = useState("");
+
+  useEffect(() => {
+    let stored: string | null = null;
+    try {
+      stored = window.sessionStorage.getItem(POST_DRAFT_KEY);
+    } catch {
+      stored = null;
+    }
+    const draft = draftFromSearch(new URLSearchParams(window.location.search), stored);
+    if (!draft) return;
+    setValues((current) => {
+      const next = { ...current };
+      for (const [key, value] of Object.entries(draft)) {
+        if (typeof value === "string" && value) next[key as keyof typeof next] = value as never;
+      }
+      return next;
+    });
+  }, []);
 
   // Pricing cards link to #plan-featured / #plan-standard. Pick the plan and bring the form into view.
   useEffect(() => {

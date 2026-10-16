@@ -30,7 +30,11 @@ describe("sitemap", () => {
     expect(pages).toEqual(expect.arrayContaining([
       "https://designcodejobs.com",
       "https://designcodejobs.com/salary",
+      "https://designcodejobs.com/tools",
       "https://designcodejobs.com/tools/design-engineer-salary-calculator",
+      "https://designcodejobs.com/tools/design-engineer-resume-checker",
+      "https://designcodejobs.com/tools/design-engineer-portfolio-checklist",
+      "https://designcodejobs.com/tools/job-description-generator",
       "https://designcodejobs.com/salary/ux-engineer",
       "https://designcodejobs.com/about",
       "https://designcodejobs.com/post-a-job",

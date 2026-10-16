@@ -7,7 +7,20 @@ export async function indexablePagePaths() {
   const jobs = await getAllJobs();
   const paths: string[] = [];
   if (listingRobots(filterJobs(jobs, {}).length, "/", {}).index) paths.push("/");
-  paths.push("/salary", "/tools/design-engineer-salary-calculator", "/about", "/post-a-job", "/companies", "/guides", "/privacy", "/terms");
+  paths.push(
+    "/salary",
+    "/tools",
+    "/tools/design-engineer-salary-calculator",
+    "/tools/design-engineer-resume-checker",
+    "/tools/design-engineer-portfolio-checklist",
+    "/tools/job-description-generator",
+    "/about",
+    "/post-a-job",
+    "/companies",
+    "/guides",
+    "/privacy",
+    "/terms",
+  );
   for (const guide of GUIDES) paths.push(`/guides/${guide.slug}`);
   for (const role of ROLES) {
     if (filterJobs(jobs, { title: role.slug }).length >= INDEX_THRESHOLD) paths.push(`/roles/${role.slug}`);

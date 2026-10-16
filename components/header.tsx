@@ -14,6 +14,7 @@ const NAV = [
   { href: "/tools/design-engineer-salary-calculator", label: "Calculator" },
   { href: "/companies", label: "Companies" },
   { href: "/guides", label: "Guides" },
+  { href: "/tools", label: "Tools" },
 ];
 
 const ROLE_LINKS = [
@@ -25,7 +26,9 @@ const ROLE_LINKS = [
 
 function isCurrent(path: string, href: string, exact?: boolean) {
   if (exact) return path === href || path.startsWith("/jobs/") || path.startsWith("/roles/");
-  return path === href || path.startsWith(`${href}/`);
+  if (path !== href && !path.startsWith(`${href}/`)) return false;
+  const covered = NAV.some((item) => item.href !== href && item.href.startsWith(`${href}/`) && (path === item.href || path.startsWith(`${item.href}/`)));
+  return !covered;
 }
 
 export function Header() {
@@ -42,7 +45,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="site-header sticky top-0 z-40">
+    <header className="site-header sticky top-0 z-40 print:hidden">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-5 sm:px-6">
         <Logo />
         <nav aria-label="Primary" className="hidden items-center gap-0.5 md:flex">
