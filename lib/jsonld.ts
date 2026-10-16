@@ -170,3 +170,19 @@ export function datasetLd(input: { name: string; description: string; path: stri
     isAccessibleForFree: true,
   };
 }
+
+export function webApplicationLd(input: { name: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: input.name,
+    description: input.description,
+    url: absoluteUrl(input.path),
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Any",
+    browserRequirements: "Requires JavaScript for filtering. The default estimate renders without it.",
+    isAccessibleForFree: true,
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    creator: { "@type": "Organization", name: "Design Code Jobs", url: absoluteUrl("/") },
+  };
+}

@@ -11,6 +11,7 @@ const NAV = [
   { href: "/", label: "Jobs", exact: true },
   { href: "/remote", label: "Remote" },
   { href: "/salary", label: "Salary" },
+  { href: "/tools/design-engineer-salary-calculator", label: "Calculator" },
   { href: "/companies", label: "Companies" },
   { href: "/guides", label: "Guides" },
 ];

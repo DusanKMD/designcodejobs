@@ -60,6 +60,7 @@ export function Footer() {
             links={[
               ...levels.map((level) => ({ href: `/seniority/${level.slug}`, label: level.h1 })),
               { href: "/salary", label: "Design engineer salary" },
+              { href: "/tools/design-engineer-salary-calculator", label: "Salary calculator" },
               { href: reportPath(), label: "Monthly jobs report" },
             ]}
           />
