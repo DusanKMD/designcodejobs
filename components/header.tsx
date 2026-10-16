@@ -11,6 +11,7 @@ const NAV = [
   { href: "/", label: "Jobs", exact: true },
   { href: "/remote", label: "Remote" },
   { href: "/salary", label: "Salary" },
+  { href: "/tools/design-engineer-salary-calculator", label: "Calculator" },
   { href: "/companies", label: "Companies" },
   { href: "/guides", label: "Guides" },
   { href: "/tools", label: "Tools" },
@@ -25,7 +26,9 @@ const ROLE_LINKS = [
 
 function isCurrent(path: string, href: string, exact?: boolean) {
   if (exact) return path === href || path.startsWith("/jobs/") || path.startsWith("/roles/");
-  return path === href || path.startsWith(`${href}/`);
+  if (path !== href && !path.startsWith(`${href}/`)) return false;
+  const covered = NAV.some((item) => item.href !== href && item.href.startsWith(`${href}/`) && (path === item.href || path.startsWith(`${item.href}/`)));
+  return !covered;
 }
 
 export function Header() {

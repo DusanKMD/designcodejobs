@@ -31,6 +31,7 @@ describe("sitemap", () => {
       "https://designcodejobs.com",
       "https://designcodejobs.com/salary",
       "https://designcodejobs.com/tools",
+      "https://designcodejobs.com/tools/design-engineer-salary-calculator",
       "https://designcodejobs.com/tools/design-engineer-resume-checker",
       "https://designcodejobs.com/tools/design-engineer-portfolio-checklist",
       "https://designcodejobs.com/tools/job-description-generator",

@@ -10,6 +10,7 @@ export async function indexablePagePaths() {
   paths.push(
     "/salary",
     "/tools",
+    "/tools/design-engineer-salary-calculator",
     "/tools/design-engineer-resume-checker",
     "/tools/design-engineer-portfolio-checklist",
     "/tools/job-description-generator",
