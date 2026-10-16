@@ -101,6 +101,10 @@ export default async function SalaryPage() {
           ) : null}
         </div>
 
+        <p className="mt-6 text-[15px] leading-7 text-fg-2">
+          Want a number for your role, level and location? The <Link href="/tools/design-engineer-salary-calculator" className="link">design engineer salary calculator</Link> gives a p25, median and p75 from these same posted ranges.
+        </p>
+
         <section className="reveal mt-14" aria-labelledby="by-role-heading">
           <SectionHeading id="by-role-heading" kicker="By role" title={SALARY_FAQS[0].q} />
           <p className="mt-3 text-[15px] leading-7 text-muted">{SALARY_FAQS[0].a}</p>
