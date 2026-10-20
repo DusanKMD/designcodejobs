@@ -43,6 +43,7 @@ describe("sitemap", () => {
       "https://designcodejobs.com/guides/what-is-a-design-engineer",
       "https://designcodejobs.com/guides/design-engineer-salary",
       "https://designcodejobs.com/guides/design-engineer-job-description",
+      "https://designcodejobs.com/guides/design-technologist",
       "https://designcodejobs.com/remote",
       "https://designcodejobs.com/roles/design-engineer",
     ]));

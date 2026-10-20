@@ -65,6 +65,15 @@ export default async function RolePage({
       related={[
         { href: `/roles/${slug}/remote`, label: `Remote ${role.label.toLowerCase()} jobs` },
         { href: `/salary/${slug === "design-engineer" ? "" : slug}`.replace(/\/$/, "") || "/salary", label: `${role.label} salary` },
+        ...(slug === "design-technologist"
+          ? [{ href: "/guides/design-technologist", label: "What is a design technologist?" }]
+          : []),
+        ...(slug === "ux-engineer" || slug === "creative-technologist" || slug === "prototyper"
+          ? [{
+              href: "/guides/design-technologist#how-does-a-design-technologist-compare-with-nearby-titles",
+              label: "Design technologist vs nearby titles",
+            }]
+          : []),
         { href: "/remote", label: "Remote design engineer jobs" },
         { href: "/skills/framer", label: "Framer jobs" },
       ]}
