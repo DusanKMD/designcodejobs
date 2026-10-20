@@ -139,6 +139,9 @@ export default async function RoleSalaryPage({ params }: { params: Promise<{ slu
                 { href: "/salary", label: "Design engineer salary" },
                 ...SALARY_ROLES.filter((item) => item.slug !== slug).map((item) => ({ href: `/salary/${item.slug}`, label: item.h1 })),
                 { href: "/guides/design-engineer-salary", label: "Salary guide" },
+                ...(slug === "design-technologist"
+                  ? [{ href: "/guides/design-technologist", label: "What is a design technologist?" }]
+                  : []),
               ]}
             />
           </div>

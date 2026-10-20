@@ -74,4 +74,26 @@ export const guideFaqs = {
       a: "Before you post, read the description once as a mechanical engineer would. If it still sounds like their job, add the stack and the surface. The text you submit is the text candidates see, and it is the text on the job page. Match it to the apply page.",
     },
   ],
+  "design-technologist": [
+    {
+      q: "What does a design technologist do?",
+      a: "A design technologist builds working prototypes, design-system code, and internal tools so a team can test an idea before it is expensive to change. The prototypes use real interactions and often real data. They then help engineering carry the decision into production, or hand the validated version to the people who ship it.",
+    },
+    {
+      q: "Is a design technologist the same as a design engineer?",
+      a: "Often, yes. Atlassian names design engineer and creative technologist as other names for the role, and Indeed’s design technologists sit on a team called Design Engineering. Where the titles split, technologist postings lean toward prototypes and tooling inside a design org, and design engineer postings lean toward production UI the company ships.",
+    },
+    {
+      q: "How does a design technologist compare with nearby titles?",
+      a: "The titles overlap more than they differ. UX engineer is the title Google uses for designer-engineers who prototype and also write production UI code. Creative technologist often points to brand, campaign, or agency work. Prototyper names the output and nothing else. Read the responsibilities first, because the same seat is posted under all of these titles.",
+    },
+    {
+      q: "What skills do design technologist postings ask for?",
+      a: "Design technologist postings ask for front-end code, a design portfolio, and prototyping experience, usually all three. They want code samples next to the portfolio, years in front-end or UX prototyping work, and comfort inside a design system. Recent postings add AI: prototypes of AI-driven workflows, generative tooling, or AI in the design-to-code pipeline.",
+    },
+    {
+      q: "How many design technologist jobs are open, and what do they pay?",
+      a: "Few, on this board. On 20 October 2026, none of its 37 open software listings had design technologist in the title, so there is no posted pay to report for the title. The salary pages that rank for the query include hourly figures and a design technician page, which describe different jobs.",
+    },
+  ],
 } as const;

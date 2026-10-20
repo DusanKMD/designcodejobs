@@ -16,6 +16,7 @@ const loaders = {
   "what-is-a-design-engineer": () => import("@/content/guides/what-is-a-design-engineer.mdx"),
   "design-engineer-salary": () => import("@/content/guides/design-engineer-salary.mdx"),
   "design-engineer-job-description": () => import("@/content/guides/design-engineer-job-description.mdx"),
+  "design-technologist": () => import("@/content/guides/design-technologist.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {

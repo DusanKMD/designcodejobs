@@ -331,6 +331,15 @@ export const GUIDES = [
       "A design engineer job description for software roles, with a UX engineer job description section and the lines that attract the wrong applicants.",
     h1: "Design engineer job description",
   },
+  {
+    slug: "design-technologist",
+    published: "2026-10-20",
+    updated: "2026-10-20",
+    title: "What is a design technologist? Role vs design engineer",
+    description:
+      "A design technologist builds coded prototypes, design-system code and tools in a design team. How it compares with design engineer and UX engineer roles.",
+    h1: "What is a design technologist?",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {
