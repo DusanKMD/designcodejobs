@@ -340,6 +340,15 @@ export const GUIDES = [
       "A design technologist builds coded prototypes, design-system code and tools in a design team. How it compares with design engineer and UX engineer roles.",
     h1: "What is a design technologist?",
   },
+  {
+    slug: "ux-engineer",
+    published: "2026-10-22",
+    updated: "2026-10-22",
+    title: "What is a UX engineer? Role, skills and pay",
+    description:
+      "A UX engineer codes prototypes, design-system components and UI inside a UX team. How it differs from UX designer, front-end developer and design engineer.",
+    h1: "What is a UX engineer?",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

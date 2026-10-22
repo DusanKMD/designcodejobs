@@ -96,4 +96,30 @@ export const guideFaqs = {
       a: "Few, on this board. On 20 October 2026, none of its 37 open software listings had design technologist in the title, so there is no posted pay to report for the title. The salary pages that rank for the query include hourly figures and a design technician page, which describe different jobs.",
     },
   ],
+  "ux-engineer": [
+    {
+      q: "What does a UX engineer do?",
+      a: "A UX engineer writes the code that design and research depend on. That means coded prototypes for design reviews and user studies, shared components for the design system, and production UI features. The mix changes by team. Some UX engineers mostly prototype, and others spend most of the week in the product codebase.",
+    },
+    {
+      q: "Is a UX engineer the same as a design engineer?",
+      a: "Mostly, yes. Both titles describe a person who designs and codes interfaces, and employers count either as relevant experience. Mixpanel’s Staff Design Engineer posting asks for 8+ years “in design engineering, UX engineering, design technology, or a related hybrid role.” Where they differ, UX engineer leans toward research prototypes, and design engineer toward shipped product UI.",
+    },
+    {
+      q: "How is a UX engineer different from a UX designer or a front-end developer?",
+      a: "A UX designer decides what the experience should be, mostly in design tools and research. A front-end developer builds the product’s client code, usually from finished designs and with more platform work. A UX engineer works between them: building the experience in code while the design is still open, so the team can test it.",
+    },
+    {
+      q: "What skills do UX engineer postings ask for?",
+      a: "UX engineer postings ask for years of front-end development or prototyping, fluent HTML, CSS, and JavaScript or TypeScript, and often React. They also ask for design judgment and work with designers and researchers. Senior postings add design-system ownership, accessibility, and AI-assisted prototyping. A portfolio that shows working code carries the application.",
+    },
+    {
+      q: "Where do UX engineers sit on a team?",
+      a: "Usually inside the UX or design org, working next to designers and researchers, with close ties to an engineering team that owns the production code. Some companies place the role in engineering instead. The reporting line matters, because it decides who reviews the work and whether a career ladder exists for it.",
+    },
+    {
+      q: "How many UX engineer jobs are open, and what do they pay?",
+      a: "Few, on this board. On 22 October 2026, one of its 35 open software listings had UX engineer in the title: Reddit’s Principal UX Engineer, Ads, remote in the United States. Its posted base range is $245,800 to $344,100 USD a year. One posting is a single employer’s band for a principal-level role, not a market rate.",
+    },
+  ],
 } as const;
