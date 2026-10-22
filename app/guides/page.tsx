@@ -25,7 +25,7 @@ export default function GuidesPage() {
         lede="Guides for design engineers who code cover the role, the posted salary, and the job description. Figures in the salary guide come from the same open listings as the salary pages."
       />
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {GUIDES.map((guide, index) => (
             <li key={guide.slug}>
               <Link href={`/guides/${guide.slug}`} className="group job-card flex h-full flex-col p-6">

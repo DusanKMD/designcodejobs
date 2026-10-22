@@ -17,6 +17,7 @@ const loaders = {
   "design-engineer-salary": () => import("@/content/guides/design-engineer-salary.mdx"),
   "design-engineer-job-description": () => import("@/content/guides/design-engineer-job-description.mdx"),
   "design-technologist": () => import("@/content/guides/design-technologist.mdx"),
+  "ux-engineer": () => import("@/content/guides/ux-engineer.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {
