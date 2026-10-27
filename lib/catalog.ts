@@ -349,6 +349,15 @@ export const GUIDES = [
       "A UX engineer codes prototypes, design-system components and UI inside a UX team. How it differs from UX designer, front-end developer and design engineer.",
     h1: "What is a UX engineer?",
   },
+  {
+    slug: "design-systems-engineer",
+    published: "2026-10-27",
+    updated: "2026-10-27",
+    title: "What is a design systems engineer? Role, skills and pay",
+    description:
+      "A design systems engineer builds the components, tokens and tooling other teams use. Skills, posted pay, and how it differs from front-end and design engineers.",
+    h1: "What is a design systems engineer?",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

@@ -1,0 +1,117 @@
+# What is a design systems engineer?
+
+A design systems engineer is a front-end engineer whose product is the design system itself: the component library, design tokens, documentation, and tooling that other teams build on. The users are internal. Designers, product engineers, and more and more often AI agents consume the work, so the job is judged by how easily other people can use the system correctly.
+
+This guide covers what the work looks like in current postings, the skills employers list, how the role differs from a front-end engineer and a design engineer, why searches for design system jobs mix designer and engineer seats, and what the posted pay ranges show.
+
+On this page:
+
+- [What does a design systems engineer do?](#what-does-a-design-systems-engineer-do)
+- [What skills do design systems engineer postings ask for?](#what-skills-do-design-systems-engineer-postings-ask-for)
+- [How is a design systems engineer different from a front-end engineer?](#how-is-a-design-systems-engineer-different-from-a-front-end-engineer)
+- [Is a design systems engineer the same as a design engineer?](#is-a-design-systems-engineer-the-same-as-a-design-engineer)
+- [Are design system jobs for designers or engineers?](#are-design-system-jobs-for-designers-or-engineers)
+- [What does a design systems engineer earn?](#what-does-a-design-systems-engineer-earn)
+
+Open roles are on [design systems engineer jobs](/roles/design-systems-engineer).
+
+## What does a design systems engineer do?
+
+A design systems engineer builds and maintains the shared UI layer that a company’s products are made from. That means reusable components with stable APIs, the design-token pipeline that carries color, type, and spacing decisions into code, the documentation, and the tests that keep it accessible. Product teams then build on that layer instead of starting from scratch.
+
+Perplexity’s [Software Engineer, Design System](https://jobs.ashbyhq.com/perplexity/78675022-c4a7-41d2-9259-7c59be4de93c) posting, checked on 27 October 2026, describes the system as “the component library and design language shared across web, iOS, Android, macOS, and Windows.” The work it lists: core primitives such as overlays, inputs, navigation, and feedback; the token pipeline from “authoring, generation, and per-platform publishing”; migrating product surfaces “off bespoke implementations onto shared primitives without breaking them”; and supporting consuming teams through docs, visual regression coverage, and an on-call rotation.
+
+LangChain’s [Senior Frontend Platform Engineer, Design Systems](https://jobs.ashbyhq.com/langchain/1b125fc4-be24-422f-a180-30b7431fc6cf) posting puts it in one line: build, own, and evolve the component library, “the foundation that our frontend teams rely on to ship fast without sacrificing quality, accessibility, or consistency.” It adds tooling for theming, tokens, versioning, testing, and component discovery in Storybook, plus build performance and package versioning for the library.
+
+The role is not web-only. Reddit’s [Staff Software Engineer, Android Design System](https://job-boards.greenhouse.io/reddit/jobs/8237636) sits on a Design System Team whose mission is “to deliver a cohesive, modern and accessible experience across all of Reddit’s platforms.” The Android engineer builds reusable components in Kotlin and Jetpack Compose and works on accessibility, performance, and developer experience.
+
+Tokens are the part of the job with a new standard behind it. On 28 October 2025, the W3C [Design Tokens Community Group](https://www.w3.org/community/design-tokens/2025/10/28/design-tokens-specification-reaches-first-stable-version/) announced the first stable version of its specification (2025.10). It describes tokens as “the single source of truth for colors, typography, spacing, and other design decisions,” and says one token file can generate platform code for iOS, Android, web, and Flutter. Style Dictionary, Tokens Studio, and Terrazzo are named as reference implementations.
+
+## What skills do design systems engineer postings ask for?
+
+Design systems engineer postings ask for React, TypeScript, HTML, and CSS on the web, or Kotlin and Jetpack Compose on Android. They want working accessibility knowledge, experience designing component APIs, design tokens, documentation tools such as Storybook, and visual regression testing. They also want close work with designers, because the system carries their design language into code.
+
+Three postings, all checked on 27 October 2026, show the range:
+
+- **Perplexity, Member of Technical Staff (Software Engineer, Design System)** (San Francisco). Asks for 4+ years building production frontend, “strong React and TypeScript, and CSS,” and “working accessibility knowledge (WCAG, ARIA patterns, assistive tech).” Experience with a design system or component library “is a plus,” not a requirement.
+- **LangChain, Senior Frontend Platform Engineer, Design Systems** (remote in the US). Asks for “extensive experience building modular, composable, and well-documented component libraries and/or design systems,” deep React, TypeScript, HTML, and CSS, design system tooling such as Storybook, Chromatic, and token pipelines, and visual regression testing.
+- **Reddit, Staff Software Engineer, Android Design System** (remote in the US). Asks for 6+ years of software engineering and experience with “shared UI infrastructure, such as design systems, component libraries, or frontend infrastructure used across multiple teams,” plus modern Android with Kotlin and Jetpack Compose.
+
+Accessibility appears in all three. So does work with designers: Perplexity asks the engineer to translate “Figma systems into typed, testable, documented components,” and LangChain to “turn design intent into robust, reusable components.”
+
+Perplexity’s bar also shows one way into the role. It wants production frontend experience first and treats design system experience as a bonus, so a front-end developer who has owned shared components on a product team has relevant work to show. Listings that mention these skills are collected on [design system jobs by skill](/skills/design-systems) and [React design engineer jobs](/skills/react). The [design engineer portfolio checklist](/tools/design-engineer-portfolio-checklist) covers what reviewers look for in work samples.
+
+## How is a design systems engineer different from a front-end engineer?
+
+A front-end engineer usually ships product features to end users. A design systems engineer ships the components, tokens, and tooling those engineers use, so the customer is another team. The stack is the same. The difference is the reach of each change: a design system release lands in many products at once, so APIs, versioning, and migrations carry more weight.
+
+Brad Frost, writing on [his blog](https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/) in February 2021, split front-end work in two: a front-of-the-front-end developer “determines the look and feel of a button, while a back-of-the-front-end developer determines what happens when that button is clicked.” His list for the first group includes creating a library of presentational UI components and “authoring and documenting a robust, intuitive component API.” That is most of a design systems engineer’s day.
+
+The role also takes on platform work. LangChain’s posting includes bundling strategy and package versioning, and Perplexity’s includes an on-call rotation for consuming teams. The job titles show the same blend. None of the three postings above uses design systems engineer as its exact title: they read Frontend Platform Engineer, Software Engineer, and Member of Technical Staff, each with Design System or Design Systems attached. LangChain’s description still says it is “looking for a Design Systems Engineer.” Search for the variants, not one exact title.
+
+<div className="mt-6 overflow-x-auto">
+  <table className="w-full min-w-[36rem] text-left text-sm">
+    <thead className="text-muted">
+      <tr className="border-b border-line">
+        <th className="whitespace-nowrap py-2 pr-4 font-medium">Title</th>
+        <th className="py-2 pr-4 font-medium">Main output in the sources cited here</th>
+        <th className="whitespace-nowrap py-2 font-medium">Main users of the work</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr className="border-b border-line align-top">
+        <td className="whitespace-nowrap py-3 pr-4">Design systems engineer</td>
+        <td className="py-3 pr-4">Component library, token pipeline, docs, tooling, migrations</td>
+        <td className="py-3">Product engineers and designers</td>
+      </tr>
+      <tr className="border-b border-line align-top">
+        <td className="whitespace-nowrap py-3 pr-4">Front-end engineer</td>
+        <td className="py-3 pr-4">Product features and client code</td>
+        <td className="py-3">End users</td>
+      </tr>
+      <tr className="border-b border-line align-top">
+        <td className="whitespace-nowrap py-3 pr-4">Design engineer</td>
+        <td className="py-3 pr-4">Production UI, prototypes, and often part of the system</td>
+        <td className="py-3">End users and the design team</td>
+      </tr>
+      <tr className="border-b border-line align-top">
+        <td className="whitespace-nowrap py-3 pr-4">Design systems designer</td>
+        <td className="py-3 pr-4">Design language, patterns, and the design-tool library</td>
+        <td className="py-3">Designers, engineers, and agents</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+## Is a design systems engineer the same as a design engineer?
+
+Not quite. A design engineer usually designs and codes product UI and owns the visual and interaction call. A design systems engineer works one level down, on the shared components and tokens that product UI is built from. The skills overlap heavily, and design engineers often spend part of their time on the system, so people move between the titles.
+
+LangChain describes its design systems role as one that “sits at the intersection of Design and Engineering,” which is how design engineer roles are usually described too. The difference is the scope of the output. A design engineer’s work is a screen or a flow that a user sees. A design systems engineer’s work is a button, a token set, or a docs page that a hundred screens depend on.
+
+Our [what is a design engineer](/guides/what-is-a-design-engineer) guide treats the system as one of three scopes for the same skills, next to product UI and brand. Two nearby titles have their own guides. A [UX engineer](/guides/ux-engineer) leans toward prototypes for research and design reviews, and a [design technologist](/guides/design-technologist) is often the prototyping bridge inside a design org. When a posting is mostly implementation quality, states, and component APIs inside one product, the title is often UI engineer, and those roles are on [UI engineer jobs](/roles/ui-engineer).
+
+## Are design system jobs for designers or engineers?
+
+Both, and job searches mix them. Companies hire design systems designers, who own the design language and the library in the design tool, and design systems engineers, who own the code. Leads often span the two. Read the requirements, not only the title: a posting that asks for React, TypeScript, and package versioning is an engineering seat.
+
+On 27 October 2026, public job boards showed both kinds. Stripe listed a Product Designer, Design Systems in Spain, and Discord a Senior Product Designer, Design Systems in the San Francisco Bay Area. Ramp’s [Design Systems Lead](https://jobs.ashbyhq.com/ramp/baa94095-c976-46d0-8d18-25a951950714) in New York sits in the middle. The posting says “You’re a designer first, with the technical depth to guide architecture and get into the code,” and asks the lead to build “beyond components and tokens into composition, interaction patterns, agent guidance, and evaluations.”
+
+Search results blur the line further. On 27 October 2026, the top US organic Google results for “design system jobs” were mostly aggregator pages for UX designer and systems designer roles. For “what is a design systems engineer,” most of the top results were about mechanical design engineers and hardware systems engineering, a different field. This board lists software interface roles only and keeps hardware titles out.
+
+For hiring teams, our job description guide explains [how to scope a design systems posting](/guides/design-engineer-job-description#how-should-a-design-technologist-posting-differ): name the platforms, and say whether the person sets the system or implements part of it.
+
+## What does a design systems engineer earn?
+
+The postings that publish pay show senior US base bands. On 27 October 2026, LangChain’s senior design systems role listed $180,000 to $240,000, Reddit’s staff Android design system role $217,000 to $303,900, and Perplexity’s design system engineer role $220K to $405K. Each is one employer’s band for one role, not a market rate.
+
+The details behind each figure matter:
+
+- **Reddit** gives a base salary range of $217,000 to $303,900 USD, says the posting “may span more than one career level,” and says the role is eligible for equity in restricted stock units.
+- **LangChain** gives an annual salary range of $180,000 to $240,000 and says it is hiring “across a range of scope, and the compensation band reflects that.” The role is remote in the US, ideally in San Francisco, New York, or Boston.
+- **Perplexity** shows $220K to $405K with equity on its posting for the San Francisco role.
+- **Ramp’s Design Systems Lead**, the designer-first lead role above, shows $280K to $385K with equity. It is a lead seat, so compare it with care.
+
+Salary sites are a poor guide for this title. On 27 October 2026, the top US organic Google results for “design systems engineer salary” were pages about systems engineers and systems design engineers, which are different jobs. This board shows pay only when an employer writes a yearly range on a software posting.
+
+The running figure for the title is on [design systems engineer salary](/salary/design-systems-engineer). How posted ranges are counted, and why one posting is not a market rate, is in the [design engineer salary guide](/guides/design-engineer-salary). To compare posted ranges by role and location, use the [design engineer salary calculator](/tools/design-engineer-salary-calculator). Remote roles across all of these titles are on [remote design engineer jobs](/remote).
