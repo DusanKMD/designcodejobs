@@ -122,4 +122,30 @@ export const guideFaqs = {
       a: "Few, on this board. On 22 October 2026, one of its 35 open software listings had UX engineer in the title: Reddit’s Principal UX Engineer, Ads, remote in the United States. Its posted base range is $245,800 to $344,100 USD a year. One posting is a single employer’s band for a principal-level role, not a market rate.",
     },
   ],
+  "design-systems-engineer": [
+    {
+      q: "What does a design systems engineer do?",
+      a: "A design systems engineer builds and maintains the shared UI layer that a company’s products are made from. That means reusable components with stable APIs, the design-token pipeline that carries color, type, and spacing decisions into code, the documentation, and the tests that keep it accessible. Product teams then build on that layer instead of starting from scratch.",
+    },
+    {
+      q: "What skills do design systems engineer postings ask for?",
+      a: "Design systems engineer postings ask for React, TypeScript, HTML, and CSS on the web, or Kotlin and Jetpack Compose on Android. They want working accessibility knowledge, experience designing component APIs, design tokens, documentation tools such as Storybook, and visual regression testing. They also want close work with designers, because the system carries their design language into code.",
+    },
+    {
+      q: "How is a design systems engineer different from a front-end engineer?",
+      a: "A front-end engineer usually ships product features to end users. A design systems engineer ships the components, tokens, and tooling those engineers use, so the customer is another team. The stack is the same. The difference is the reach of each change: a design system release lands in many products at once, so APIs, versioning, and migrations carry more weight.",
+    },
+    {
+      q: "Is a design systems engineer the same as a design engineer?",
+      a: "Not quite. A design engineer usually designs and codes product UI and owns the visual and interaction call. A design systems engineer works one level down, on the shared components and tokens that product UI is built from. The skills overlap heavily, and design engineers often spend part of their time on the system, so people move between the titles.",
+    },
+    {
+      q: "Are design system jobs for designers or engineers?",
+      a: "Both, and job searches mix them. Companies hire design systems designers, who own the design language and the library in the design tool, and design systems engineers, who own the code. Leads often span the two. Read the requirements, not only the title: a posting that asks for React, TypeScript, and package versioning is an engineering seat.",
+    },
+    {
+      q: "What does a design systems engineer earn?",
+      a: "The postings that publish pay show senior US base bands. On 27 October 2026, LangChain’s senior design systems role listed $180,000 to $240,000, Reddit’s staff Android design system role $217,000 to $303,900, and Perplexity’s design system engineer role $220K to $405K. Each is one employer’s band for one role, not a market rate.",
+    },
+  ],
 } as const;

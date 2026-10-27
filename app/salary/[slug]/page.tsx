@@ -145,6 +145,9 @@ export default async function RoleSalaryPage({ params }: { params: Promise<{ slu
                 ...(slug === "ux-engineer"
                   ? [{ href: "/guides/ux-engineer", label: "What is a UX engineer?" }]
                   : []),
+                ...(slug === "design-systems-engineer"
+                  ? [{ href: "/guides/design-systems-engineer", label: "What is a design systems engineer?" }]
+                  : []),
               ]}
             />
           </div>
