@@ -358,6 +358,15 @@ export const GUIDES = [
       "A design systems engineer builds the components, tokens and tooling other teams use. Skills, posted pay, and how it differs from front-end and design engineers.",
     h1: "What is a design systems engineer?",
   },
+  {
+    slug: "how-to-become-a-design-engineer",
+    published: "2026-10-29",
+    updated: "2026-10-29",
+    title: "How to become a design engineer: skills and career paths",
+    description:
+      "How to become a design engineer in software: the skills, experience and portfolio 28 live postings ask for, if you need a degree, and where junior roles fit.",
+    h1: "How to become a design engineer",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

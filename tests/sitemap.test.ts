@@ -46,6 +46,7 @@ describe("sitemap", () => {
       "https://designcodejobs.com/guides/design-technologist",
       "https://designcodejobs.com/guides/ux-engineer",
       "https://designcodejobs.com/guides/design-systems-engineer",
+      "https://designcodejobs.com/guides/how-to-become-a-design-engineer",
       "https://designcodejobs.com/remote",
       "https://designcodejobs.com/roles/design-engineer",
     ]));

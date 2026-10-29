@@ -74,6 +74,9 @@ export default async function RolePage({
         ...(slug === "design-systems-engineer"
           ? [{ href: "/guides/design-systems-engineer", label: "What is a design systems engineer?" }]
           : []),
+        ...(slug === "design-engineer"
+          ? [{ href: "/guides/how-to-become-a-design-engineer", label: "How to become a design engineer" }]
+          : []),
         ...(slug === "ux-engineer" || slug === "creative-technologist" || slug === "prototyper"
           ? [{
               href: "/guides/design-technologist#how-does-a-design-technologist-compare-with-nearby-titles",
