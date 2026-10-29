@@ -148,4 +148,30 @@ export const guideFaqs = {
       a: "The postings that publish pay show senior US base bands. On 27 October 2026, LangChain’s senior design systems role listed $180,000 to $240,000, Reddit’s staff Android design system role $217,000 to $303,900, and Perplexity’s design system engineer role $220K to $405K. Each is one employer’s band for one role, not a market rate.",
     },
   ],
+  "how-to-become-a-design-engineer": [
+    {
+      q: "How do you become a design engineer?",
+      a: "Most design engineers start in product design or front-end development. Keep the discipline you already practice, learn the other one until you can ship a real feature alone, and show that in a portfolio of live work. In the postings reviewed here, stated experience minimums ranged from 2+ years to 6+ years, and only one mentioned a degree.",
+    },
+    {
+      q: "What skills does a design engineer need?",
+      a: "Design engineer postings ask for production front-end code, usually React, TypeScript, and modern CSS, plus real visual and interaction design skill in Figma or in code. Most also want design system or component work, prototyping, accessibility, and care for motion and detail. A growing share ask how you use AI coding tools such as Cursor or Claude Code.",
+    },
+    {
+      q: "Do you need a degree to become a design engineer?",
+      a: "No, not for the software role. Of the 28 postings checked on 29 October 2026, only Pinterest’s Senior UX Engineer mentioned a degree, and it accepted “equivalent experience.” The others asked for years of experience, named skills, and a portfolio. Degree requirements in search results mostly describe mechanical design engineering, which is a different profession.",
+    },
+    {
+      q: "Can a designer or front-end developer become a design engineer?",
+      a: "Yes, and those are the two usual routes in. Employers say so directly: Ashby accepts experience “as an Engineer or a Designer,” and Granola wants a frontend engineer with strong design skills or a designer with strong engineering skills. A designer has to reach production code quality. A developer has to show design judgment, not only clean code.",
+    },
+    {
+      q: "What do design engineer portfolios and interviews check?",
+      a: "Hiring teams want proof that you designed and built the work yourself. Portfolio requests in current postings favor live sites, working prototypes, and shipped product over static mockups, with your own contribution made clear. Published interview loops, such as Ashby’s, test both halves: a live technical screen, a design take-home, and a deep dive into a past project.",
+    },
+    {
+      q: "Are there junior design engineer jobs?",
+      a: "Yes, but they are rare. None of the 28 postings checked on 29 October 2026 had a junior or intern title, and the lowest stated bar was 2+ years. Ashby’s posting defines its junior level as no more than 2 years of industry experience, plus personal or professional projects with real users that show taste in both design and code.",
+    },
+  ],
 } as const;

@@ -64,6 +64,9 @@ export default async function SeniorityPage({
         { href: "/remote", label: "Remote design engineer jobs" },
         { href: "/salary", label: "Design engineer salary" },
         { href: "/roles/ux-engineer", label: "UX engineer jobs" },
+        ...(slug === "junior" || slug === "internship"
+          ? [{ href: "/guides/how-to-become-a-design-engineer", label: "How to become a design engineer" }]
+          : []),
       ]}
     />
   );
