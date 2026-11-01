@@ -1,6 +1,9 @@
 import { GUIDES, ROLES, SALARY_ROLES } from "@/lib/catalog";
 import { formatMoney } from "@/lib/format";
 import { filterJobs, medianSalary } from "@/lib/query";
+import { salaryRow, snapshotTitle } from "@/lib/reports/copy";
+import { currentMonth } from "@/lib/reports/month";
+import { listSnapshots } from "@/lib/reports/registry";
 import { absoluteUrl, FEATURED_ADDON_USD, LISTING_DAYS, SITE_NAME, STANDARD_PRICE_USD } from "@/lib/site";
 import { getAllJobs } from "@/lib/store";
 
@@ -52,6 +55,16 @@ export async function GET() {
     `- [Design engineer resume checker](${absoluteUrl("/tools/design-engineer-resume-checker")}): a 0–100 rubric on pasted resume text. Files are read in the browser and are not uploaded`,
     `- [Design engineer portfolio checklist](${absoluteUrl("/tools/design-engineer-portfolio-checklist")}): proof open listings ask for, saved in the browser`,
     `- [Design engineer salary calculator](${absoluteUrl("/tools/design-engineer-salary-calculator")}): p25, median, and p75 from employer-posted yearly ranges`,
+    "",
+    "## Monthly reports",
+    `- [Design engineering jobs reports](${absoluteUrl("/reports")}): dated snapshots. A frozen month does not change when the live board changes.`,
+    ...listSnapshots()
+      .filter((snapshot) => snapshot.month !== currentMonth())
+      .map((snapshot) => {
+        const design = salaryRow(snapshot, "design-engineer", "USD");
+        const median = design ? formatMoney(design.medianMidpoint, "USD") : "not posted";
+        return `- [${snapshotTitle(snapshot)}](${absoluteUrl(`/reports/${snapshot.month}`)}): frozen snapshot. ${snapshot.openAtLastSync} open roles at ${snapshot.openCompanies} companies at last sync, ${snapshot.newRoles.length} new roles posted in the month, ${snapshot.remoteShareOpenPct}% of open roles fully remote, median posted USD midpoint ${median} for design engineer roles. Currencies are never converted.`;
+      }),
     "",
     "## Optional",
     `- [About](${absoluteUrl("/about")})`,

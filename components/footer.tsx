@@ -2,15 +2,12 @@ import Link from "next/link";
 import { ArrowRight, Rss } from "@/components/icons";
 import { Logo } from "@/components/logo";
 import { ROLES, SENIORITIES, SKILLS } from "@/lib/catalog";
+import { reportNavLinks } from "@/lib/reports/paths";
 import { LISTING_DAYS, STANDARD_PRICE_USD } from "@/lib/site";
 import { TOOLS } from "@/lib/tool-copy";
 
 const SKILL_SLUGS = ["react", "figma", "framer", "design-systems", "motion", "threejs"] as const;
 const LEVEL_SLUGS = ["senior", "staff", "lead", "founding", "internship"] as const;
-
-function reportPath(now = new Date()) {
-  return `/reports/${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
-}
 
 export function Footer() {
   const roles = ROLES.filter((role) => role.priority);
@@ -62,7 +59,7 @@ export function Footer() {
               ...levels.map((level) => ({ href: `/seniority/${level.slug}`, label: level.h1 })),
               { href: "/salary", label: "Design engineer salary" },
               { href: "/tools/design-engineer-salary-calculator", label: "Salary calculator" },
-              { href: reportPath(), label: "Monthly jobs report" },
+              ...reportNavLinks(),
             ]}
           />
           <FooterColumn
