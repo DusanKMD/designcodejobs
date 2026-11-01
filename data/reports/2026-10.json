@@ -1,0 +1,683 @@
+{
+ "month": "2026-10",
+ "scope_note": "Software design engineering listings tracked on designcodejobs.com from launch on 2026-10-15 through the last successful ingest on 2026-10-23 UTC. Ingest paused 2026-10-24 to 2026-10-31, so roles opened or closed after 2026-10-23 are not counted. Excludes one internal test listing and two hardware listings rejected by review. Salaries are employer-posted yearly ranges; currencies are never converted.",
+ "tracked_listings": 40,
+ "tracked_companies": 26,
+ "open_at_last_sync": 35,
+ "open_companies": 23,
+ "closed_during_month": 5,
+ "new_roles_posted_in_october": [
+  {
+   "company": "Sentry",
+   "title": "Manager, Design Engineering",
+   "date_posted": "2026-10-01",
+   "workplace": "hybrid"
+  },
+  {
+   "company": "Granola",
+   "title": "Design Engineer (Web & Brand)",
+   "date_posted": "2026-10-07",
+   "workplace": "onsite"
+  },
+  {
+   "company": "Writer",
+   "title": "Design engineer (US)",
+   "date_posted": "2026-10-07",
+   "workplace": "hybrid"
+  },
+  {
+   "company": "Writer",
+   "title": "Design engineer (UK)",
+   "date_posted": "2026-10-07",
+   "workplace": "hybrid"
+  },
+  {
+   "company": "Cohere",
+   "title": "Design Engineer",
+   "date_posted": "2026-10-09",
+   "workplace": "onsite"
+  },
+  {
+   "company": "Reddit",
+   "title": "Staff Software Engineer, Android Design System",
+   "date_posted": "2026-10-14",
+   "workplace": "remote"
+  },
+  {
+   "company": "Gamma",
+   "title": "UI Engineer",
+   "date_posted": "2026-10-15",
+   "workplace": "onsite"
+  },
+  {
+   "company": "Replit",
+   "title": "Design Engineer",
+   "date_posted": "2026-10-16",
+   "workplace": "hybrid"
+  },
+  {
+   "company": "Nubank",
+   "title": "Design Engineer",
+   "date_posted": "2026-10-22",
+   "workplace": "hybrid"
+  }
+ ],
+ "top_companies_by_open_roles": [
+  [
+   "Ashby",
+   8
+  ],
+  [
+   "Restream",
+   2
+  ],
+  [
+   "Granola",
+   2
+  ],
+  [
+   "Perplexity",
+   2
+  ],
+  [
+   "Reddit",
+   2
+  ],
+  [
+   "Writer",
+   2
+  ]
+ ],
+ "workplace_tracked": {
+  "hybrid": 9,
+  "remote": 19,
+  "onsite": 12
+ },
+ "workplace_open": {
+  "hybrid": 8,
+  "remote": 17,
+  "onsite": 10
+ },
+ "remote_share_open_pct": 49,
+ "role_families_tracked": {
+  "design-engineer": 32,
+  "ui-engineer": 2,
+  "ux-engineer": 1,
+  "design-systems-engineer": 4,
+  "creative-technologist": 1
+ },
+ "listings_with_posted_yearly_salary": 25,
+ "salary_by_role_and_currency": [
+  {
+   "role_family": "design-engineer",
+   "currency": "USD",
+   "listings": 13,
+   "median_midpoint": 235000.0,
+   "lowest_posted_min": 140000,
+   "highest_posted_max": 440000
+  },
+  {
+   "role_family": "design-engineer",
+   "currency": "GBP",
+   "listings": 3,
+   "median_midpoint": 136000.0,
+   "lowest_posted_min": 100000,
+   "highest_posted_max": 184000
+  },
+  {
+   "role_family": "design-systems-engineer",
+   "currency": "USD",
+   "listings": 3,
+   "median_midpoint": 303900.0,
+   "lowest_posted_min": 160000,
+   "highest_posted_max": 405000
+  },
+  {
+   "role_family": "design-engineer",
+   "currency": "CAD",
+   "listings": 2,
+   "median_midpoint": 253500.0,
+   "lowest_posted_min": 210000,
+   "highest_posted_max": 300000
+  },
+  {
+   "role_family": "design-engineer",
+   "currency": "EUR",
+   "listings": 2,
+   "median_midpoint": 151500.0,
+   "lowest_posted_min": 119000,
+   "highest_posted_max": 188000
+  },
+  {
+   "role_family": "ux-engineer",
+   "currency": "USD",
+   "listings": 1,
+   "median_midpoint": 344100.0,
+   "lowest_posted_min": 344100,
+   "highest_posted_max": 344100
+  },
+  {
+   "role_family": "creative-technologist",
+   "currency": "USD",
+   "listings": 1,
+   "median_midpoint": 180000.0,
+   "lowest_posted_min": 140000,
+   "highest_posted_max": 220000
+  }
+ ],
+ "salary_by_currency_all_roles": [
+  {
+   "currency": "USD",
+   "listings": 18,
+   "median_midpoint": 235000.0
+  },
+  {
+   "currency": "GBP",
+   "listings": 3,
+   "median_midpoint": 136000.0
+  },
+  {
+   "currency": "EUR",
+   "listings": 2,
+   "median_midpoint": 151500.0
+  },
+  {
+   "currency": "CAD",
+   "listings": 2,
+   "median_midpoint": 253500.0
+  }
+ ],
+ "usd_remote_vs_not": {
+  "remote": {
+   "n": 7,
+   "median_midpoint": 272500.0
+  },
+  "onsite_or_hybrid": {
+   "n": 11,
+   "median_midpoint": 222500.0
+  }
+ },
+ "note_on_non_usd": "All EUR and CAD ranges, and 2 of 3 GBP ranges, come from Ashby's location-banded postings, so treat non-USD medians as small samples.",
+ "listings": [
+  {
+   "company": "Cloudflare",
+   "title": "Senior Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2025-06-20",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Ashby",
+   "title": "Staff Design Engineer - Canada",
+   "status_at_last_sync": "active",
+   "date_posted": "2025-11-13",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 256000,
+   "salary_max": 300000,
+   "currency": "CAD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ashby",
+   "title": "Staff Design Engineer - UK",
+   "status_at_last_sync": "active",
+   "date_posted": "2025-11-13",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 151000,
+   "salary_max": 184000,
+   "currency": "GBP",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ashby",
+   "title": "Staff Design Engineer - EU",
+   "status_at_last_sync": "active",
+   "date_posted": "2025-11-13",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 154000,
+   "salary_max": 188000,
+   "currency": "EUR",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ashby",
+   "title": "Staff Design Engineer - Americas",
+   "status_at_last_sync": "active",
+   "date_posted": "2025-11-14",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 250000,
+   "salary_max": 295000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Restream",
+   "title": "Design Engineer - Studio Team",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-01-07",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Restream",
+   "title": "Design Engineer - AI Clips Team",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-01-07",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Y Combinator",
+   "title": "Software Product Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-01-08",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Warp",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-04-09",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": 140000,
+   "salary_max": 230000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Granola",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-04-22",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": 100000,
+   "salary_max": 130000,
+   "currency": "GBP",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Gamma",
+   "title": "UI Engineer",
+   "status_at_last_sync": "expired",
+   "date_posted": "2026-05-21",
+   "title_family": "ui-engineer",
+   "workplace": "onsite",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Ashby",
+   "title": "Design Engineer - EU",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-06-12",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 119000,
+   "salary_max": 145000,
+   "currency": "EUR",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ashby",
+   "title": "Design Engineer - UK",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-06-12",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 123000,
+   "salary_max": 149000,
+   "currency": "GBP",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ashby",
+   "title": "Design Engineer - Americas",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-06-12",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 210000,
+   "salary_max": 250000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ashby",
+   "title": "Design Engineer - Canada",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-06-12",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 210000,
+   "salary_max": 248000,
+   "currency": "CAD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Ramp",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-07-08",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": 172000,
+   "salary_max": 440000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Mixpanel",
+   "title": "Staff Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-07-09",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 300000,
+   "salary_max": 300000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Stability AI",
+   "title": "Product Design Engineer - Audio",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-07-21",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Perplexity",
+   "title": "Design Engineer, Growth & Marketing",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-07-27",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": 180000,
+   "salary_max": 300000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Reddit",
+   "title": "Principal UX Engineer, Ads",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-08-11",
+   "title_family": "ux-engineer",
+   "workplace": "remote",
+   "salary_min": 344100,
+   "salary_max": 344100,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Perplexity",
+   "title": "Member of Technical Staff (Software Engineer, Design System)",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-08-11",
+   "title_family": "design-systems-engineer",
+   "workplace": "hybrid",
+   "salary_min": 220000,
+   "salary_max": 405000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "WorkOS",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-08-13",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 175000,
+   "salary_max": 225000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "LangChain",
+   "title": "Senior Frontend Platform Engineer, Design Systems",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-08-22",
+   "title_family": "design-systems-engineer",
+   "workplace": "remote",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Faire",
+   "title": "Senior Software Engineer - Design Systems - Frontend",
+   "status_at_last_sync": "expired",
+   "date_posted": "2026-08-24",
+   "title_family": "design-systems-engineer",
+   "workplace": "onsite",
+   "salary_min": 160000,
+   "salary_max": 220000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Baseten",
+   "title": "Design Engineer (Brand Team)",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-08-27",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": 190000,
+   "salary_max": 240000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "tldraw",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-09-02",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "OpusClip",
+   "title": "Creative Technologist",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-09-15",
+   "title_family": "creative-technologist",
+   "workplace": "onsite",
+   "salary_min": 140000,
+   "salary_max": 220000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Linear",
+   "title": "Design Engineer (Web & Brand)",
+   "status_at_last_sync": "expired",
+   "date_posted": "2026-09-15",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Linear",
+   "title": "Design Engineer (Web & Brand)",
+   "status_at_last_sync": "expired",
+   "date_posted": "2026-09-15",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Vercel",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-09-15",
+   "title_family": "design-engineer",
+   "workplace": "remote",
+   "salary_min": 208000,
+   "salary_max": 312000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Stripe",
+   "title": "Design Engineer, Expansion",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-09-22",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Sentry",
+   "title": "Manager, Design Engineering",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-01",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": 200000,
+   "salary_max": 270000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Granola",
+   "title": "Design Engineer (Web & Brand)",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-07",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Writer",
+   "title": "Design engineer (US)",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-07",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": 143000,
+   "salary_max": 234000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Writer",
+   "title": "Design engineer (UK)",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-07",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Cohere",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-09",
+   "title_family": "design-engineer",
+   "workplace": "onsite",
+   "salary_min": 200000,
+   "salary_max": 245000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Reddit",
+   "title": "Staff Software Engineer, Android Design System",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-14",
+   "title_family": "design-systems-engineer",
+   "workplace": "remote",
+   "salary_min": 303900,
+   "salary_max": 303900,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Gamma",
+   "title": "UI Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-15",
+   "title_family": "ui-engineer",
+   "workplace": "onsite",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  },
+  {
+   "company": "Replit",
+   "title": "Design Engineer",
+   "status_at_last_sync": "expired",
+   "date_posted": "2026-10-16",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": 180000,
+   "salary_max": 290000,
+   "currency": "USD",
+   "unit": "YEAR"
+  },
+  {
+   "company": "Nubank",
+   "title": "Design Engineer",
+   "status_at_last_sync": "active",
+   "date_posted": "2026-10-22",
+   "title_family": "design-engineer",
+   "workplace": "hybrid",
+   "salary_min": null,
+   "salary_max": null,
+   "currency": null,
+   "unit": null
+  }
+ ]
+}

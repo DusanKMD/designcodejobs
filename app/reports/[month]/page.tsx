@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { FrozenReport } from "@/components/frozen-report";
 import { JsonLd } from "@/components/json-ld";
 import { PageHeader } from "@/components/page-header";
 import { LinkPills, SectionHeading, StatStrip } from "@/components/ui";
@@ -7,21 +8,30 @@ import { ROLES, skillBySlug } from "@/lib/catalog";
 import { formatMoney, formatSalary } from "@/lib/format";
 import { breadcrumbLd, datasetLd } from "@/lib/jsonld";
 import { listedJobs, medianSalary, salaryBands } from "@/lib/query";
+import { snapshotDescription, snapshotTitle } from "@/lib/reports/copy";
+import { currentMonth, monthLabel } from "@/lib/reports/month";
+import { frozenSnapshot } from "@/lib/reports/paths";
+import { listSnapshots } from "@/lib/reports/registry";
 import { pageMeta } from "@/lib/seo";
 import { getAllJobs } from "@/lib/store";
 
-function currentMonth() {
-  const now = new Date();
-  return `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
-}
-
-function monthLabel(month: string) {
-  const [year, value] = month.split("-").map(Number);
-  return new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(year, value - 1, 1)));
+export function generateStaticParams() {
+  return listSnapshots()
+    .filter((snapshot) => snapshot.month !== currentMonth())
+    .map((snapshot) => ({ month: snapshot.month }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ month: string }> }) {
   const { month } = await params;
+  const snapshot = frozenSnapshot(month);
+  if (snapshot) {
+    return pageMeta({
+      title: snapshotTitle(snapshot),
+      description: snapshotDescription(snapshot),
+      path: `/reports/${month}`,
+      index: true,
+    });
+  }
   const live = month === currentMonth();
   return pageMeta({
     title: `Design engineering jobs report ${month}`,
@@ -34,6 +44,8 @@ export async function generateMetadata({ params }: { params: Promise<{ month: st
 export default async function ReportPage({ params }: { params: Promise<{ month: string }> }) {
   const { month } = await params;
   if (!/^\d{4}-\d{2}$/.test(month)) notFound();
+  const snapshot = frozenSnapshot(month);
+  if (snapshot) return <FrozenReport report={snapshot} />;
   const live = month === currentMonth();
   const jobs = listedJobs(await getAllJobs());
   const remote = jobs.filter((job) => job.workplace === "remote").length;
@@ -61,7 +73,7 @@ export default async function ReportPage({ params }: { params: Promise<{ month: 
 
   return (
     <article>
-      <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: `Jobs report ${month}`, path: `/reports/${month}` }])} />
+      <JsonLd data={breadcrumbLd([{ name: "Jobs", path: "/" }, { name: "Reports", path: "/reports" }, { name: `Jobs report ${month}`, path: `/reports/${month}` }])} />
       {live ? (
         <JsonLd
           data={datasetLd({
@@ -72,7 +84,7 @@ export default async function ReportPage({ params }: { params: Promise<{ month: 
         />
       ) : null}
       <PageHeader
-        crumbs={[{ name: "Jobs", path: "/" }, { name: `Report ${month}`, path: `/reports/${month}` }]}
+        crumbs={[{ name: "Jobs", path: "/" }, { name: "Reports", path: "/reports" }, { name: `Report ${month}`, path: `/reports/${month}` }]}
         kicker={`Monthly report · ${label}`}
         title={`Design engineering jobs report ${month}`}
         lede={

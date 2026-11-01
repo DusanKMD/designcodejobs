@@ -1,5 +1,6 @@
 import { GUIDES, REGIONS, ROLES, SALARY_ROLES, SENIORITIES, SKILLS } from "@/lib/catalog";
 import { companyStats, filterJobs, listedJobs, listingRobots } from "@/lib/query";
+import { indexableReportPaths } from "@/lib/reports/paths";
 import { COMPANY_INDEX_THRESHOLD, INDEX_THRESHOLD } from "@/lib/site";
 import { getAllJobs } from "@/lib/store";
 
@@ -48,7 +49,6 @@ export async function indexablePagePaths() {
   for (const slug of slugs) {
     if (companyStats(jobs, slug).open.length >= COMPANY_INDEX_THRESHOLD) paths.push(`/companies/${slug}`);
   }
-  const month = new Date();
-  paths.push(`/reports/${month.getUTCFullYear()}-${String(month.getUTCMonth() + 1).padStart(2, "0")}`);
+  paths.push(...indexableReportPaths());
   return paths;
 }
