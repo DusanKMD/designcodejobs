@@ -53,7 +53,7 @@ export default async function PortfolioChecklistPage() {
           <h2 id="portfolio-how" className="text-[22px] tracking-tight sm:text-2xl">{PORTFOLIO_HOW.q}</h2>
           <p className="mt-3 text-[15.5px] leading-7 text-fg-2">{PORTFOLIO_HOW.a}</p>
           <p className="mt-3 text-[15px] leading-7 text-muted">
-            Pair the list with the <Link href="/tools/design-engineer-resume-checker" className="link">design engineer resume checker</Link>. Open roles that ask for this work are on <Link href="/roles/design-engineer" className="link">software design engineer jobs</Link>.
+            Pair the list with the <Link href="/tools/design-engineer-resume-checker" className="link">design engineer resume checker</Link>. Open roles that ask for this work are on <Link href="/roles/design-engineer" className="link">software design engineer jobs</Link>. For real examples, read the <Link href="/guides/design-engineer-portfolio" className="link">design engineer portfolio guide</Link>.
           </p>
         </section>
         <div className="mt-14 max-w-3xl">

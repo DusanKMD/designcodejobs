@@ -174,4 +174,30 @@ export const guideFaqs = {
       a: "Yes, but they are rare. None of the 28 postings checked on 29 October 2026 had a junior or intern title, and the lowest stated bar was 2+ years. Ashby’s posting defines its junior level as no more than 2 years of industry experience, plus personal or professional projects with real users that show taste in both design and code.",
     },
   ],
+  "design-engineer-portfolio": [
+    {
+      q: "What should a design engineer portfolio include?",
+      a: "A design engineer portfolio should include three to six pieces of live, working work: shipped product UI, an interactive prototype, and a reusable component or design system contribution. Give each one a link a reviewer can open, the code or a write-up of how it was built, and a plain statement of what you personally designed and built.",
+    },
+    {
+      q: "What do hiring managers look for in a design engineer portfolio?",
+      a: "Hiring managers look for craft you can feel in a live build, clear personal ownership, and work beyond surface polish. Of the 36 postings checked on 3 November 2026, 11 asked for a portfolio by name. They wanted live experiences, working prototypes, systems-level work, and substantial personal contribution to shipped products, not marketing pages alone.",
+    },
+    {
+      q: "Which design engineer portfolio examples are worth studying?",
+      a: "The most useful design engineer portfolio examples are personal sites from people who do the job, because they show the work instead of describing it. Emil Kowalski, Rauno Freiberg, Paco Coursey, shadcn, Jhey Tompkins, Jonnie Hallman, Jakub Krehel, and Lochie Axon each lead with live projects, open-source code, or interaction experiments.",
+    },
+    {
+      q: "Should a design engineer portfolio be a website, GitHub, or case studies?",
+      a: "Use a personal website as the front door, and link GitHub and short case studies from it. A built site is itself a code sample, so it shows craft that a PDF cannot. Add GitHub for readable code, and add case studies for team work you cannot open-source, explaining your role, decisions, and the result.",
+    },
+    {
+      q: "How is a design engineer portfolio different from a UX or front-end portfolio?",
+      a: "A UX designer portfolio usually tells the story of research and design decisions through images. A front-end developer portfolio usually shows code and apps. A design engineer portfolio has to do both in each project: show the design reasoning and the working build, with your hands on both halves.",
+    },
+    {
+      q: "How do you build a design engineer portfolio without job experience?",
+      a: "Build and ship small, real projects that people use. Ashby’s posting says it expects “experience designing products and shipping code to hundreds of users (even if through side projects).” A small open-source component, a tool, or a site for a real client, each with a write-up, can stand in for job experience.",
+    },
+  ],
 } as const;

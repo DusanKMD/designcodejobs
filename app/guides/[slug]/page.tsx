@@ -20,6 +20,7 @@ const loaders = {
   "ux-engineer": () => import("@/content/guides/ux-engineer.mdx"),
   "design-systems-engineer": () => import("@/content/guides/design-systems-engineer.mdx"),
   "how-to-become-a-design-engineer": () => import("@/content/guides/how-to-become-a-design-engineer.mdx"),
+  "design-engineer-portfolio": () => import("@/content/guides/design-engineer-portfolio.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {

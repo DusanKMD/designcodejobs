@@ -367,6 +367,15 @@ export const GUIDES = [
       "How to become a design engineer in software: the skills, experience and portfolio 28 live postings ask for, if you need a degree, and where junior roles fit.",
     h1: "How to become a design engineer",
   },
+  {
+    slug: "design-engineer-portfolio",
+    published: "2026-11-03",
+    updated: "2026-11-03",
+    title: "Design engineer portfolio: examples and what teams look for",
+    description:
+      "Real design engineer portfolio examples, what 36 live job postings ask a portfolio to show, and how to build one with shipped UI, prototypes and code.",
+    h1: "Design engineer portfolio examples and what to include",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {
