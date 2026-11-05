@@ -376,6 +376,15 @@ export const GUIDES = [
       "Real design engineer portfolio examples, what 36 live job postings ask a portfolio to show, and how to build one with shipped UI, prototypes and code.",
     h1: "Design engineer portfolio examples and what to include",
   },
+  {
+    slug: "design-engineer-interview-questions",
+    published: "2026-11-05",
+    updated: "2026-11-05",
+    title: "Design engineer interview questions and resume tips",
+    description:
+      "Real software design engineer interview rounds, sample questions from live postings, and resume bullets that match what teams hire for.",
+    h1: "Design engineer interview questions and how to prepare",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

@@ -71,7 +71,7 @@ export default async function ResumeCheckerPage() {
           <h2 id="resume-how" className="text-[22px] tracking-tight sm:text-2xl">{RESUME_HOW.q}</h2>
           <p className="mt-3 text-[15.5px] leading-7 text-fg-2">{RESUME_HOW.a}</p>
           <p className="mt-3 text-[15px] leading-7 text-muted">
-            When the score shows a missing portfolio link, the <Link href="/tools/design-engineer-portfolio-checklist" className="link">design engineer portfolio checklist</Link> is the next pass.
+            When the score shows a missing portfolio link, the <Link href="/tools/design-engineer-portfolio-checklist" className="link">design engineer portfolio checklist</Link> is the next pass. For interview prep, read the <Link href="/guides/design-engineer-interview-questions" className="link">design engineer interview questions guide</Link>.
           </p>
         </section>
         <div className="mt-14 max-w-3xl">

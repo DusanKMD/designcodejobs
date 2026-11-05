@@ -200,4 +200,30 @@ export const guideFaqs = {
       a: "Build and ship small, real projects that people use. Ashby’s posting says it expects “experience designing products and shipping code to hundreds of users (even if through side projects).” A small open-source component, a tool, or a site for a real client, each with a write-up, can stand in for job experience.",
     },
   ],
+  "design-engineer-interview-questions": [
+    {
+      q: "What does a design engineer interview process look like?",
+      a: "A design engineer interview process usually starts with a live intro where you walk through work, then a technical screen or design take-home, then deeper rounds on a past project and systems thinking. Few software postings publish every stage. Ashby’s eight Design Engineer and Staff Design Engineer listings on 3 November 2026 are the clearest public loop in this sample.",
+    },
+    {
+      q: "What design engineer interview questions should you expect?",
+      a: "Expect questions that make you show craft in a live build, own what you shipped, reason about systems, and explain decisions out loud. Almost none of the 38 postings publish a leaked question bank. The prompts below are derived from stated job requirements and process language, not from confidential interview scripts.",
+    },
+    {
+      q: "How do design engineer take-home or prototype tasks work?",
+      a: "A design engineer take-home or prototype task asks you to design and build a small slice of UI under a time box, then talk through it live. Ashby’s loop offers a one-hour live technical screen or a design take-home of about three hours async plus a 30-minute discussion, and the final round covers whichever you skipped earlier.",
+    },
+    {
+      q: "How should you prepare for a design engineer craft or portfolio review?",
+      a: "Prepare two or three live pieces you can screen-share in under ten minutes each, with the code open and a clear line on what you personally designed and built. Of the 38 postings checked on 3 November 2026, 11 asked for a portfolio by name. They wanted working prototypes, shipped product, and systems-level contribution, not static mockups alone.",
+    },
+    {
+      q: "What should a design engineer resume include?",
+      a: "A design engineer resume should lead with shipped interface work, name the stack you used, show design-system or component ownership, and link a portfolio or GitHub a reviewer can open in one click. Keep it short, mirror the language in the posting, and make personal contribution obvious so the interview screen-share matches the CV.",
+    },
+    {
+      q: "How is a design engineer interview different from a front-end or product designer interview?",
+      a: "A design engineer interview tests both halves in the same loop: design judgment and production code. A front-end interview often leans on algorithms, architecture, or platform depth. A product designer interview often leans on research, flows, and critique of static work. Design engineer rounds usually replace leetcode-style puzzles with a craft review, a build, and a systems conversation.",
+    },
+  ],
 } as const;
