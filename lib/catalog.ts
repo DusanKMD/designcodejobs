@@ -385,6 +385,15 @@ export const GUIDES = [
       "Real software design engineer interview rounds, sample questions from live postings, and resume bullets that match what teams hire for.",
     h1: "Design engineer interview questions and how to prepare",
   },
+  {
+    slug: "design-engineer-vs-product-designer",
+    published: "2026-11-10",
+    updated: "2026-11-10",
+    title: "Design engineer vs product designer: skills, work and salary",
+    description:
+      "Design engineer vs product designer, compared across 176 live job postings: the skills each asks for, who owns the code, posted pay, and how to switch.",
+    h1: "Design engineer vs product designer: skills, work and salary",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

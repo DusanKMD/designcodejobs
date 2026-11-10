@@ -226,4 +226,30 @@ export const guideFaqs = {
       a: "A design engineer interview tests both halves in the same loop: design judgment and production code. A front-end interview often leans on algorithms, architecture, or platform depth. A product designer interview often leans on research, flows, and critique of static work. Design engineer rounds usually replace leetcode-style puzzles with a craft review, a build, and a systems conversation.",
     },
   ],
+  "design-engineer-vs-product-designer": [
+    {
+      q: "What is the difference between a design engineer and a product designer?",
+      a: "The difference between a design engineer and a product designer is ownership of the code. A product designer decides what to build and how it should behave, then partners with engineers to ship it. A design engineer makes many of the same design calls and also writes the production front end, usually in React and TypeScript.",
+    },
+    {
+      q: "What does each role do day to day?",
+      a: "A product designer spends the day framing problems, talking to users, mapping flows, designing screens, and testing prototypes with engineers and product managers. A design engineer spends more of the day in the codebase: building interfaces and components, prototyping in code, and polishing interaction details before they ship.",
+    },
+    {
+      q: "Which skills do design engineer and product designer postings ask for?",
+      a: "Design engineer postings ask for front-end code: React, TypeScript, and CSS appear in most of them and almost never in product designer postings. Product designer postings lean harder on research, usability testing, and storytelling. Both ask for prototyping, Figma, and design systems, though design engineers mention design systems more often.",
+    },
+    {
+      q: "Do design engineers earn more than product designers?",
+      a: "Not reliably. On 10 November 2026, the median midpoint of posted US dollar base ranges was $237,500 for design engineers and $216,250 for product designers. But the design engineer sample is small, and at the same company the two titles often pay about the same. Level and company move pay more than the title does.",
+    },
+    {
+      q: "Which role is the right fit for you?",
+      a: "Choose design engineer if you want your work to end in merged code and you enjoy components, states, motion, and front-end detail. Choose product designer if you want to own the problem, the research, and the flow across a whole product area. Both paths need taste and close work with engineers.",
+    },
+    {
+      q: "How do you move from product designer to design engineer?",
+      a: "To move from product designer to design engineer, get your own components into a real codebase. Learn React, TypeScript, and CSS well enough that an engineer would merge your work. Then rebuild portfolio pieces as live code. Teams hiring design engineers want to see shipped UI, not only mockups or prototypes made in a design tool.",
+    },
+  ],
 } as const;
