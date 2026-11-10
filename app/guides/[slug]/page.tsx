@@ -22,6 +22,7 @@ const loaders = {
   "how-to-become-a-design-engineer": () => import("@/content/guides/how-to-become-a-design-engineer.mdx"),
   "design-engineer-portfolio": () => import("@/content/guides/design-engineer-portfolio.mdx"),
   "design-engineer-interview-questions": () => import("@/content/guides/design-engineer-interview-questions.mdx"),
+  "design-engineer-vs-product-designer": () => import("@/content/guides/design-engineer-vs-product-designer.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {

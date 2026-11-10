@@ -99,7 +99,7 @@ export default async function SalaryCalculatorPage() {
             The calculator takes the yearly base range on each open listing, finds its midpoint, and reports the 25th, 50th and 75th percentile of those midpoints for your filters. It counts only software design engineering roles, never mechanical or hardware ones. With fewer than three matches it widens the filters and says so.
           </p>
           <p className="mt-3 text-[15px] leading-7 text-muted">
-            Because it uses posted ranges, it reflects what companies hiring right now say they will pay, which can differ from what people already in the job earn. Bonus, equity and OTE are not included. For the full table by role, see <Link href="/salary" className="link">design engineer salary</Link>, and for how posted pay is collected read the <Link href="/guides/design-engineer-salary" className="link">design engineer salary guide</Link>.
+            Because it uses posted ranges, it reflects what companies hiring right now say they will pay, which can differ from what people already in the job earn. Bonus, equity and OTE are not included. For the full table by role, see <Link href="/salary" className="link">design engineer salary</Link>, and for how posted pay is collected read the <Link href="/guides/design-engineer-salary" className="link">design engineer salary guide</Link>. To compare with product designer pay, read <Link href="/guides/design-engineer-vs-product-designer" className="link">design engineer vs product designer</Link>.
           </p>
         </section>
 

@@ -49,6 +49,7 @@ describe("sitemap", () => {
       "https://designcodejobs.com/guides/how-to-become-a-design-engineer",
       "https://designcodejobs.com/guides/design-engineer-portfolio",
       "https://designcodejobs.com/guides/design-engineer-interview-questions",
+      "https://designcodejobs.com/guides/design-engineer-vs-product-designer",
       "https://designcodejobs.com/remote",
       "https://designcodejobs.com/roles/design-engineer",
     ]));
