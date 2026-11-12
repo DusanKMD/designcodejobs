@@ -394,6 +394,15 @@ export const GUIDES = [
       "Design engineer vs product designer, compared across 176 live job postings: the skills each asks for, who owns the code, posted pay, and how to switch.",
     h1: "Design engineer vs product designer: skills, work and salary",
   },
+  {
+    slug: "design-engineer-vs-frontend-engineer",
+    published: "2026-11-12",
+    updated: "2026-11-12",
+    title: "Design engineer vs frontend engineer: skills, work and salary",
+    description:
+      "Design engineer vs frontend engineer, compared across 94 live job postings: the skills each asks for, who makes the design call, posted pay, and how to switch.",
+    h1: "Design engineer vs frontend engineer: skills, work and salary",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

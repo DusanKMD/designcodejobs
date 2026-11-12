@@ -252,4 +252,30 @@ export const guideFaqs = {
       a: "To move from product designer to design engineer, get your own components into a real codebase. Learn React, TypeScript, and CSS well enough that an engineer would merge your work. Then rebuild portfolio pieces as live code. Teams hiring design engineers want to see shipped UI, not only mockups or prototypes made in a design tool.",
     },
   ],
+  "design-engineer-vs-frontend-engineer": [
+    {
+      q: "What is the difference between a design engineer and a frontend engineer?",
+      a: "The difference between a design engineer and a frontend engineer is ownership of the design decision. A frontend engineer usually builds from a designer’s spec and owns more of the platform: data, state, APIs, and scale. A design engineer is expected to make the visual and interaction call too, and often has no mockup to follow.",
+    },
+    {
+      q: "What does each role do day to day?",
+      a: "A design engineer spends the day turning ideas into shipped interface: prototyping in code, building components, tuning motion and states, and deciding design details as they go. A frontend engineer spends more of the day on product features at scale: state management, APIs with backend teams, performance, testing, and the architecture that keeps a large front end maintainable.",
+    },
+    {
+      q: "Which skills do design engineer and frontend engineer postings ask for?",
+      a: "Both titles name React in about nine in ten postings and TypeScript in about eight in ten, so the stack is not the difference. Design engineer postings add Figma, prototyping, design systems, motion, CSS, and a portfolio. Frontend engineer postings add JavaScript depth, architecture and scale, backend and API work, data visualization, and computer science fundamentals.",
+    },
+    {
+      q: "Do design engineers earn more than frontend engineers?",
+      a: "Slightly, and not reliably. On 12 November 2026, the median midpoint of posted US dollar base ranges was $237,726 for design engineers and $228,950 for frontend engineers, a gap of about 4%. The design engineer sample is small, and at the same company the two titles often share a band. Level moves pay far more than the title does.",
+    },
+    {
+      q: "Which role is the right fit for you?",
+      a: "Choose design engineer if you want to make the design call yourself and you care about layout, motion, and interaction detail as much as clean code. Choose frontend engineer if you prefer hard engineering problems in the browser: data, state, performance, real-time systems, and architecture that many engineers build on. Both need taste, and both ship production code.",
+    },
+    {
+      q: "How do you move from frontend engineer to design engineer?",
+      a: "To move from frontend engineer to design engineer, show design judgment, not only code. Build interfaces with no mockup and explain the choices. Study typography, layout, and motion. Learn Figma well enough to explore ideas before you code them. Then rebuild your portfolio around shipped UI with the design reasoning next to it.",
+    },
+  ],
 } as const;
