@@ -23,6 +23,7 @@ const loaders = {
   "design-engineer-portfolio": () => import("@/content/guides/design-engineer-portfolio.mdx"),
   "design-engineer-interview-questions": () => import("@/content/guides/design-engineer-interview-questions.mdx"),
   "design-engineer-vs-product-designer": () => import("@/content/guides/design-engineer-vs-product-designer.mdx"),
+  "design-engineer-vs-frontend-engineer": () => import("@/content/guides/design-engineer-vs-frontend-engineer.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {

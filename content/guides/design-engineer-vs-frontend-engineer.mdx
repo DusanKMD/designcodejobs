@@ -1,0 +1,219 @@
+# Design engineer vs frontend engineer: skills, work and salary
+
+A design engineer and a frontend engineer write the same React and TypeScript. The difference is who makes the design call. A design engineer is hired to decide how the interface looks, moves, and feels, then ship it. A frontend engineer is hired to build the product’s front end well at scale: features, data, architecture, and performance, usually from a designer’s spec.
+
+This design engineer vs frontend engineer comparison uses 28 software design engineer postings from 18 companies and 66 frontend engineer postings from 25 companies. They were pulled from the public Greenhouse, Ashby and Lever job board APIs of 163 tech companies on 12 November 2026. Five companies were hiring for both titles that day: Gamma, Ramp, Reddit, Restream, and Stripe. The design engineer group includes UX engineer, UI engineer, design technologist, and creative technologist titles. Mechanical, chip, and antenna design engineering jobs were removed. The frontend group counts titles with frontend or front-end plus engineer or developer, and leaves out full-stack, manager, intern, and new-grad postings.
+
+On this page:
+
+- [What is the difference between a design engineer and a frontend engineer?](#what-is-the-difference-between-a-design-engineer-and-a-frontend-engineer)
+- [What does each role do day to day?](#what-does-each-role-do-day-to-day)
+- [Which skills do design engineer and frontend engineer postings ask for?](#which-skills-do-design-engineer-and-frontend-engineer-postings-ask-for)
+- [Do design engineers earn more than frontend engineers?](#do-design-engineers-earn-more-than-frontend-engineers)
+- [Which role is the right fit for you?](#which-role-is-the-right-fit-for-you)
+- [How do you move from frontend engineer to design engineer?](#how-do-you-move-from-frontend-engineer-to-design-engineer)
+
+Open roles on the design side of this split are on [design engineer jobs](/roles/design-engineer).
+
+## What is the difference between a design engineer and a frontend engineer?
+
+The difference between a design engineer and a frontend engineer is ownership of the design decision. A frontend engineer usually builds from a designer’s spec and owns more of the platform: data, state, APIs, and scale. A design engineer is expected to make the visual and interaction call too, and often has no mockup to follow.
+
+Ashby’s [Design Engineer posting](https://jobs.ashbyhq.com/Ashby/fd86edd7-3af0-4977-a61a-215212c296fa) draws the line from the design side: “This role truly expects you to design and code. Design Engineer at Ashby isn’t just a Frontend Engineer with new branding.” Ramp’s [Design Engineer](https://jobs.ashbyhq.com/ramp/b68aca53-16c0-4ced-ab1d-e8beb2940b4f) sits “at the intersection of design and front-end engineering” and wants people who “think like a designer, code like a front-end engineer.”
+
+The border is blurry in practice. Gamma’s [UI Engineer posting](https://jobs.ashbyhq.com/gamma/48508f9a-06e6-4394-b97d-b69bab2a5485) calls the hire “a Frontend Engineer focused on UI and design systems.” Stripe’s [Frontend Engineer, Design Systems](https://stripe.com/jobs/search?gh_jid=8301936) asks for “5+ years of relevant frontend or design engineering experience” and “strong visual and interaction-design judgment.” So read the responsibilities, not only the title. The [what is a design engineer](/guides/what-is-a-design-engineer) guide covers the wider family of titles.
+
+## What does each role do day to day?
+
+A design engineer spends the day turning ideas into shipped interface: prototyping in code, building components, tuning motion and states, and deciding design details as they go. A frontend engineer spends more of the day on product features at scale: state management, APIs with backend teams, performance, testing, and the architecture that keeps a large front end maintainable.
+
+Restream is hiring both titles for the same Studio Team, which makes the split concrete. Its [Design Engineer](https://jobs.ashbyhq.com/restream/746f524f-c124-479b-ad0c-ccaac34b9381) will “Craft every detail of new product features, from an idea to design to the implementation.” It asks for a “Deep understanding of the UX design process and strategy,” Figma, and “A strong portfolio of previous design projects.” The [Frontend Engineer](https://jobs.ashbyhq.com/restream/39b6f092-1d83-4db3-bd95-c1618078f934) on the same team will “Partner with a product designer to build great and user-friendly UI/UX.” It asks for “Basic backend skills: Node.JS, building REST APIs, working with relational or NoSQL databases” instead of a design portfolio.
+
+Gamma shows the same split at one company. The UI Engineer owns “design system components from foundational elements to complex editor UI primitives” and must be able “to spot 1px misalignments, janky animations, and inconsistent spacing.” Gamma’s [Software Engineer, Frontend](https://jobs.ashbyhq.com/gamma/fa99107a-c458-45fa-b856-add887b0a255) builds “the core real-time collaborative editing experience using CRDTs and WebSockets” and will “Design APIs with backend engineers.” One owns how the editor feels. The other owns how it works under load.
+
+Stripe’s [Design Engineer, Expansion](https://stripe.com/jobs/search?gh_jid=8212314) will “concept, prototype, and build new experiences” for stripe.com and asks for “a portfolio of design work and frontend code.” Its frontend engineers on the same web team build Helm, the shared design system those pages run on.
+
+## Which skills do design engineer and frontend engineer postings ask for?
+
+Both titles name React in about nine in ten postings and TypeScript in about eight in ten, so the stack is not the difference. Design engineer postings add Figma, prototyping, design systems, motion, CSS, and a portfolio. Frontend engineer postings add JavaScript depth, architecture and scale, backend and API work, data visualization, and computer science fundamentals.
+
+The table counts postings that mention each term anywhere in the description. Ashby lists two design engineer roles in four regions each, so eight of the 28 design engineer postings come from one company. Read the rows as emphasis, not a strict requirement count.
+
+<div className="mt-6 overflow-x-auto">
+<table className="w-full min-w-[36rem] text-left text-sm">
+<thead className="text-muted">
+<tr className="border-b border-line">
+<th className="py-3 pr-4 font-medium">Term in the posting</th>
+<th className="py-3 pr-4 font-medium">Design engineer (28 postings)</th>
+<th className="py-3 pr-4 font-medium">Frontend engineer (66 postings)</th>
+</tr>
+</thead>
+<tbody>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">React</td>
+<td className="py-3 pr-4">25 (89%)</td>
+<td className="py-3 pr-4">59 (89%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">TypeScript</td>
+<td className="py-3 pr-4">22 (79%)</td>
+<td className="py-3 pr-4">54 (82%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Performance</td>
+<td className="py-3 pr-4">19 (68%)</td>
+<td className="py-3 pr-4">45 (68%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Accessibility</td>
+<td className="py-3 pr-4">11 (39%)</td>
+<td className="py-3 pr-4">22 (33%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">CSS</td>
+<td className="py-3 pr-4">17 (61%)</td>
+<td className="py-3 pr-4">20 (30%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Design system</td>
+<td className="py-3 pr-4">20 (71%)</td>
+<td className="py-3 pr-4">18 (27%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Prototype or prototyping</td>
+<td className="py-3 pr-4">20 (71%)</td>
+<td className="py-3 pr-4">11 (17%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Figma</td>
+<td className="py-3 pr-4">14 (50%)</td>
+<td className="py-3 pr-4">2 (3%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Motion or animation</td>
+<td className="py-3 pr-4">11 (39%)</td>
+<td className="py-3 pr-4">4 (6%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Portfolio</td>
+<td className="py-3 pr-4">11 (39%)</td>
+<td className="py-3 pr-4">4 (6%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Taste or craft</td>
+<td className="py-3 pr-4">25 (89%)</td>
+<td className="py-3 pr-4">27 (41%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">JavaScript</td>
+<td className="py-3 pr-4">4 (14%)</td>
+<td className="py-3 pr-4">28 (42%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Architecture or scalability</td>
+<td className="py-3 pr-4">15 (54%)</td>
+<td className="py-3 pr-4">47 (71%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">APIs or GraphQL</td>
+<td className="py-3 pr-4">10 (36%)</td>
+<td className="py-3 pr-4">30 (45%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Back end, server, or Node.js</td>
+<td className="py-3 pr-4">8 (29%)</td>
+<td className="py-3 pr-4">37 (56%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Data visualization</td>
+<td className="py-3 pr-4">0 (0%)</td>
+<td className="py-3 pr-4">13 (20%)</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Computer science</td>
+<td className="py-3 pr-4">1 (4%)</td>
+<td className="py-3 pr-4">17 (26%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+The design rows are the clearest signal. Half of the design engineer postings name Figma. Two of the 66 frontend postings do. Prototyping and design systems each appear in about seven in ten design engineer postings and in fewer than three in ten frontend ones. Motion is six times as common on the design side, which matches the stress on interaction polish.
+
+The frontend rows lean the other way. More than half of the frontend postings mention back-end or server work, and about one in four mentions computer science. LangChain’s [Senior Frontend Engineer](https://jobs.ashbyhq.com/langchain/afb91b9b-46d5-4c9d-aa84-a4f1a3f74263) asks for “Strong computer science fundamentals, ideally with a degree in computer science or related field.” Frontend postings at Grafana Labs, Datadog, Sigma Computing, and Snowflake mention data visualization, which shows up in none of the design engineer postings here.
+
+The [design systems engineer guide](/guides/design-systems-engineer) covers the seat where the two lists overlap most: components, tokens, and the tooling behind them.
+
+## Do design engineers earn more than frontend engineers?
+
+Slightly, and not reliably. On 12 November 2026, the median midpoint of posted US dollar base ranges was $237,726 for design engineers and $228,950 for frontend engineers, a gap of about 4%. The design engineer sample is small, and at the same company the two titles often share a band. Level moves pay far more than the title does.
+
+Only yearly base ranges that employers published were counted: 14 design engineer postings from 13 companies and 45 frontend engineer postings from 21 companies. Equity, bonus, OTE, and hourly pay were left out, and nothing was converted between currencies. The median low end was $180,000 for design engineers and $192,000 for frontend engineers. The median top end was $290,000 and $256,500. So design engineer bands start a little lower and stretch higher. One design engineer posting, Y Combinator’s Software Product Design Engineer at $250,000 to $500,000, stretches the top. Without it, the design engineer median midpoint is $237,500.
+
+Level matters more. Frontend postings with senior in the title had a median midpoint of $210,000 across 16 postings. Those with staff or principal in the title had $262,000 across 16 postings. That $52,000 step is about six times the gap between the two titles.
+
+The fairer test is the same company, same day. These pairs were open on 12 November 2026:
+
+<div className="mt-6 overflow-x-auto">
+<table className="w-full min-w-[36rem] text-left text-sm">
+<thead className="text-muted">
+<tr className="border-b border-line">
+<th className="py-3 pr-4 font-medium">Company</th>
+<th className="py-3 pr-4 font-medium">Design engineer posting</th>
+<th className="py-3 pr-4 font-medium">Frontend engineer posting</th>
+</tr>
+</thead>
+<tbody>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Gamma (San Francisco)</td>
+<td className="py-3 pr-4"><a href="https://jobs.ashbyhq.com/gamma/48508f9a-06e6-4394-b97d-b69bab2a5485">UI Engineer</a>: $180,000–$310,000</td>
+<td className="py-3 pr-4"><a href="https://jobs.ashbyhq.com/gamma/fa99107a-c458-45fa-b856-add887b0a255">Software Engineer, Frontend</a>: $180,000–$310,000</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Ramp (New York)</td>
+<td className="py-3 pr-4"><a href="https://jobs.ashbyhq.com/ramp/b68aca53-16c0-4ced-ab1d-e8beb2940b4f">Design Engineer</a>: $172,000–$440,000</td>
+<td className="py-3 pr-4"><a href="https://jobs.ashbyhq.com/ramp/6511d68f-b65d-4499-962f-7e2f75eabe3f">Software Engineer, Frontend</a>: $200,000–$310,000</td>
+</tr>
+<tr className="border-b border-line align-top">
+<td className="py-3 pr-4">Reddit (remote US)</td>
+<td className="py-3 pr-4"><a href="https://job-boards.greenhouse.io/reddit/jobs/8122887">Principal UX Engineer, Ads</a>: $245,800–$344,100</td>
+<td className="py-3 pr-4"><a href="https://job-boards.greenhouse.io/reddit/jobs/8175520">Senior Frontend Engineer, Ads Creative</a>: $190,800–$267,100</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+Read the pairs as a spread, not a ranking. Gamma posts the same band for both titles. Ramp’s design engineer band starts lower and reaches higher. Reddit’s gap is mostly level: principal against senior. Restream and Stripe, the other two companies hiring both titles, published no pay on these postings.
+
+In Europe the posted bands are lower. Ashby’s [Design Engineer, EU](https://jobs.ashbyhq.com/Ashby/188cc71b-a625-4022-94dc-7c43fa1a8b06), based in Portugal, posts €60,000–€145,000. Pigment’s [Senior Frontend Software Engineer](https://jobs.lever.co/pigment/24e3e6d8-56a3-4917-acbe-ec85d0c8cf13) in France posts €70,000–€130,000.
+
+Government data does not split these titles. The US Bureau of Labor Statistics reports a [May 2025 median of $135,980 for software developers](https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm), and [$92,650 for web developers and $104,000 for web and digital interface designers](https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm). Those are national medians across all employers, so they sit far below the tech-company postings above. For live ranges by role, use the [design engineer salary](/salary) table, the [design engineer salary guide](/guides/design-engineer-salary), or the [salary calculator](/tools/design-engineer-salary-calculator).
+
+## Which role is the right fit for you?
+
+Choose design engineer if you want to make the design call yourself and you care about layout, motion, and interaction detail as much as clean code. Choose frontend engineer if you prefer hard engineering problems in the browser: data, state, performance, real-time systems, and architecture that many engineers build on. Both need taste, and both ship production code.
+
+Some questions help you settle design engineer vs frontend engineer for yourself:
+
+- **Would you rather open Figma or a profiler?** Figma appears in half of the design engineer postings and in 3% of the frontend ones.
+- **Do you want to work without a mockup?** Design engineer postings stress prototyping (71%) and portfolios (39%). Frontend postings rarely ask for either.
+- **How much back-end work do you want?** More than half of the frontend postings mention back-end or server work, against fewer than three in ten design engineer postings.
+- **Do you enjoy component APIs and tokens?** Then look at design systems roles, which both titles hire for. Stripe’s Helm team and Mercury’s Senior Frontend Engineer, Design Systems sit right on the line.
+
+Titles still blur. Gamma hires a UI Engineer, Pinterest and Reddit hire UX engineers, and Ideogram and OpusClip hire creative technologists into this same space. The [UX engineer guide](/guides/ux-engineer) and the [design technologist guide](/guides/design-technologist) explain those labels. If you are weighing the design side of the split instead, read [design engineer vs product designer](/guides/design-engineer-vs-product-designer).
+
+## How do you move from frontend engineer to design engineer?
+
+To move from frontend engineer to design engineer, show design judgment, not only code. Build interfaces with no mockup and explain the choices. Study typography, layout, and motion. Learn Figma well enough to explore ideas before you code them. Then rebuild your portfolio around shipped UI with the design reasoning next to it.
+
+Employers say the door is open from engineering. Ashby accepts experience “as an Engineer or a Designer.” Granola’s [Design Engineer posting](https://jobs.ashbyhq.com/granola/77cf40dd-0a11-4b23-ab9d-ff9d9d1e5f41) asks for experience as a “frontend engineer with strong design skills, or designer with strong engineering skills.” Stripe’s design engineer posting asks for “6+ years of relevant web front-end development or creative technology experience,” with design shown through a portfolio. For a frontend engineer, the code bar is usually met already. The gap is taste you can defend.
+
+A practical sequence:
+
+1. Take one feature you built from a spec and redesign it yourself, including empty, loading, and error states. Write down why each choice is better.
+2. Add motion and interaction detail to a real component, and measure that it still runs smoothly.
+3. Contribute to a design system, at work or in open source. Components are the most common shared ground between the two roles.
+4. Pair with a designer on your team. Ask to own one small surface end to end, from idea to merged code.
+5. Rewrite your resume around interface work you shaped, not only features you shipped. The [design engineer resume checker](/tools/design-engineer-resume-checker) and the [portfolio checklist](/tools/design-engineer-portfolio-checklist) score both against what postings ask for.
+
+The [how to become a design engineer](/guides/how-to-become-a-design-engineer) guide covers the full path from front-end development. The [design engineer portfolio](/guides/design-engineer-portfolio) guide shows what to put in front of hiring teams, and the [design engineer interview questions](/guides/design-engineer-interview-questions) guide explains what the loop tests.
