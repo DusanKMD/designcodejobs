@@ -24,6 +24,7 @@ const loaders = {
   "design-engineer-interview-questions": () => import("@/content/guides/design-engineer-interview-questions.mdx"),
   "design-engineer-vs-product-designer": () => import("@/content/guides/design-engineer-vs-product-designer.mdx"),
   "design-engineer-vs-frontend-engineer": () => import("@/content/guides/design-engineer-vs-frontend-engineer.mdx"),
+  "creative-technologist": () => import("@/content/guides/creative-technologist.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {

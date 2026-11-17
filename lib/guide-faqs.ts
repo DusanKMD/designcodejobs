@@ -278,4 +278,30 @@ export const guideFaqs = {
       a: "To move from frontend engineer to design engineer, show design judgment, not only code. Build interfaces with no mockup and explain the choices. Study typography, layout, and motion. Learn Figma well enough to explore ideas before you code them. Then rebuild your portfolio around shipped UI with the design reasoning next to it.",
     },
   ],
+  "creative-technologist": [
+    {
+      q: "What does a creative technologist do?",
+      a: "A creative technologist turns creative ideas into working technology. In current postings that means building AI workflows and tools that produce brand and campaign work, prototyping new formats before a team commits, and making some of the finished work by hand. Many also advise creative directors or clients on what a new tool can and cannot do.",
+    },
+    {
+      q: "Where do creative technologists work?",
+      a: "Creative technologists work in two places right now: agencies and creative-services firms, and AI product companies. Six of the nine postings checked on 17 November 2026 come from agencies or studios such as R/GA, Monks, Code and Theory, DEPT, and Superside. The other three come from AI companies: Ideogram, OpusClip, and Lovable, where the role sits close to marketing, brand, or the product itself.",
+    },
+    {
+      q: "What skills do creative technologist postings ask for?",
+      a: "These postings ask for a mix of visual taste, hands-on AI building, and enough code to ship. All nine postings checked on 17 November 2026 ask for AI work, and seven mention a portfolio. Beyond that the tool lists split by the kind of work: design and motion tools for making, scripting and agent tooling for building.",
+    },
+    {
+      q: "Is a creative technologist the same as a design engineer?",
+      a: "Sometimes, and some employers say so in the posting. Lovable’s listing for the title opens by asking for a design engineer and adds, “You might call yourself a design engineer, creative technologist or even a full-stack product engineer who cares about craft.” Where the titles split, creative technologist leans toward brand, campaign, and AI content work, and design engineer toward product interface.",
+    },
+    {
+      q: "How much does a creative technologist make?",
+      a: "Only two of the nine postings checked on 17 November 2026 publish a base salary range. OpusClip’s lead role in Mountain View posts $195,000–$280,000. Code and Theory’s Director, Creative Technology in New York posts $160,000–$225,000, a range it says spans multiple levels. Both are senior roles, so neither is a typical figure for the title.",
+    },
+    {
+      q: "How do you become a creative technologist?",
+      a: "Most people get into the role by building a portfolio that shows both creative output and working technology. Seven of the nine postings mention a portfolio, and several want proof that something shipped. Years of experience vary: three postings ask for 5 to 8 years, while DEPT and Monks put the work ahead of tenure.",
+    },
+  ],
 } as const;

@@ -89,6 +89,9 @@ export default async function RolePage({
         ...(slug === "design-engineer"
           ? [{ href: "/guides/design-engineer-vs-frontend-engineer", label: "Design engineer vs frontend engineer" }]
           : []),
+        ...(slug === "creative-technologist"
+          ? [{ href: "/guides/creative-technologist", label: "What is a creative technologist?" }]
+          : []),
         ...(slug === "ux-engineer" || slug === "creative-technologist" || slug === "prototyper"
           ? [{
               href: "/guides/design-technologist#how-does-a-design-technologist-compare-with-nearby-titles",

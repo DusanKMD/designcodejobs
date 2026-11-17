@@ -403,6 +403,15 @@ export const GUIDES = [
       "Design engineer vs frontend engineer, compared across 94 live job postings: the skills each asks for, who makes the design call, posted pay, and how to switch.",
     h1: "Design engineer vs frontend engineer: skills, work and salary",
   },
+  {
+    slug: "creative-technologist",
+    published: "2026-11-17",
+    updated: "2026-11-17",
+    title: "What is a creative technologist? Role, skills and pay",
+    description:
+      "What a creative technologist does, from 9 live job postings: where the role sits, the AI and code skills teams ask for, posted pay, and how to get in.",
+    h1: "What is a creative technologist?",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {
