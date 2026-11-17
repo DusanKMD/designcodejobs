@@ -51,6 +51,7 @@ describe("sitemap", () => {
       "https://designcodejobs.com/guides/design-engineer-interview-questions",
       "https://designcodejobs.com/guides/design-engineer-vs-product-designer",
       "https://designcodejobs.com/guides/design-engineer-vs-frontend-engineer",
+      "https://designcodejobs.com/guides/creative-technologist",
       "https://designcodejobs.com/remote",
       "https://designcodejobs.com/roles/design-engineer",
     ]));
