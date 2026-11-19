@@ -304,4 +304,30 @@ export const guideFaqs = {
       a: "Most people get into the role by building a portfolio that shows both creative output and working technology. Seven of the nine postings mention a portfolio, and several want proof that something shipped. Years of experience vary: three postings ask for 5 to 8 years, while DEPT and Monks put the work ahead of tenure.",
     },
   ],
+  "ui-engineer": [
+    {
+      q: "What does a UI engineer do?",
+      a: "A UI engineer turns a design into interface code that holds up in production. In current postings that means building components from buttons to editor primitives, getting every state right (hover, loading, error, empty), keeping animation smooth, and fixing the browser or device quirks that break a layout. At larger companies the same title owns the shared UI libraries that other engineers use.",
+    },
+    {
+      q: "Where do UI engineers work?",
+      a: "UI engineers work in three kinds of seat: product interface teams, UI platform and design system teams, and teams that build screens for devices. Of the seven interface postings checked on 19 November 2026, one is a product UI seat (Gamma), five sit on platform, tooling, or shared-app teams (Okta, Stripe, Airbnb), and one builds UI for hardware (Verkada).",
+    },
+    {
+      q: "What skills do UI engineer postings ask for?",
+      a: "UI engineer postings ask for strong frontend fundamentals first: modern frameworks, CSS, browser behavior, responsive layout, and accessibility. Then they add a craft bar. Gamma wants someone who can “spot 1px misalignments, janky animations, and inconsistent spacing.” Platform roles add shared-library work: component APIs, documentation, internationalization, and tooling other engineers depend on.",
+    },
+    {
+      q: "Is a UI engineer the same as a frontend engineer?",
+      a: "Mostly, and the postings say so. Gamma’s UI Engineer listing describes the hire as “a Frontend Engineer focused on UI and design systems.” Stripe’s UI Platform role is titled Frontend Engineer. The difference is emphasis: a UI engineer owns the visible layer and the components, while a frontend engineer title can also cover data fetching, build tooling, and app architecture.",
+    },
+    {
+      q: "How much does a UI engineer make?",
+      a: "Four of the seven interface postings checked on 19 November 2026 publish a usable yearly base range, and all are senior or multi-level roles. Gamma posts $180K–$310K in San Francisco, a range it says spans multiple internal levels. Airbnb posts $196,000–$227,000 for its senior UI Tooling role. Okta’s staff UI Platform role posts $194,000–$267,000 in the San Francisco Bay Area.",
+    },
+    {
+      q: "How do you become a UI engineer?",
+      a: "Most UI engineers start as frontend developers and specialize in the interface layer: components, CSS, motion, and accessibility. The entry bar in current postings is a few years of shipped frontend work, 2+ years at Stripe and 3–5+ at Gamma, plus proof of craft. Designers who learn production code reach the same seat from the other side.",
+    },
+  ],
 } as const;

@@ -412,6 +412,15 @@ export const GUIDES = [
       "What a creative technologist does, from 9 live job postings: where the role sits, the AI and code skills teams ask for, posted pay, and how to get in.",
     h1: "What is a creative technologist?",
   },
+  {
+    slug: "ui-engineer",
+    published: "2026-11-19",
+    updated: "2026-11-19",
+    title: "What is a UI engineer? Role, skills and pay",
+    description:
+      "What a UI engineer does, from live postings at Gamma, Okta, Stripe and Airbnb: where the role sits, the skills teams ask for, posted pay, and how to get in.",
+    h1: "What is a UI engineer?",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {
