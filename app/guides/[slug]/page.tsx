@@ -26,6 +26,7 @@ const loaders = {
   "design-engineer-vs-frontend-engineer": () => import("@/content/guides/design-engineer-vs-frontend-engineer.mdx"),
   "creative-technologist": () => import("@/content/guides/creative-technologist.mdx"),
   "ui-engineer": () => import("@/content/guides/ui-engineer.mdx"),
+  "design-engineer-internship": () => import("@/content/guides/design-engineer-internship.mdx"),
 } as const;
 
 function readingMinutes(slug: string) {

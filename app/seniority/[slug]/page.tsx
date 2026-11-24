@@ -67,6 +67,9 @@ export default async function SeniorityPage({
         ...(slug === "junior" || slug === "internship"
           ? [{ href: "/guides/how-to-become-a-design-engineer", label: "How to become a design engineer" }]
           : []),
+        ...(slug === "internship"
+          ? [{ href: "/guides/design-engineer-internship", label: "What is a design engineer internship?" }]
+          : []),
       ]}
     />
   );
