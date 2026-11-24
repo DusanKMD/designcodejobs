@@ -421,6 +421,15 @@ export const GUIDES = [
       "What a UI engineer does, from live postings at Gamma, Okta, Stripe and Airbnb: where the role sits, the skills teams ask for, posted pay, and how to get in.",
     h1: "What is a UI engineer?",
   },
+  {
+    slug: "design-engineer-internship",
+    published: "2026-11-24",
+    updated: "2026-11-24",
+    title: "What is a design engineer internship? Pay and how to apply",
+    description:
+      "Design engineer internships in software, from live postings at Figma, Notion, Ramp and Coinbase: where they hide, posted pay, and what to show to get one.",
+    h1: "What is a design engineer internship?",
+  },
 ] as const;
 
 export function guideBySlug(slug: string) {

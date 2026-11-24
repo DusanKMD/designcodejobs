@@ -330,4 +330,34 @@ export const guideFaqs = {
       a: "Most UI engineers start as frontend developers and specialize in the interface layer: components, CSS, motion, and accessibility. The entry bar in current postings is a few years of shipped frontend work, 2+ years at Stripe and 3–5+ at Gamma, plus proof of craft. Designers who learn production code reach the same seat from the other side.",
     },
   ],
+  "design-engineer-internship": [
+    {
+      q: "What is a design engineer internship?",
+      a: "A design engineer internship is a short paid placement, usually a summer, where a student works on a product team as both designer and frontend engineer. In practice the work comes under two other titles: frontend software engineering intern and product design intern. Both now ask for some of the other discipline, which is the design engineer’s core skill.",
+    },
+    {
+      q: "Why do most design engineer intern listings ask for CAD?",
+      a: "Most listings titled design engineer intern are hardware jobs. Mechanical, structural, electrical, and chip teams also use the title design engineer, so a search for the phrase returns CAD, circuit, and building-systems internships. On the boards checked here, 132 of 165 design engineer titles were hardware, mechanical, chip, or data-center roles.",
+    },
+    {
+      q: "Are there software design engineer internships open now?",
+      a: "Not under that title. On 24 November 2026, 33 software design engineer postings were open at 22 employers on 396 public job boards, and none had intern, junior, or new grad in the title. The same boards carried 572 intern-titled postings at 80 employers, so internships exist; they sit under frontend engineering and product design.",
+    },
+    {
+      q: "Which internships lead to design engineering?",
+      a: "Two internships lead most directly to design engineering: a frontend engineering internship where interface quality matters, and a product design internship that expects you to work in code. Pick by your home discipline. Developers should look for frontend roles that ask for an eye for design; designers should look for design roles that ask for HTML, CSS, or AI coding tools.",
+    },
+    {
+      q: "How much do design engineer internships pay?",
+      a: "Posted rates for the nearest internships checked on 24 November 2026 run from $34 to $74 an hour in the US. Frontend internships post $47–$70 an hour at Skydio, $55–$65 at Verkada, and $57–$61 at Notion; Ramp posts $12,500 a month. Product design internships post $34–$70 an hour, and Palantir estimates $8,500 a month.",
+    },
+    {
+      q: "What do you need to get a design engineer internship?",
+      a: "Most internships in this set want three things: current enrollment with a graduation date inside a set window, proof of work in a portfolio or GitHub, and working knowledge of the other discipline. Several also want a previous internship. Notion lists “Previous internship experience” for both its frontend and product design interns, and Verkada asks for internship experience launching products.",
+    },
+    {
+      q: "How do you become a design engineer without that internship?",
+      a: "Most people reach design engineering through a frontend or product design internship, then a first job in that discipline, then a move once they can ship a feature alone. Ashby’s Design Engineer posting sets its mid level at “2+ years of continuous experience (e.g., internships don’t count),” so internships count as preparation, not experience.",
+    },
+  ],
 } as const;
