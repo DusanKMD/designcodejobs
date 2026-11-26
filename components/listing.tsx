@@ -43,6 +43,8 @@ export function Listing({
   featuredJobs,
   openCount,
   listHeading = "Open roles",
+  sections,
+  faqs: customFaqs,
 }: {
   h1: string;
   path: string;
@@ -57,16 +59,20 @@ export function Listing({
   /** Home layout: custom header, company strip, and the employer band. */
   hero?: boolean;
   header?: React.ReactNode;
-  value?: string;
+  value?: React.ReactNode;
   companies?: { slug: string; name: string; domain?: string }[];
   featuredJobs?: Job[];
   openCount?: number;
   listHeading?: string;
+  /** Extra blocks above "How this list is built". Omitted when a page does not pass them. */
+  sections?: React.ReactNode;
+  /** Replaces the default listing FAQs in the visible list and the FAQPage JSON-LD. */
+  faqs?: { q: string; a: string }[];
 }) {
   const paged = paginate(jobs, page, PAGE_SIZE);
   const featured = featuredJobs || [];
   const all = featured.length ? [...featured, ...jobs] : jobs;
-  const faqs = listingFaqs(h1, all);
+  const faqs = customFaqs ?? listingFaqs(h1, all);
   const count = openCount ?? jobs.length + featured.length;
   const pageHref = (n: number) => {
     const params = new URLSearchParams(query || "");
@@ -165,7 +171,8 @@ export function Listing({
         </div>
 
         <div className="mt-20 grid gap-20">
-          {hero ? <EmployerBand /> : null}
+          {/* Adjacent so an omitted sections prop adds no node on other pages. */}
+          {sections}{hero ? <EmployerBand /> : null}
 
           <section className="reveal grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)] lg:gap-14" aria-labelledby="about-list-heading">
             <div>
